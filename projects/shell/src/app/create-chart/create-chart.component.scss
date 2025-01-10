@@ -1,0 +1,14 @@
+.container {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+
+.left-panel {
+    background-color: aliceblue;
+}
+
+.right-panel {
+    background-color: aqua;
+}
