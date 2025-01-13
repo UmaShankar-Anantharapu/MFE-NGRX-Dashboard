@@ -1,0 +1,36 @@
+<header class="navbar">
+    <div class="container">
+      <!-- Logo Section (Leftmost Corner) -->
+      <div class="logo">
+        DIGITELE
+      </div>
+  
+      <!-- Navigation Links -->
+      <nav class="nav-links">
+        <ul class="nav-list">
+          <li><a routerLink="/" routerLinkActive="active" aria-label="Home">Chart</a></li>
+          <li><a routerLink="/about" routerLinkActive="active" aria-label="About">Dashboard</a></li>
+          <li><a routerLink="/services" routerLinkActive="active" aria-label="Services">Dataset</a></li>
+          <!-- <li><a routerLink="/contact" routerLinkActive="active" aria-label="Contact">Contact</a></li> -->
+        </ul>
+      </nav>
+  
+      <!-- Mobile Menu Toggle -->
+      <div class="menu-toggle" (click)="toggleMenu()">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+  
+    <!-- Mobile Menu -->
+    <div class="mobile-menu" [class.open]="menuOpen">
+      <ul class="nav-list">
+        <li><a routerLink="/" routerLinkActive="active" aria-label="Home">Home</a></li>
+        <li><a routerLink="/about" routerLinkActive="active" aria-label="About">About</a></li>
+        <li><a routerLink="/services" routerLinkActive="active" aria-label="Services">Services</a></li>
+        <li><a routerLink="/contact" routerLinkActive="active" aria-label="Contact">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+  

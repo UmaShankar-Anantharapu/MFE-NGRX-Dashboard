@@ -6,9 +6,21 @@
 }
 
 .left-panel {
-    background-color: aliceblue;
+    background-color: #fff;
+    height: 100%;
+    padding: 20px
 }
 
 .right-panel {
-    background-color: aqua;
+    background-color: ghostwhite;
+}
+@media (min-width: 1440px) {
+    .container{
+        grid-template-columns: 5fr 1fr;
+    }  
+  }
+::ng-deep mat-tab-body{
+    height: 100vh;
+    padding-left: 1rem;
+    padding-right: 1rem;
 }
