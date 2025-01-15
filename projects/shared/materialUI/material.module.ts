@@ -15,6 +15,10 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTabsModule } from '@angular/material/tabs';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatRadioModule } from '@angular/material/radio';
+import { MatDatepickerModule } from '@angular/material/datepicker';
 
 @NgModule({
   imports: [
@@ -33,7 +37,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatRadioModule,
+    MatDatepickerModule
   ],
   exports: [
     MatButtonModule,
@@ -51,7 +59,11 @@ import { MatTabsModule } from '@angular/material/tabs';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    MatSlideToggleModule,
+    MatMenuModule,
+    MatRadioModule,
+    MatDatepickerModule
   ]
 })
 export class MaterialModule {}

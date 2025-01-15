@@ -13,3 +13,20 @@
         </div>
     </mat-card-content>
 </mat-card>
+
+<div style="width: 100%; display: grid; grid-template-columns: 4fr 1fr;">
+    <div class="left-panel">
+        <div style="width: 250px; height: 150px; background-color: red;" cdkDropList
+            [cdkDropListConnectedTo]="['chart']"
+            (cdkDropListDropped)="onDrop($event)">
+            <div *ngFor="let chart of droppedCharts">
+                {{ chart }}
+            </div>
+        </div>
+    </div>
+    <div class="right-panel">
+        <div *ngFor="let chart of chartList; let i = index" cdkDrag #chart>
+            {{ chart }}
+        </div>
+    </div>
+</div>

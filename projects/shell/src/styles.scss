@@ -1,1 +1,88 @@
-/* You can add global styles to this file, and also import other style files */
+// @import '../../shared/materialUI/themes/styles/custom.theme.scss'
+@import '../../shared/materialUI/themes/styles/material-custom-theme.scss'
+
+
+
+
+
+// Define default static palettes
+// $primary-palette: mat.$m2-indigo-palette;
+// $accent-palette: mat.$m2-pink-palette;
+// $warn-palette: mat.$m2-red-palette;
+
+// $light-theme: mat.m2-define-light-theme((
+//   color: (
+//     primary: $primary-palette,
+//     accent: $accent-palette,
+//     warn: $warn-palette,
+//   )
+// ));
+
+// $dark-theme: mat.m2-define-dark-theme((
+//   color: (
+//     primary: $primary-palette,
+//     accent: $accent-palette,
+//     warn: $warn-palette,
+//   )
+// ));
+
+// // Include Material styles
+// .light-theme {
+//   @include mat.all-component-themes($light-theme);
+// }
+
+// .dark-theme {
+//   @include mat.all-component-themes($dark-theme);
+// }
+
+// // Use CSS variables to enable runtime theme updates
+// :root {
+//   --primary-color: #3f51b5; // Default primary color
+//   --accent-color: #e91e63; // Default accent color
+//   --warn-color: #f44336;  // Default warn color
+// }
+
+// // Override Material component styles with CSS variables
+// .mat-mdc-button {
+//   background-color: var(--primary-color) !important;
+// }
+// .mat-mdc-button.mat-accent {
+//   background-color: var(--accent-color) !important;
+// }
+// .mat-mdc-button.mat-warn {
+//   background-color: var(--warn-color) !important;
+// }
+
+
+// /* Default Themes */
+// .light-theme {
+//     --primary: red;
+//     --accent: #03dac6;
+//     --warn: #b00020;
+//     --background: #ffffff;
+//     --foreground: #000000;
+//   }
+  
+//   .dark-theme {
+//     --primary: #bb86fc;
+//     --accent: #03dac6;
+//     --warn: #cf6679;
+//     --background: #121212;
+//     --foreground: #ffffff;
+//   }
+  
+//   /* Apply colors dynamically */
+//   body {
+//     background-color: var(--background);
+//     color: var(--foreground);
+//   }
+  
+//   .mat-toolbar {
+//     background-color: var(--primary);
+//     color: var(--foreground);
+//   }
+  
+//   .mat-button {
+//     background-color: var(--accent);
+//     color: var(--foreground);
+//   }

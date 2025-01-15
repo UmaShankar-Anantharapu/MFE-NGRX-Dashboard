@@ -1,0 +1,118 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+
+$myapp-theme-primary: mat.m2-define-palette(mat.$m2-indigo-palette, A400, A100, A700);
+$myapp-theme-accent: mat.m2-define-palette(mat.$m2-indigo-palette);
+$myapp-theme-warn: mat.m2-define-palette(mat.$m2-red-palette);
+
+$myapp-theme: mat.m2-define-light-theme((
+  color: (
+    primary: $myapp-theme-primary,
+    accent: $myapp-theme-accent,
+    warn: $myapp-theme-warn,
+  )
+));
+
+.light-theme{
+  @include mat.all-component-themes($myapp-theme);
+}
+//   )
+// ));
+
+// .light-theme{
+//   @include mat.all-component-themes($myapp-theme);
+// }
+//   )
+// ));
+
+// .light-theme{
+//   @include mat.all-component-themes($myapp-theme);
+// }
+
+// @use '@angular/material' as mat;
+
+// Define CSS variables for colors
+// :root {
+//   --primary-color: #3f51b5; // Default primary
+//   --accent-color: #e91e63; // Default accent
+//   --warn-color: #f44336;  // Default warn
+// }
+
+// // Map CSS variables to Angular Material palettes
+// $custom-primary-palette: mat.m2-define-palette((
+//   50: var(--primary-color),
+//   100: var(--primary-color),
+//   200: var(--primary-color),
+//   300: var(--primary-color),
+//   400: var(--primary-color),
+//   500: var(--primary-color),
+//   600: var(--primary-color),
+//   700: var(--primary-color),
+//   800: var(--primary-color),
+//   900: var(--primary-color),
+//   A100: var(--primary-color),
+//   A200: var(--primary-color),
+//   A400: var(--primary-color),
+//   A700: var(--primary-color),
+// ));
+
+// $custom-accent-palette: mat.m2-define-palette((
+//   50: var(--accent-color),
+//   100: var(--accent-color),
+//   200: var(--accent-color),
+//   300: var(--accent-color),
+//   400: var(--accent-color),
+//   500: var(--accent-color),
+//   600: var(--accent-color),
+//   700: var(--accent-color),
+//   800: var(--accent-color),
+//   900: var(--accent-color),
+//   A100: var(--accent-color),
+//   A200: var(--accent-color),
+//   A400: var(--accent-color),
+//   A700: var(--accent-color),
+// ));
+
+// $custom-warn-palette: mat.m2-define-palette((
+//   50: var(--warn-color),
+//   100: var(--warn-color),
+//   200: var(--warn-color),
+//   300: var(--warn-color),
+//   400: var(--warn-color),
+//   500: var(--warn-color),
+//   600: var(--warn-color),
+//   700: var(--warn-color),
+//   800: var(--warn-color),
+//   900: var(--warn-color),
+//   A100: var(--warn-color),
+//   A200: var(--warn-color),
+//   A400: var(--warn-color),
+//   A700: var(--warn-color),
+// ));
+
+// // Define Material themes for light and dark modes
+// $custom-light-theme: mat.m2-define-light-theme((
+//   color: (
+//     primary: $custom-primary-palette,
+//     accent: $custom-accent-palette,
+//     warn: $custom-warn-palette,
+//   ),
+// ));
+
+// $custom-dark-theme: mat.m2-define-dark-theme((
+//   color: (
+//     primary: $custom-primary-palette,
+//     accent: $custom-accent-palette,
+//     warn: $custom-warn-palette,
+//   ),
+// ));
+
+// // Apply the theme
+// .light-theme {
+//   @include mat.all-component-themes($custom-light-theme);
+// }
+
+// .dark-theme {
+//   @include mat.all-component-themes($custom-dark-theme);
+// }

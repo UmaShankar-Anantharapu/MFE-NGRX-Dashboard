@@ -12,7 +12,8 @@ module.exports = withModuleFederationPlugin({
     '@angular/animations': {singleton: true},
     '@angular/material': {singleton: true},
     '@ngrx/store': {singleton: true, strictVersion: true},
-    '@ngrx/effects': {singleton: true, strictVersion: true}
+    '@ngrx/effects': {singleton: true, strictVersion: true},
+    '@angular/cdk': { singleton: true },
   },
-
+  
 });

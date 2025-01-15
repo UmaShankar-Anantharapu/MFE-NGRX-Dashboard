@@ -1,0 +1,68 @@
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  
+  .logo {
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .center-menu button {
+    margin: 0 10px;
+  }
+  
+  .right-panel {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  
+  .username {
+    margin-right: 10px;
+  }
+
+  // .light-theme{
+  //   --primary-color: #fff000;
+  //   --accent-color: #bb86fc;
+  //   --warn-color: #cf6679;
+  //   background-color: var(--primary-color);
+  //   color: white;
+  // }
+  
+  // .dark-theme {
+  //   --primary-color: #ffff00;
+  //   --accent-color: #bb86fc;
+  //   --warn-color: #cf6679;
+  //   background-color: var(--primary-color);
+  //   color: white;
+  // }
+  :root {
+    --primary-color: #3f51b5;
+    --accent-color: #ff4081;
+    --warn-color: #f44336;
+    --background-color: #ffffff;
+    --text-color: #000000;
+  }
+  
+  /* Dark Theme */
+  body.dark-theme {
+    --primary-color: #6200ea;
+    --accent-color: #bb86fc;
+    --warn-color: #cf6679;
+    --background-color: #121212;
+    --text-color: #ffffff;
+  }
+  
+  /* Apply variables globally */
+  body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }
+  
+  .mat-toolbar, .mat-card, .mat-button, .mat-select, .mat-tab-group, .mat-form-field, .mat-dialog-content {
+    background-color: var(--background-color);
+    color: var(--text-color);
+  }

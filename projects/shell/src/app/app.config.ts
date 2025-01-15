@@ -1,18 +1,25 @@
-import { ApplicationConfig, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
+import { ApplicationConfig, Renderer2, importProvidersFrom, isDevMode, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideStore, StoreModule } from '@ngrx/store';
 import { chartReducer } from '../../../shared/store/reducers/reducer';
 import { provideStoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { HeaderComponent } from './layout/header/header.component';
+import { CommonService } from './services/common.service';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
   providers: [
+    provideHttpClient(),
+    CommonService,
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideStore(),
     provideStoreDevtools({ maxAge: 50, name: 'tarun', logOnly: !isDevMode() }),
-    importProvidersFrom(BrowserAnimationsModule, StoreModule.forRoot({ chartState: chartReducer }, {
+    importProvidersFrom(
+      BrowserAnimationsModule, 
+      StoreModule.forRoot({ chartState: chartReducer }, {
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true

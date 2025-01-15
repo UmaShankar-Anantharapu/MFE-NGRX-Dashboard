@@ -1,0 +1,74 @@
+{
+  "themes": [
+    {
+      "Material Light": {
+        "primary": "#1976d2",
+        "accent": "#ff4081",
+        "warn": "#f44336"
+      }
+    },
+    {
+      "Material Dark": {
+        "primary": "#90caf9",
+        "accent": "#f50057",
+        "warn": "#e57373"
+      }
+    },
+    {
+      "Amber Waves": {
+        "primary": "#ffca28",
+        "accent": "#ff7043",
+        "warn": "#d32f2f"
+      }
+    },
+    {
+      "Forest Whisper": {
+        "primary": "#388e3c",
+        "accent": "#8bc34a",
+        "warn": "#c62828"
+      }
+    },
+    {
+      "Sunset Horizon": {
+        "primary": "#f57c00",
+        "accent": "#ffeb3b",
+        "warn": "#d32f2f"
+      }
+    },
+    {
+      "Night Sky": {
+        "primary": "#3f51b5",
+        "accent": "#673ab7",
+        "warn": "#d50000"
+      }
+    },
+    {
+      "Cool Mint": {
+        "primary": "#00bcd4",
+        "accent": "#009688",
+        "warn": "#e53935"
+      }
+    },
+    {
+      "Berry Delight": {
+        "primary": "#7b1fa2",
+        "accent": "#e91e63",
+        "warn": "#c2185b"
+      }
+    },
+    {
+      "Solar Flare": {
+        "primary": "#ff5722",
+        "accent": "#ffc107",
+        "warn": "#b71c1c"
+      }
+    },
+    {
+      "Lush Green": {
+        "primary": "#4caf50",
+        "accent": "#cddc39",
+        "warn": "#f44336"
+      }
+    }
+  ]
+}

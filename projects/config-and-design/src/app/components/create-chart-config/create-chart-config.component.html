@@ -1,4 +1,18 @@
-<div *ngIf="chartData$ | async as chartData">
-    {{chartData.chartName}}
+<!-- <div cdkDropList (cdkDropListDropped)="onDrop($event)" class="drop-zone">
+    <div *ngFor="let chart of droppedCharts" class="chart-item">
+        {{ chart }}
+    </div>
+</div> -->
+
+<div style="display: grid; grid-template-columns: 4fr 1fr;" cdkDropListGroup class="chart-container">
+    <div class="left-panel">
+        <div cdkDropList [cdkDropListData]="chartList" class="charts-list" [cdkDropListConnectedTo]="['chart']" (cdkDropListDropped)="onDrop($event)" style="width: 250px;height: 250px; background-color: red;">
+            abc
+        </div>
+    </div>
+    <div class="right-panel">
+        <div *ngFor="let chart of chartList" cdkDrag class="charts" #chart>
+            {{chart}}
+        </div>
+    </div>
 </div>
-abc

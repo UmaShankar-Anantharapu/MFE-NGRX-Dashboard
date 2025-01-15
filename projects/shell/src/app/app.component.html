@@ -1,1 +1,58 @@
-<router-outlet></router-outlet>
+<app-header (emitTheme)="getTheme($event)"></app-header>
+<div>
+  <h2>Theme Customization Demo</h2>
+  
+  <!-- Buttons to test theme colors -->
+  <button mat-raised-button color="primary" >Primary Button</button>
+  <button mat-raised-button color="accent" >Accent Button</button>
+  <button mat-raised-button color="warn" >Warn Button</button>
+  
+  <br /><br />
+  
+  <!-- Form fields to test input and accent colors -->
+  <mat-form-field appearance="fill">
+    <mat-label>Primary Themed Input</mat-label>
+    <input matInput placeholder="Type something..." />
+  </mat-form-field>
+  
+  <mat-form-field appearance="outline">
+    <mat-label>Accent Themed Input</mat-label>
+    <mat-select>
+      <mat-option value="1">Option 1</mat-option>
+      <mat-option value="2">Option 2</mat-option>
+    </mat-select>
+  </mat-form-field>
+  
+  <br /><br />
+  
+  <!-- Progress bar to test primary and accent colors -->
+  <!-- <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
+    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar> -->
+    
+    <br /><br />
+    
+    <!-- Chips for theme testing -->
+    <!-- <mat-chip-list>
+      <mat-chip color="primary">Primary Chip</mat-chip>
+      <mat-chip color="accent">Accent Chip</mat-chip>
+      <mat-chip color="warn">Warn Chip</mat-chip>
+    </mat-chip-list> -->
+    
+    <br /><br />
+    
+    <!-- Theme Picker -->
+    <div>
+      <!-- <label for="primary">Primary Color:</label>
+        <input type="color" id="primary" [(ngModel)]="primaryColor" />
+        <label for="accent">Accent Color:</label>
+        <input type="color" id="accent" [(ngModel)]="accentColor" />
+        <label for="warn">Warn Color:</label>
+        <input type="color" id="warn" [(ngModel)]="warnColor" /> -->
+        
+        <!-- <button (click)="applyCustomTheme()">Apply Custom Theme</button>
+          <button (click)="setLightTheme()">Light Theme</button>
+          <button (click)="setDarkTheme()">Dark Theme</button> -->
+        </div>
+      </div>
+      <router-outlet></router-outlet>

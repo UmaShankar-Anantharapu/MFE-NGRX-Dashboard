@@ -1,0 +1,25 @@
+<mat-toolbar color="primary">
+    <div class="header-section">
+        <div class="logo">LOGO</div>
+        <div class="center-menu">
+            <button mat-button>Dashboard</button>
+            <button mat-button>Chart</button>
+            <button mat-button>Dataset</button>
+        </div>
+        <div class="right-panel">
+            <mat-slide-toggle (change)="toggleTheme()">Dark Mode</mat-slide-toggle>
+            <mat-select [(value)]="selectedTheme" (selectionChange)="onThemeChange($event)" placeholder="Select Theme">
+                <mat-option *ngFor="let theme of availableThemes" [value]="theme">
+                  {{ theme }}
+                </mat-option>
+              </mat-select>
+            <button mat-icon-button [matMenuTriggerFor]="userMenu">
+                <mat-icon>account_circle</mat-icon>
+            </button>
+            <mat-menu #userMenu="matMenu">
+                <button mat-menu-item (click)="openThemeDialog()">Custom Theme</button>
+                <button mat-menu-item>Logout</button>
+            </mat-menu>
+        </div>
+    </div>
+</mat-toolbar>

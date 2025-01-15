@@ -1,0 +1,288 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap');
+
+$light-primary-palette: (
+    50: var(--light-primary-50, #f6fafe),
+    100: var(--light-primary-100, #ffffff),
+    200: var(--light-primary-200, #ffffff),
+    300: var(--light-primary-300, #ffffff),
+    400: var(--light-primary-400, #ffffff),
+    500: var(--light-primary-500, #ffffff),
+    600: var(--light-primary-600, #f0f0f0),
+    700: var(--light-primary-700, #d1d1d1),
+    800: var(--light-primary-800, #a3a3a3),
+    900: var(--light-primary-900, #666666),
+    A100: var(--light-primary-A100, #ffffff),
+    A200: var(--light-primary-A200, #ffffff),
+    A400: var(--light-primary-A400, #ffffff),
+    A700: var(--light-primary-A700, #ffffff),
+    contrast: (
+        50: var(--light-primary-contrast-50,rgba(0, 0, 0, 0.87)),
+        100: var(--light-primary-contrast-100,rgba(0, 0, 0, 0.87)),
+        200: var(--light-primary-contrast-200,rgba(0, 0, 0, 0.87)),
+        300: var(--light-primary-contrast-300,rgba(0, 0, 0, 0.87)),
+        400: var(--light-primary-contrast-400,rgba(0, 0, 0, 0.87)),
+        500: var(--light-primary-contrast-500, #ffffff),
+        600: var(--light-primary-contrast-600, #ffffff),
+        700: var(--light-primary-contrast-700, #ffffff),
+        800: var(--light-primary-contrast-800, #ffffff),
+        900: var(--light-primary-contrast-900, #ffffff),
+        A100: var(--light-primary-contrast-A100,rgba(0, 0, 0, 0.87)),
+        A200: var(--light-primary-contrast-A200, #ffffff),
+        A400: var(--light-primary-contrast-A400, #ffffff),
+        A700: var(--light-primary-contrast-A700, #ffffff),
+    )
+);
+$dark-primary-palette: (
+    50: var(--dark-primary-50, #f6fafe),
+    100: var(--dark-primary-100, #ffffff),
+    200: var(--dark-primary-200, #ffffff),
+    300: var(--dark-primary-300, #ffffff),
+    400: var(--dark-primary-400, #ffffff),
+    500: var(--dark-primary-500, #ffffff),
+    600: var(--dark-primary-600, #f0f0f0),
+    700: var(--dark-primary-700, #d1d1d1),
+    800: var(--dark-primary-800, #a3a3a3),
+    900: var(--dark-primary-900, #666666),
+    A100: var(--dark-primary-A100, #ffffff),
+    A200: var(--dark-primary-A200, #ffffff),
+    A400: var(--dark-primary-A400, #ffffff),
+    A700: var(--dark-primary-A700, #ffffff),
+    contrast: (
+        50: var(--dark-primary-contrast-50,rgba(0, 0, 0, 0.87)),
+        100: var(--dark-primary-contrast-100,rgba(0, 0, 0, 0.87)),
+        200: var(--dark-primary-contrast-200,rgba(0, 0, 0, 0.87)),
+        300: var(--dark-primary-contrast-300,rgba(0, 0, 0, 0.87)),
+        400: var(--dark-primary-contrast-400,rgba(0, 0, 0, 0.87)),
+        500: var(--dark-primary-contrast-500, #ffffff),
+        600: var(--dark-primary-contrast-600, #ffffff),
+        700: var(--dark-primary-contrast-700, #ffffff),
+        800: var(--dark-primary-contrast-800, #ffffff),
+        900: var(--dark-primary-contrast-900, #ffffff),
+        A100: var(--dark-primary-contrast-A100,rgba(0, 0, 0, 0.87)),
+        A200: var(--dark-primary-contrast-A200, #ffffff),
+        A400: var(--dark-primary-contrast-A400, #ffffff),
+        A700: var(--dark-primary-contrast-A700, #ffffff),
+    )
+);
+
+$light-accent-palette: (
+    50: var(--light-accent-50, #ebebeb),
+    100: var(--light-accent-100, #ffffff),
+    200: var(--light-accent-200, #ffffff),
+    300: var(--light-accent-300, #ffffff),
+    400: var(--light-accent-400, #ffffff),
+    500: var(--light-accent-500, #ffffff),
+    600: var(--light-accent-600, #f0f0f0),
+    700: var(--light-accent-700, #d1d1d1),
+    800: var(--light-accent-800, #a3a3a3),
+    900: var(--light-accent-900, #666666),
+    A100: var(--light-accent-A100, #ffffff),
+    A200: var(--light-accent-A200, #ffffff),
+    A400: var(--light-accent-A400, #ffffff),
+    A700: var(--light-accent-A700, #ffffff),
+    contrast: (
+        50: var(--light-accent-contrast-50,rgba(0, 0, 0, 0.87)),
+        100: var(--light-accent-contrast-100,rgba(0, 0, 0, 0.87)),
+        200: var(--light-accent-contrast-200,rgba(0, 0, 0, 0.87)),
+        300: var(--light-accent-contrast-300,rgba(0, 0, 0, 0.87)),
+        400: var(--light-accent-contrast-400,rgba(0, 0, 0, 0.87)),
+        500: var(--light-accent-contrast-500, #ffffff),
+        600: var(--light-accent-contrast-600, #ffffff),
+        700: var(--light-accent-contrast-700, #ffffff),
+        800: var(--light-accent-contrast-800, #ffffff),
+        900: var(--light-accent-contrast-900, #ffffff),
+        A100: var(--light-accent-contrast-A100,rgba(0, 0, 0, 0.87)),
+        A200: var(--light-accent-contrast-A200, #ffffff),
+        A400: var(--light-accent-contrast-A400, #ffffff),
+        A700: var(--light-accent-contrast-A700, #ffffff),
+    )
+);
+$dark-accent-palette: (
+    50: var(--dark-accent-50, #ebebeb),
+    100: var(--dark-accent-100, #ffffff),
+    200: var(--dark-accent-200, #ffffff),
+    300: var(--dark-accent-300, #ffffff),
+    400: var(--dark-accent-400, #ffffff),
+    500: var(--dark-accent-500, #ffffff),
+    600: var(--dark-accent-600, #f0f0f0),
+    700: var(--dark-accent-700, #d1d1d1),
+    800: var(--dark-accent-800, #a3a3a3),
+    900: var(--dark-accent-900, #666666),
+    A100: var(--dark-accent-A100, #ffffff),
+    A200: var(--dark-accent-A200, #ffffff),
+    A400: var(--dark-accent-A400, #ffffff),
+    A700: var(--dark-accent-A700, #ffffff),
+    contrast: (
+        50: var(--dark-accent-contrast-50,rgba(0, 0, 0, 0.87)),
+        100: var(--dark-accent-contrast-100,rgba(0, 0, 0, 0.87)),
+        200: var(--dark-accent-contrast-200,rgba(0, 0, 0, 0.87)),
+        300: var(--dark-accent-contrast-300,rgba(0, 0, 0, 0.87)),
+        400: var(--dark-accent-contrast-400,rgba(0, 0, 0, 0.87)),
+        500: var(--dark-accent-contrast-500, #ffffff),
+        600: var(--dark-accent-contrast-600, #ffffff),
+        700: var(--dark-accent-contrast-700, #ffffff),
+        800: var(--dark-accent-contrast-800, #ffffff),
+        900: var(--dark-accent-contrast-900, #ffffff),
+        A100: var(--dark-accent-contrast-A100,rgba(0, 0, 0, 0.87)),
+        A200: var(--dark-accent-contrast-A200, #ffffff),
+        A400: var(--dark-accent-contrast-A400, #ffffff),
+        A700: var(--dark-accent-contrast-A700, #ffffff),
+    )
+);
+
+$light-warn-palette: (
+    50: var(--light-warn-50, #ffebee),
+    100: var(--light-warn-100, #ffcdd2),
+    200: var(--light-warn-200, #ef9a9a),
+    300: var(--light-warn-300, #e57373),
+    400: var(--light-warn-400, #ef5350),
+    500: var(--light-warn-500, #f44336),
+    600: var(--light-warn-600, #e53935),
+    700: var(--light-warn-700, #d32f2f),
+    800: var(--light-warn-800, #c62828),
+    900: var(--light-warn-900, #b71c1c),
+    A100: var(--light-warn-A100, #ff8a80),
+    A200: var(--light-warn-A200, #ff5252),
+    A400: var(--light-warn-A400, #ff1744),
+    A700: var(--light-warn-A700, #d50000),
+    contrast: (
+        50: var(--light-warn-contrast-50,rgba(0, 0, 0, 0.87)),
+        100: var(--light-warn-contrast-100,rgba(0, 0, 0, 0.87)),
+        200: var(--light-warn-contrast-200,rgba(0, 0, 0, 0.87)),
+        300: var(--light-warn-contrast-300,rgba(0, 0, 0, 0.87)),
+        400: var(--light-warn-contrast-400,rgba(0, 0, 0, 0.87)),
+        500: var(--light-warn-contrast-500, #ffffff),
+        600: var(--light-warn-contrast-600, #ffffff),
+        700: var(--light-warn-contrast-700, #ffffff),
+        800: var(--light-warn-contrast-800, #ffffff),
+        900: var(--light-warn-contrast-900, #ffffff),
+        A100: var(--light-warn-contrast-A100,rgba(0, 0, 0, 0.87)),
+        A200: var(--light-warn-contrast-A200, #ffffff),
+        A400: var(--light-warn-contrast-A400, #ffffff),
+        A700: var(--light-warn-contrast-A700, #ffffff),
+    )
+);
+$dark-warn-palette: (
+    50: var(--dark-warn-50, #ffebee),
+    100: var(--dark-warn-100, #ffcdd2),
+    200: var(--dark-warn-200, #ef9a9a),
+    300: var(--dark-warn-300, #e57373),
+    400: var(--dark-warn-400, #ef5350),
+    500: var(--dark-warn-500, #f44336),
+    600: var(--dark-warn-600, #e53935),
+    700: var(--dark-warn-700, #d32f2f),
+    800: var(--dark-warn-800, #c62828),
+    900: var(--dark-warn-900, #b71c1c),
+    A100: var(--dark-warn-A100, #ff8a80),
+    A200: var(--dark-warn-A200, #ff5252),
+    A400: var(--dark-warn-A400, #ff1744),
+    A700: var(--dark-warn-A700, #d50000),
+    contrast: (
+        50: var(--dark-warn-contrast-50,rgba(0, 0, 0, 0.87)),
+        100: var(--dark-warn-contrast-100,rgba(0, 0, 0, 0.87)),
+        200: var(--dark-warn-contrast-200,rgba(0, 0, 0, 0.87)),
+        300: var(--dark-warn-contrast-300,rgba(0, 0, 0, 0.87)),
+        400: var(--dark-warn-contrast-400,rgba(0, 0, 0, 0.87)),
+        500: var(--dark-warn-contrast-500, #ffffff),
+        600: var(--dark-warn-contrast-600, #ffffff),
+        700: var(--dark-warn-contrast-700, #ffffff),
+        800: var(--dark-warn-contrast-800, #ffffff),
+        900: var(--dark-warn-contrast-900, #ffffff),
+        A100: var(--dark-warn-contrast-A100,rgba(0, 0, 0, 0.87)),
+        A200: var(--dark-warn-contrast-A200, #ffffff),
+        A400: var(--dark-warn-contrast-A400, #ffffff),
+        A700: var(--dark-warn-contrast-A700, #ffffff),
+    )
+);
+
+$background: (
+    light: var(--background-light, #fafafa),
+    dark: var(--background-dark, #121212),
+    contrast: (light: var(--background-contrast-light, #000000),
+        dark: var(--background-contrast-dark, #ffffff),
+    )
+);
+$background-light: (
+    light: var(--light-background-light, #fafafa),
+    contrast: (
+        light: var(--light-background-contrast-light, #000000),
+    )
+);
+$background-dark: (
+    light: var(--dark-background-dark, #fafafa),
+    contrast: (
+        light: var(--dark-background-contrast-dark, #000000),
+    )
+);
+
+
+$foreground: (
+  light: var(--foreground-light, #000000),
+  dark: var(--foreground-dark, #ffffff),
+);
+
+$mat-primary-palette-light: mat.m2-define-palette($light-primary-palette);
+$mat-accent-palette-light: mat.m2-define-palette($light-accent-palette);
+$mat-warn-palette-light: mat.m2-define-palette($light-warn-palette);
+
+
+$mat-primary-palette-dark: mat.m2-define-palette($dark-primary-palette);
+$mat-accent-palette-dark: mat.m2-define-palette($dark-accent-palette);
+$mat-warn-palette-dark: mat.m2-define-palette($dark-warn-palette);
+
+
+// create-themes
+$theme-light: mat.m2-define-light-theme(
+    (
+        color: (
+            primary: $mat-primary-palette-light,
+            accent: $mat-accent-palette-light,
+            warn: $mat-warn-palette-light
+        ),
+        background: $background-light,
+        foreground: $foreground
+    ),
+
+);
+$theme-dark: mat.m2-define-dark-theme(
+    (
+        color: (
+            primary: $mat-primary-palette-dark,
+            accent: $mat-accent-palette-dark,
+            warn: $mat-warn-palette-dark
+        ),
+        background: $background-dark,
+        foreground: $foreground
+    ),
+
+);
+
+.light-theme{
+    @include mat.all-component-themes($theme-light);
+    @include mat.toolbar-theme($theme-light);
+    @include mat.form-field-theme($theme-light);
+}
+.dark-theme{
+    @include mat.all-component-themes($theme-dark);
+    @include mat.toolbar-theme($theme-dark);
+    @include mat.form-field-theme($theme-dark);  
+}
+
+// mat-toolbar {
+//     background-color: var(--primary-500);
+//     color: var(--primary-contrast-500);
+//   }
+  
+//   mat-form-field {
+//     background-color: var(--light-background-light);
+//     color: var(--foreground-light);
+//   }
+  
+:root {
+    --background-color: var(--light-primary-500);
+    --text-color: var(--light-primary-contrast-500);
+}

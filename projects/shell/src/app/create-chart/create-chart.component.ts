@@ -10,7 +10,8 @@ import { BrowserModule } from '@angular/platform-browser';
   imports: [MaterialModule, coreModule],
   providers: [],
   templateUrl: './create-chart.component.html',
-  styleUrl: './create-chart.component.scss'
+  styleUrl: './create-chart.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class CreateChartComponent implements OnInit {
   @ViewChild('chartContainer', { read: ViewContainerRef, static: false }) chartContainer!: ViewContainerRef;

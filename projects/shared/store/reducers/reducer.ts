@@ -5,6 +5,7 @@ import { updateChartOptions } from '../actions/action';
 import { ChartOptionsState } from '../states/state'
 
 export const chartInitialState: ChartOptionsState = {
+  type: 'initial value'
 }
 
 export const chartReducer = createReducer(
