@@ -7,7 +7,8 @@ import { HeaderComponent } from "./header/header.component";
   standalone: true,
   imports: [RouterOutlet, HeaderComponent],
   templateUrl: './app.component.html',
-  styleUrl: './app.component.scss'
+  styleUrl: './app.component.scss',
+  host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class AppComponent {
   title = 'shell';

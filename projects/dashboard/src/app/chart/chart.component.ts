@@ -7,11 +7,13 @@ import { Store, StoreModule } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ChartOptionsState } from '../../../../shared/store/states/state';
 import { updateChartOptions } from '../../../../shared/store/actions/action';
+import { HighchartsChartComponent } from 'highcharts-angular';
+import { HighchartsComponent } from '../highcharts/highcharts.component';
 
 @Component({
   selector: 'app-chart',
   standalone: true,
-  imports: [MaterialModule, HighChartsModule, coreModule],
+  imports: [MaterialModule, HighChartsModule, coreModule,HighchartsComponent],
   providers: [],
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss'

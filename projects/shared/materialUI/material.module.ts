@@ -16,6 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSortModule } from '@angular/material/sort';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { CdkDropList, CdkDrag, CdkDragPreview } from '@angular/cdk/drag-drop';
 
 @NgModule({
   imports: [
@@ -35,7 +36,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatSelectModule,
     MatPaginatorModule,
     MatSortModule,
-    MatTabsModule
+    MatTabsModule,
+    CdkDropList,
+    CdkDrag,
+    CdkDragPreview
   ],
   exports: [
     MatButtonModule,
@@ -54,7 +58,10 @@ import { MatExpansionModule } from '@angular/material/expansion';
     MatPaginatorModule,
     MatSortModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    CdkDropList,
+    CdkDrag,
+    CdkDragPreview
   ]
 })
 export class MaterialModule {}

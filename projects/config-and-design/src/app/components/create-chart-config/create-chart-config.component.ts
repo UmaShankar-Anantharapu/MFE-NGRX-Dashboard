@@ -7,6 +7,7 @@ import { ChartOptionsState } from '../../../../../shared/store/states/state';
 import Highcharts, { SeriesOptionsType } from 'highcharts';
 import { v4 as uuidv4 } from 'uuid';
 import { MatIconModule } from '@angular/material/icon';
+import { ConfigService } from '../../config.service';
     @Component({
   selector: 'app-create-chart-config',
   standalone: true,
@@ -20,8 +21,13 @@ import { MatIconModule } from '@angular/material/icon';
 export class CreateChartConfigComponent implements OnDestroy{
   chartData$: Observable<any> = new Observable;
   chartState = signal<ChartOptionsState>({});
-  constructor(private store: Store<any>){
+  constructor(private store: Store<any>, private configService:ConfigService){
+    this.fetchDataSets();
     this.fetchChartData();
+  }
+
+  fetchDataSets(){
+    this.datasets = this.configService.fetchDataSets()
   }
   fetchChartData(){
     this.chartData$ = this.store.select('chartState');
@@ -37,7 +43,8 @@ export class CreateChartConfigComponent implements OnDestroy{
     chartType: string = ''
     isChartLoaded: boolean = false
     columnsList: string[] = [];
-    datasets = ['renewableenergymix', 'india-energy-consumption', 'industrialpower', 'active-power', 'wind', 'griddistribution', 'hydro', 'power-generation', 'position-monitoring', 'windrose', 'drilldown01', 'countries'];
+    datasets:any[]=[];
+    // datasets = ['renewableenergymix', 'india-energy-consumption', 'industrialpower', 'active-power', 'wind', 'griddistribution', 'hydro', 'power-generation', 'position-monitoring', 'windrose', 'drilldown01', 'countries'];
     Highcharts: typeof Highcharts = Highcharts;
     drillDownCharts: string[] = ['bar', 'column', 'pie', 'funnel', 'pareto', 'donut']
     // chartTypes = ['bar', 'column', 'area', 'line', 'pie', 'radar', 'scatter', 'bubble', 'heatmap', 'donut', 'polar', 'funnel', 'pyramid', 'gauge', 'pareto', 'wind rose'];

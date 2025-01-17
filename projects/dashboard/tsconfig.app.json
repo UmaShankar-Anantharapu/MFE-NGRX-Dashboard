@@ -6,10 +6,12 @@
   },
   "files": [
     "src/main.ts",
-    "src/app/chart/chart.component.ts"
+    "src/app/chart/chart.component.ts",
+    "src/app/dashboard/dashboard.component.ts"
   ],
   "include": [
     "src/**/*.d.ts",
-    "src/app/chart/chart.component.ts"
+    "src/app/chart/chart.component.ts",
+    "src/app/dashboard/dashboard.component.ts"
   ]
 }

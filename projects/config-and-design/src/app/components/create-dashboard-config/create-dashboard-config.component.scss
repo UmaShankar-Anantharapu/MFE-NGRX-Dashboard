@@ -1,0 +1,85 @@
+* {
+    box-sizing: border-box;
+}
+
+.tab-pane {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Ensures full height */
+    padding: 1rem;
+    overflow: hidden; /* Prevents content overflow */
+}
+
+.search-container {
+    margin-bottom: 1rem;
+}
+
+.search-container input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.chart-list {
+    flex: 1; /* Allows the list to grow and take available space */
+    overflow-y: auto; /* Adds vertical scrolling if content overflows */
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 0.5rem;
+    background-color: #f9f9f9;
+}
+
+.chart-item {
+    padding: 0.5rem;
+    margin: 0.3rem 0;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.chart-item:hover {
+    background-color: #eef2ff;
+}
+
+.drag-preview {
+    padding: 10px;
+    background-color: rgba(0, 0, 0, 0.8);
+    color: #fff;
+    border: 1px solid #666;
+    border-radius: 4px;
+    font-weight: bold;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    opacity: 0.9;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1rem;
+    border-top: 1px solid #ddd;
+    padding-top: 1rem;
+    position: sticky; /* Keeps pagination fixed at the bottom of the container */
+    bottom: 0;
+    background-color: #fff; /* Ensures it doesn't overlap background */
+}
+
+.page-button {
+    padding: 0.3rem 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    cursor: pointer;
+    background: #f9f9f9;
+}
+
+.page-button:hover {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.page-number {
+    line-height: 1.8rem;
+    font-weight: bold;
+}

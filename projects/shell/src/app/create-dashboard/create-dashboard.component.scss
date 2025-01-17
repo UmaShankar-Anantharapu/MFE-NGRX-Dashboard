@@ -1,0 +1,17 @@
+.container{
+    height: calc(100vh - 60px);
+    width: 100%;
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+}
+.left-panel
+.right-panel{
+    height: 100%;
+}
+.right-panel ::ng-deep .mat-mdc-tab-body-wrapper // angular >= 16
+{
+  flex-grow: 1;
+}
+mat-tab-group{
+    height: 100%;
+}
