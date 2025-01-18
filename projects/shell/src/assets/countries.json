@@ -1,0 +1,174 @@
+[
+    {
+        "Country": "USA",
+        "Total Energy (MWh)": 12000,
+        "States": [
+            {
+                "State": "California",
+                "Total Energy (MWh)": 4000,
+                "Cities": [
+                    {
+                        "City": "Los Angeles",
+                        "Energy Utilized (MWh)": 1600
+                    },
+                    {
+                        "City": "San Francisco",
+                        "Energy Utilized (MWh)": 1200
+                    },
+                    {
+                        "City": "San Diego",
+                        "Energy Utilized (MWh)": 800
+                    }
+                ]
+            },
+            {
+                "State": "Texas",
+                "Total Energy (MWh)": 3500,
+                "Cities": [
+                    {
+                        "City": "Houston",
+                        "Energy Utilized (MWh)": 1400
+                    },
+                    {
+                        "City": "Dallas",
+                        "Energy Utilized (MWh)": 1200
+                    },
+                    {
+                        "City": "Austin",
+                        "Energy Utilized (MWh)": 900
+                    }
+                ]
+            },
+            {
+                "State": "Florida",
+                "Total Energy (MWh)": 2500,
+                "Cities": [
+                    {
+                        "City": "Miami",
+                        "Energy Utilized (MWh)": 1200
+                    },
+                    {
+                        "City": "Orlando",
+                        "Energy Utilized (MWh)": 1000
+                    },
+                    {
+                        "City": "Tampa",
+                        "Energy Utilized (MWh)": 300
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Country": "India",
+        "Total Energy (MWh)": 9500,
+        "States": [
+            {
+                "State": "Maharashtra",
+                "Total Energy (MWh)": 3000,
+                "Cities": [
+                    {
+                        "City": "Mumbai",
+                        "Energy Utilized (MWh)": 1500
+                    },
+                    {
+                        "City": "Pune",
+                        "Energy Utilized (MWh)": 800
+                    },
+                    {
+                        "City": "Nagpur",
+                        "Energy Utilized (MWh)": 700
+                    }
+                ]
+            },
+            {
+                "State": "Uttar Pradesh",
+                "Total Energy (MWh)": 2200,
+                "Cities": [
+                    {
+                        "City": "Lucknow",
+                        "Energy Utilized (MWh)": 900
+                    },
+                    {
+                        "City": "Kanpur",
+                        "Energy Utilized (MWh)": 800
+                    },
+                    {
+                        "City": "Agra",
+                        "Energy Utilized (MWh)": 500
+                    }
+                ]
+            },
+            {
+                "State": "Tamil Nadu",
+                "Total Energy (MWh)": 1800,
+                "Cities": [
+                    {
+                        "City": "Chennai",
+                        "Energy Utilized (MWh)": 1000
+                    },
+                    {
+                        "City": "Coimbatore",
+                        "Energy Utilized (MWh)": 500
+                    },
+                    {
+                        "City": "Madurai",
+                        "Energy Utilized (MWh)": 300
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Country": "Germany",
+        "Total Energy (MWh)": 8500,
+        "States": [
+            {
+                "State": "Bavaria",
+                "Total Energy (MWh)": 2000,
+                "Cities": [
+                    {
+                        "City": "Munich",
+                        "Energy Utilized (MWh)": 1000
+                    },
+                    {
+                        "City": "Nuremberg",
+                        "Energy Utilized (MWh)": 500
+                    },
+                    {
+                        "City": "Augsburg",
+                        "Energy Utilized (MWh)": 500
+                    }
+                ]
+            },
+            {
+                "State": "Berlin",
+                "Total Energy (MWh)": 1500,
+                "Cities": [
+                    {
+                        "City": "Berlin City",
+                        "Energy Utilized (MWh)": 1500
+                    }
+                ]
+            },
+            {
+                "State": "North Rhine-Westphalia",
+                "Total Energy (MWh)": 1500,
+                "Cities": [
+                    {
+                        "City": "Cologne",
+                        "Energy Utilized (MWh)": 800
+                    },
+                    {
+                        "City": "Dusseldorf",
+                        "Energy Utilized (MWh)": 700
+                    },
+                    {
+                        "City": "Essen",
+                        "Energy Utilized (MWh)": 500
+                    }
+                ]
+            }
+        ]
+    }
+]

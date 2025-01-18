@@ -1,0 +1,345 @@
+[
+    {
+        "time": "11/11/2024 16:00",
+        "power_mw": "541",
+        "blade_angle": "1.93",
+        "pitch_angle": "1.93",
+        "pitch_angle_set": "2.00"
+    },
+    {
+        "time": "11/11/2024 16:10",
+        "power_mw": "565",
+        "blade_angle": "2.81",
+        "pitch_angle": "2.77",
+        "pitch_angle_set": "2.84"
+    },
+    {
+        "time": "11/11/2024 16:20",
+        "power_mw": "572",
+        "blade_angle": "2.28",
+        "pitch_angle": "2.28",
+        "pitch_angle_set": "2.35"
+    },
+    {
+        "time": "11/11/2024 16:30",
+        "power_mw": "615",
+        "blade_angle": "2.28",
+        "pitch_angle": "2.28",
+        "pitch_angle_set": "2.37"
+    },
+    {
+        "time": "11/11/2024 16:40",
+        "power_mw": "672",
+        "blade_angle": "1.71",
+        "pitch_angle": "1.71",
+        "pitch_angle_set": "1.77"
+    },
+    {
+        "time": "11/11/2024 16:50",
+        "power_mw": "717",
+        "blade_angle": "1.44",
+        "pitch_angle": "1.44",
+        "pitch_angle_set": "1.51"
+    },
+    {
+        "time": "11/11/2024 17:00",
+        "power_mw": "676",
+        "blade_angle": "1.91",
+        "pitch_angle": "1.91",
+        "pitch_angle_set": "1.98"
+    },
+    {
+        "time": "11/11/2024 17:10",
+        "power_mw": "689",
+        "blade_angle": "1.13",
+        "pitch_angle": "1.13",
+        "pitch_angle_set": "1.20"
+    },
+    {
+        "time": "11/11/2024 17:20",
+        "power_mw": "711",
+        "blade_angle": "0.926",
+        "pitch_angle": "0.926",
+        "pitch_angle_set": "0.996"
+    },
+    {
+        "time": "11/11/2024 17:30",
+        "power_mw": "610",
+        "blade_angle": "1.84",
+        "pitch_angle": "1.84",
+        "pitch_angle_set": "1.91"
+    },
+    {
+        "time": "11/11/2024 17:40",
+        "power_mw": "669",
+        "blade_angle": "2.57",
+        "pitch_angle": "2.58",
+        "pitch_angle_set": "2.65"
+    },
+    {
+        "time": "11/11/2024 17:50",
+        "power_mw": "654",
+        "blade_angle": "1.73",
+        "pitch_angle": "1.73",
+        "pitch_angle_set": "1.80"
+    },
+    {
+        "time": "11/11/2024 18:00",
+        "power_mw": "636",
+        "blade_angle": "1.40",
+        "pitch_angle": "1.40",
+        "pitch_angle_set": "1.47"
+    },
+    {
+        "time": "11/11/2024 18:10",
+        "power_mw": "565",
+        "blade_angle": "1.52",
+        "pitch_angle": "1.52",
+        "pitch_angle_set": "1.59"
+    },
+    {
+        "time": "11/11/2024 18:20",
+        "power_mw": "543",
+        "blade_angle": "1.88",
+        "pitch_angle": "1.88",
+        "pitch_angle_set": "1.94"
+    },
+    {
+        "time": "11/11/2024 18:30",
+        "power_mw": "572",
+        "blade_angle": "2.02",
+        "pitch_angle": "2.02",
+        "pitch_angle_set": "2.09"
+    },
+    {
+        "time": "11/11/2024 18:40",
+        "power_mw": "587",
+        "blade_angle": "2.11",
+        "pitch_angle": "2.11",
+        "pitch_angle_set": "2.18"
+    },
+    {
+        "time": "11/11/2024 18:50",
+        "power_mw": "611",
+        "blade_angle": "2.52",
+        "pitch_angle": "2.51",
+        "pitch_angle_set": "2.59"
+    },
+    {
+        "time": "11/11/2024 19:00",
+        "power_mw": "570",
+        "blade_angle": "2.02",
+        "pitch_angle": "2.02",
+        "pitch_angle_set": "2.09"
+    },
+    {
+        "time": "11/11/2024 19:10",
+        "power_mw": "545",
+        "blade_angle": "2.16",
+        "pitch_angle": "2.16",
+        "pitch_angle_set": "2.24"
+    },
+    {
+        "time": "11/11/2024 19:20",
+        "power_mw": "477",
+        "blade_angle": "2.95",
+        "pitch_angle": "2.95",
+        "pitch_angle_set": "3.02"
+    },
+    {
+        "time": "11/11/2024 19:30",
+        "power_mw": "476",
+        "blade_angle": "2.55",
+        "pitch_angle": "2.56",
+        "pitch_angle_set": "2.62"
+    },
+    {
+        "time": "11/11/2024 19:40",
+        "power_mw": "433",
+        "blade_angle": "3.83",
+        "pitch_angle": "3.83",
+        "pitch_angle_set": "3.89"
+    },
+    {
+        "time": "11/11/2024 19:50",
+        "power_mw": "464",
+        "blade_angle": "2.81",
+        "pitch_angle": "2.81",
+        "pitch_angle_set": "2.88"
+    },
+    {
+        "time": "11/11/2024 20:00",
+        "power_mw": "388",
+        "blade_angle": "3.36",
+        "pitch_angle": "3.60",
+        "pitch_angle_set": "3.67"
+    },
+    {
+        "time": "11/11/2024 20:10",
+        "power_mw": "377",
+        "blade_angle": "2.85",
+        "pitch_angle": "2.70",
+        "pitch_angle_set": "2.77"
+    },
+    {
+        "time": "11/11/2024 20:20",
+        "power_mw": "360",
+        "blade_angle": "2.34",
+        "pitch_angle": "2.33",
+        "pitch_angle_set": "2.40"
+    },
+    {
+        "time": "11/11/2024 20:30",
+        "power_mw": "302",
+        "blade_angle": "4.20",
+        "pitch_angle": "4.13",
+        "pitch_angle_set": "4.19"
+    },
+    {
+        "time": "11/11/2024 20:40",
+        "power_mw": "310",
+        "blade_angle": "4.04",
+        "pitch_angle": "4.16",
+        "pitch_angle_set": "4.23"
+    },
+    {
+        "time": "11/11/2024 20:50",
+        "power_mw": "299",
+        "blade_angle": "2.30",
+        "pitch_angle": "2.37",
+        "pitch_angle_set": "2.44"
+    },
+    {
+        "time": "11/11/2024 21:00",
+        "power_mw": "345",
+        "blade_angle": "1.93",
+        "pitch_angle": "1.83",
+        "pitch_angle_set": "1.90"
+    },
+    {
+        "time": "11/11/2024 21:10",
+        "power_mw": "359",
+        "blade_angle": "2.12",
+        "pitch_angle": "2.12",
+        "pitch_angle_set": "2.18"
+    },
+    {
+        "time": "11/11/2024 21:20",
+        "power_mw": "350",
+        "blade_angle": "2.22",
+        "pitch_angle": "2.22",
+        "pitch_angle_set": "2.29"
+    },
+    {
+        "time": "11/11/2024 21:30",
+        "power_mw": "315",
+        "blade_angle": "2.80",
+        "pitch_angle": "2.83",
+        "pitch_angle_set": "2.87"
+    },
+    {
+        "time": "11/11/2024 21:40",
+        "power_mw": "322",
+        "blade_angle": "2.61",
+        "pitch_angle": "2.61",
+        "pitch_angle_set": "2.68"
+    },
+    {
+        "time": "11/11/2024 21:50",
+        "power_mw": "300",
+        "blade_angle": "2.14",
+        "pitch_angle": "2.14",
+        "pitch_angle_set": "2.21"
+    },
+    {
+        "time": "11/11/2024 22:00",
+        "power_mw": "304",
+        "blade_angle": "1.92",
+        "pitch_angle": "1.92",
+        "pitch_angle_set": "1.98"
+    },
+    {
+        "time": "11/11/2024 22:10",
+        "power_mw": "293",
+        "blade_angle": "1.94",
+        "pitch_angle": "1.94",
+        "pitch_angle_set": "2.01"
+    },
+    {
+        "time": "11/11/2024 22:20",
+        "power_mw": "296",
+        "blade_angle": "2.13",
+        "pitch_angle": "2.13",
+        "pitch_angle_set": "2.20"
+    },
+    {
+        "time": "11/11/2024 22:30",
+        "power_mw": "303",
+        "blade_angle": "1.31",
+        "pitch_angle": "1.31",
+        "pitch_angle_set": "1.38"
+    },
+    {
+        "time": "11/11/2024 22:40",
+        "power_mw": "319",
+        "blade_angle": "1.72",
+        "pitch_angle": "1.72",
+        "pitch_angle_set": "1.79"
+    },
+    {
+        "time": "11/11/2024 22:50",
+        "power_mw": "302",
+        "blade_angle": "3.83",
+        "pitch_angle": "3.87",
+        "pitch_angle_set": "4.01"
+    },
+    {
+        "time": "11/11/2024 23:00",
+        "power_mw": "299",
+        "blade_angle": "3.77",
+        "pitch_angle": "3.77",
+        "pitch_angle_set": "3.84"
+    },
+    {
+        "time": "11/11/2024 23:10",
+        "power_mw": "288",
+        "blade_angle": "2.65",
+        "pitch_angle": "2.65",
+        "pitch_angle_set": "2.72"
+    },
+    {
+        "time": "11/11/2024 23:20",
+        "power_mw": "299",
+        "blade_angle": "3.24",
+        "pitch_angle": "3.24",
+        "pitch_angle_set": "3.31"
+    },
+    {
+        "time": "11/11/2024 23:30",
+        "power_mw": "297",
+        "blade_angle": "3.22",
+        "pitch_angle": "3.22",
+        "pitch_angle_set": "3.28"
+    },
+    {
+        "time": "11/11/2024 23:40",
+        "power_mw": "264",
+        "blade_angle": "3.58",
+        "pitch_angle": "3.57",
+        "pitch_angle_set": "3.64"
+    },
+    {
+        "time": "11/11/2024 23:50",
+        "power_mw": "228",
+        "blade_angle": "4.77",
+        "pitch_angle": "4.77",
+        "pitch_angle_set": "4.83"
+    },
+    {
+        "time": "11/12/2024 0:00",
+        "power_mw": "220",
+        "blade_angle": "4.73",
+        "pitch_angle": "4.68",
+        "pitch_angle_set": "4.75"
+    }
+]

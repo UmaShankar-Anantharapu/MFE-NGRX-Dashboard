@@ -1,0 +1,114 @@
+[
+    {
+        "plant_id": 64,
+        "turbine_name": "GGK20",
+        "actenergy_windspeed": {
+            "windspeed": 7.95,
+            "actenergy": 14605.02
+        },
+        "nacelle_position": 245,
+        "mean_nacelle_position": 182,
+        "minus10_mean_nacelle_position": 172,
+        "minus20_mean_nacelle_position": 162,
+        "plus10_mean_nacelle_position": 192,
+        "plus20_mean_nacelle_position": 202
+    },
+    {
+        "plant_id": 64,
+        "turbine_name": "GGK21",
+        "actenergy_windspeed": {
+            "windspeed": 6.50,
+            "actenergy": 14001.71
+        },
+        "nacelle_position": 288,
+        "mean_nacelle_position": 182,
+        "minus10_mean_nacelle_position": 172,
+        "minus20_mean_nacelle_position": 162,
+        "plus10_mean_nacelle_position": 192,
+        "plus20_mean_nacelle_position": 202
+    },
+    {
+        "plant_id": 64,
+        "turbine_name": "GGK22",
+        "actenergy_windspeed": {
+            "windspeed": 6.73,
+            "actenergy": 15365.64
+        },
+        "nacelle_position": 28.8,
+        "mean_nacelle_position": 182,
+        "minus10_mean_nacelle_position": 172,
+        "minus20_mean_nacelle_position": 162,
+        "plus10_mean_nacelle_position": 192,
+        "plus20_mean_nacelle_position": 202
+    },
+    {
+        "plant_id": 17,
+        "turbine_name": "VSL-01",
+        "actenergy_windspeed": {
+            "windspeed": 4.97,
+            "actenergy": 8385.68
+        },
+        "nacelle_position": 68.8,
+        "mean_nacelle_position": 77.4,
+        "minus10_mean_nacelle_position": 67.4,
+        "minus20_mean_nacelle_position": 57.4,
+        "plus10_mean_nacelle_position": 87.4,
+        "plus20_mean_nacelle_position": 97.4
+    },
+    {
+        "plant_id": 17,
+        "turbine_name": "VSL-02",
+        "actenergy_windspeed": {
+            "windspeed": 4.69,
+            "actenergy": 7333.77
+        },
+        "nacelle_position": 66.9,
+        "mean_nacelle_position": 77.4,
+        "minus10_mean_nacelle_position": 67.4,
+        "minus20_mean_nacelle_position": 57.4,
+        "plus10_mean_nacelle_position": 87.4,
+        "plus20_mean_nacelle_position": 97.4
+    },
+    {
+        "plant_id": 17,
+        "turbine_name": "VSL-03",
+        "actenergy_windspeed": {
+            "windspeed": 5.38,
+            "actenergy": 7456.60
+        },
+        "nacelle_position": 114,
+        "mean_nacelle_position": 77.4,
+        "minus10_mean_nacelle_position": 67.4,
+        "minus20_mean_nacelle_position": 57.4,
+        "plus10_mean_nacelle_position": 87.4,
+        "plus20_mean_nacelle_position": 97.4
+    },
+    {
+        "plant_id": 17,
+        "turbine_name": "VSL-04",
+        "actenergy_windspeed": {
+            "windspeed": 5.07,
+            "actenergy": 8668.05
+        },
+        "nacelle_position": 78.5,
+        "mean_nacelle_position": 77.4,
+        "minus10_mean_nacelle_position": 67.4,
+        "minus20_mean_nacelle_position": 57.4,
+        "plus10_mean_nacelle_position": 87.4,
+        "plus20_mean_nacelle_position": 97.4
+    },
+    {
+        "plant_id": 17,
+        "turbine_name": "VSL-05",
+        "actenergy_windspeed": {
+            "windspeed": 5.89,
+            "actenergy": 7341.59
+        },
+        "nacelle_position": 64.2,
+        "mean_nacelle_position": 77.4,
+        "minus10_mean_nacelle_position": 67.4,
+        "minus20_mean_nacelle_position": 57.4,
+        "plus10_mean_nacelle_position": 87.4,
+        "plus20_mean_nacelle_position": 97.4
+    }
+]

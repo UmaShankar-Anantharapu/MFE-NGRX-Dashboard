@@ -1,5 +1,15 @@
 import { SubtitleOptions, TitleOptions, TooltipOptions } from "highcharts";
 
+
+export interface GlobalState{
+    chart?:ChartOptionsState;
+    dashboard?:DashboardState;
+}
+
+
+export interface DashboardState{
+    
+}
 export interface ChartOptionsState{
     id?: string;
     type?: string;

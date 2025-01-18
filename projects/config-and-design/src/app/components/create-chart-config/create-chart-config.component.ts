@@ -8,6 +8,9 @@ import Highcharts, { SeriesOptionsType } from 'highcharts';
 import { v4 as uuidv4 } from 'uuid';
 import { MatIconModule } from '@angular/material/icon';
 import { ConfigService } from '../../config.service';
+import { CommonService } from '../../../../../shared/common-services/common-service.service';
+import { updateChartOptions } from '../../../../../shared/store/actions/chart.action';
+import { cloneDeep } from 'lodash';
     @Component({
   selector: 'app-create-chart-config',
   standalone: true,
@@ -21,9 +24,23 @@ import { ConfigService } from '../../config.service';
 export class CreateChartConfigComponent implements OnDestroy{
   chartData$: Observable<any> = new Observable;
   chartState = signal<ChartOptionsState>({});
-  constructor(private store: Store<any>, private configService:ConfigService){
+  constructor(private store: Store<any>, private configService:ConfigService,private commonService:CommonService){
     this.fetchDataSets();
     this.fetchChartData();
+    this.addLoadChartEVent();
+  }
+
+  addLoadChartEVent(){
+    window.addEventListener('load-chart',this.emitChartOptions.bind(this))
+  }
+
+  emitChartOptions(){
+    this.chartOptionsLocal.dataset = this.selectedDataSet;
+    this.chartOptionsLocal.type = this.selectedChartType;
+    const clonedOptions = cloneDeep(this.chartOptionsLocal);
+    // this.chartOptionsLocal = clonedOptions;
+    this.store.dispatch(updateChartOptions({data:clonedOptions}));
+    console.log('inside emit method');
   }
 
   fetchDataSets(){
@@ -341,12 +358,12 @@ export class CreateChartConfigComponent implements OnDestroy{
     }
     selectedDataSet: string = ''
     selectDataSet(event: any) {
-      // this.chartService.fetchData(event.source.value).subscribe((res: any) => {
-      //   this.selectedDataSet = event.source.value
-      //   // this.chartOptionsLocal.dataset = event.source.value
-      //   this.data = res
-      //   this.columnsList = Object.keys(this.data[0])
-      // })
+      this.commonService.fetchData(event.source.value).subscribe((res: any) => {
+        this.selectedDataSet = event.source.value
+        // this.chartOptionsLocal.dataset = event.source.value
+        this.data = res
+        this.columnsList = Object.keys(this.data[0])
+      })
     }
     selectChart(event: any) {
       switch (event.source.value) {

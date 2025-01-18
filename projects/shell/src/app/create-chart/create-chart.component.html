@@ -3,9 +3,13 @@
         <ng-container #chartContainer></ng-container>
     </div>
     <div class="right-panel">
-        <mat-tab-group style="height: 100vh;">
-            <mat-tab label="Configure" style="height: 100vh;">
-                <ng-container style="height: 100vh;" #configContainer></ng-container>
+        <div class="buttons">
+            <button mat-flat-button class="custom-button" (click)="onLoadChart()">load</button>
+            <button mat-flat-button class="custom-button">save</button>
+        </div>
+        <mat-tab-group>
+            <mat-tab label="Configure">
+                <ng-container #configContainer></ng-container>
             </mat-tab>
             <mat-tab label="Design">
                 <ng-container #designContainer></ng-container>

@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 import { routes } from './app.routes';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideStore, StoreModule } from '@ngrx/store';
-import { chartReducer } from '../../../shared/store/reducers/reducer';
+import { chartReducer, reducers } from '../../../shared/store/reducers/reducer';
 import { provideStoreDevtools, StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { CommonService } from '../../../shared/common-services/common-service.service';
 import { provideHttpClient } from '@angular/common/http';
@@ -17,7 +17,7 @@ export const appConfig: ApplicationConfig = {
     provideStoreDevtools({ maxAge: 50, name: 'tarun', logOnly: !isDevMode() }),
     importProvidersFrom(
       BrowserAnimationsModule, 
-      StoreModule.forRoot({ chartState: chartReducer }, {
+      StoreModule.forRoot(reducers, {
       runtimeChecks: {
         strictStateImmutability: true,
         strictActionImmutability: true

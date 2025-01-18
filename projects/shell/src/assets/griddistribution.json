@@ -1,0 +1,22 @@
+[
+    {
+        "Substation ID": "SS-001",
+        "Region": "North Zone",
+        "Distributed Energy (MWh)": 12550.25,
+        "Peak Load (MW)": 800.00,
+        "Outage Hours": 2.5,
+        "Energy Loss (%)": 2.75,
+        "Transformer Load (%)": 85.50,
+        "Maintenance Cost ($)": 15000.00
+    },
+    {
+        "Substation ID": "SS-002",
+        "Region": "South Zone",
+        "Distributed Energy (MWh)": 11480.00,
+        "Peak Load (MW)": 760.50,
+        "Outage Hours": 1.8,
+        "Energy Loss (%)": 2.50,
+        "Transformer Load (%)": 82.30,
+        "Maintenance Cost ($)": 14250.75
+    }
+]

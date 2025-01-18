@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { HighChartsModule } from '../../../../shared/libs/highcharts.module';
 import { coreModule } from '../../../../shared/libs/core.module';
 import Highcharts from 'highcharts';
@@ -13,17 +13,24 @@ import { ChartOptionsState } from '../../../../shared/store/states/state';
   templateUrl: './highcharts.component.html',
   styleUrl: './highcharts.component.scss'
 })
-export class HighchartsComponent {
+export class HighchartsComponent implements OnChanges{
   Highcharts: typeof Highcharts = Highcharts;
-    chartOptionsFinal: Highcharts.Options = {}
-    isChartLoaded: boolean = false;
-    data$: Observable<any>;
+    @Input() isChartLoaded: boolean = false;
     chart!: ChartOptionsState
-  
+    @Input() chartOptions:Highcharts.Options = {}
     constructor(private store: Store<{chartState: ChartOptionsState}>){
-      this.data$ = this.store.select('chartState');
     }
+  ngOnChanges(changes: SimpleChanges): void {
+    console.log(changes);
+    this.isChartLoaded=false;
+    this.chartOptions = {...this.chartOptions};
+    this.isChartLoaded=true;
+  }
     ngOnInit() {
       
     }
+    get hasChartOptions(): boolean {
+      return this.chartOptions && Object.keys(this.chartOptions).length > 0;
+  }
+
 }

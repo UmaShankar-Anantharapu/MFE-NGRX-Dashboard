@@ -3,6 +3,6 @@
         <mat-card-title>Chart Preview</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <app-highcharts></app-highcharts>
+        <app-highcharts [chartOptions]="chartOptionsForHighCharts" [isChartLoaded]="isChartLoaded"></app-highcharts>
     </mat-card-content>
 </mat-card>

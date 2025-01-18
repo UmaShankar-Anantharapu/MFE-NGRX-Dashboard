@@ -17,4 +17,8 @@ export class CommonService {
     //   console.log(res);
     // })
   }
+  fetchData(datasetName: string) {
+    return this.http.get(`./assets/${datasetName}.json`)
+  }
+
 }

@@ -2,7 +2,6 @@ import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { MaterialModule } from '../../../../shared/materialUI/material.module';
 import { coreModule } from '../../../../shared/libs/core.module';
-import { BrowserModule } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-chart',
@@ -16,6 +15,8 @@ export class CreateChartComponent implements OnInit {
   @ViewChild('chartContainer', { read: ViewContainerRef, static: false }) chartContainer!: ViewContainerRef;
   @ViewChild('configContainer', { read: ViewContainerRef, static: false }) configContainer!: ViewContainerRef;
   @ViewChild('designContainer', { read: ViewContainerRef, static: false }) designContainer!: ViewContainerRef;
+
+  constructor(){}
   ngOnInit() {
     this.loadRemotes()
   }
@@ -41,7 +42,12 @@ export class CreateChartComponent implements OnInit {
       remoteEntry: 'http://localhost:4202/remoteEntry.js',
       exposedModule: './CreatChartDesignComponent'
     }).then(c => c.CreateChartDesignComponent)
-    this.designContainer.createComponent(remoteComp3)
+    this.designContainer.createComponent(remoteComp3);
+  }
+
+  onLoadChart() {
+    const customEvent = new CustomEvent('load-chart');
+    window.dispatchEvent(customEvent);
   }
   
 }

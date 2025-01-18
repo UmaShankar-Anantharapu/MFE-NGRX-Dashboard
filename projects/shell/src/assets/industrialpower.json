@@ -1,0 +1,46 @@
+[
+    {
+        "Industry": "SteelWorks-1",
+        "Energy Consumed (MWh)": 1250.50,
+        "Peak Demand (MW)": 85.25,
+        "Average Demand (MW)": 62.75,
+        "Load Factor (%)": 73.5,
+        "Downtime Hours": 8.0,
+        "Production Units": 18000,
+        "Energy Cost ($)": 45250.75,
+        "Efficiency (%)": 91.45
+    },
+    {
+        "Industry": "SteelWorks-2",
+        "Energy Consumed (MWh)": 1550.50,
+        "Peak Demand (MW)": 35.25,
+        "Average Demand (MW)": 42.75,
+        "Load Factor (%)": 43.5,
+        "Downtime Hours": 9.5,
+        "Production Units": 18440,
+        "Energy Cost ($)": 54950.75,
+        "Efficiency (%)": 91.45
+    },
+    {
+        "Industry": "TextileMill-1",
+        "Energy Consumed (MWh)": 980.75,
+        "Peak Demand (MW)": 60.50,
+        "Average Demand (MW)": 48.30,
+        "Load Factor (%)": 80.0,
+        "Downtime Hours": 5.0,
+        "Production Units": 14500,
+        "Energy Cost ($)": 38250.00,
+        "Efficiency (%)": 93.75
+    },
+    {
+        "Industry": "TextileMill-2",
+        "Energy Consumed (MWh)": 770.75,
+        "Peak Demand (MW)": 30.50,
+        "Average Demand (MW)": 98.30,
+        "Load Factor (%)": 40.0,
+        "Downtime Hours": 9.0,
+        "Production Units": 19500,
+        "Energy Cost ($)": 68250.00,
+        "Efficiency (%)": 63.75
+    }
+]

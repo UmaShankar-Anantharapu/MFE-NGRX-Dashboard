@@ -1,0 +1,302 @@
+[
+    {
+        "Region": "East Zone",
+        "Total Renewable Energy (MWh)": 5400,
+        "Energy Sources": [
+            {
+                "Source": "Solar",
+                "Total Energy (MWh)": 2700,
+                "Substations": [
+                    {
+                        "Substation ID": "SS-101",
+                        "Distributed Energy (MWh)": 500,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 10:00",
+                                "Power (MW)": 50,
+                                "Outage Hours": 1,
+                                "Remarks": "Stable sunlight"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-102",
+                        "Distributed Energy (MWh)": 600,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 12:00",
+                                "Power (MW)": 60,
+                                "Outage Hours": 0,
+                                "Remarks": "Optimal output"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-103",
+                        "Distributed Energy (MWh)": 550,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 14:00",
+                                "Power (MW)": 55,
+                                "Outage Hours": 2,
+                                "Remarks": "Partial cloud"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-104",
+                        "Distributed Energy (MWh)": 550,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 16:00",
+                                "Power (MW)": 50,
+                                "Outage Hours": 3,
+                                "Remarks": "Decreasing sunlight"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-105",
+                        "Distributed Energy (MWh)": 500,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 18:00",
+                                "Power (MW)": 48,
+                                "Outage Hours": 4,
+                                "Remarks": "Low solar input"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Source": "Wind",
+                "Total Energy (MWh)": 2700,
+                "Substations": [
+                    {
+                        "Substation ID": "SS-201",
+                        "Distributed Energy (MWh)": 600,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 10:00",
+                                "Power (MW)": 70,
+                                "Outage Hours": 1,
+                                "Remarks": "High wind speed"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-202",
+                        "Distributed Energy (MWh)": 550,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 12:00",
+                                "Power (MW)": 60,
+                                "Outage Hours": 2,
+                                "Remarks": "Steady winds"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-203",
+                        "Distributed Energy (MWh)": 550,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 14:00",
+                                "Power (MW)": 65,
+                                "Outage Hours": 0,
+                                "Remarks": "Smooth flow"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-204",
+                        "Distributed Energy (MWh)": 500,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 16:00",
+                                "Power (MW)": 58,
+                                "Outage Hours": 3,
+                                "Remarks": "Windy afternoon"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-205",
+                        "Distributed Energy (MWh)": 500,
+                        "Details": [
+                            {
+                                "Time": "11/11/2024 18:00",
+                                "Power (MW)": 52,
+                                "Outage Hours": 1,
+                                "Remarks": "Light breeze"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Region": "West Zone",
+        "Total Renewable Energy (MWh)": 5200,
+        "Energy Sources": [
+            {
+                "Source": "Solar",
+                "Total Energy (MWh)": 2600,
+                "Substations": [
+                    {
+                        "Substation ID": "SS-301",
+                        "Distributed Energy (MWh)": 520,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 09:00",
+                                "Power (MW)": 55,
+                                "Outage Hours": 1,
+                                "Remarks": "Sunny day"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-302",
+                        "Distributed Energy (MWh)": 500,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 11:00",
+                                "Power (MW)": 50,
+                                "Outage Hours": 2,
+                                "Remarks": "Mild cloud cover"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-303",
+                        "Distributed Energy (MWh)": 520,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 13:00",
+                                "Power (MW)": 54,
+                                "Outage Hours": 1,
+                                "Remarks": "High output"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-304",
+                        "Distributed Energy (MWh)": 520,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 15:00",
+                                "Power (MW)": 52,
+                                "Outage Hours": 0,
+                                "Remarks": "Clear skies"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-305",
+                        "Distributed Energy (MWh)": 540,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 17:00",
+                                "Power (MW)": 53,
+                                "Outage Hours": 0,
+                                "Remarks": "Optimal sunlight"
+                            }
+                        ]
+                    }
+                ]
+            },
+            {
+                "Source": "Wind",
+                "Total Energy (MWh)": 2600,
+                "Substations": [
+                    {
+                        "Substation ID": "SS-401",
+                        "Distributed Energy (MWh)": 520,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 10:00",
+                                "Power (MW)": 65,
+                                "Outage Hours": 1,
+                                "Remarks": "High wind speed"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-402",
+                        "Distributed Energy (MWh)": 520,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 12:00",
+                                "Power (MW)": 60,
+                                "Outage Hours": 2,
+                                "Remarks": "Windy midday"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-403",
+                        "Distributed Energy (MWh)": 500,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 14:00",
+                                "Power (MW)": 58,
+                                "Outage Hours": 1,
+                                "Remarks": "Steady winds"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-404",
+                        "Distributed Energy (MWh)": 520,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 16:00",
+                                "Power (MW)": 55,
+                                "Outage Hours": 0,
+                                "Remarks": "Smooth operation"
+                            }
+                        ]
+                    },
+                    {
+                        "Substation ID": "SS-405",
+                        "Distributed Energy (MWh)": 540,
+                        "Details": [
+                            {
+                                "Time": "11/12/2024 18:00",
+                                "Power (MW)": 57,
+                                "Outage Hours": 0,
+                                "Remarks": "Steady output"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "Region": "North Zone",
+        "Total Renewable Energy (MWh)": 5600,
+        "Energy Sources": [
+            {
+                "Source": "Solar",
+                "Total Energy (MWh)": 2800,
+                "Substations": [
+                    {
+                        "Substation ID": "SS-501",
+                        "Distributed Energy (MWh)": 580,
+                        "Details": [
+                            {
+                                "Time": "11/13/2024 10:00",
+                                "Power (MW)": 60,
+                                "Outage Hours": 0,
+                                "Remarks": "Optimal sunlight"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]
