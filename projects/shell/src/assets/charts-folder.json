@@ -130,10 +130,10 @@
     },
     {
         "id": "4",
+        "title": {
+            "text": "Solar and Wind Power Generation"
+        },
         "xAxis": {
-            "title": {
-                "text": "Solar and Wind Power Generation"
-            },
             "categories": [
                 "East Zone",
                 "West Zone",
@@ -174,6 +174,9 @@
     },
     {
         "id": "5",
+        "title": {
+            "text": "Wind Speed Vs Direction"
+        },
         "chart": {
             "type": "column",
             "polar": true
@@ -181,7 +184,6 @@
         "pane": {
             "size": "85%"
         },
-        "title": {},
         "xAxis": {
             "categories": [
                 "N",

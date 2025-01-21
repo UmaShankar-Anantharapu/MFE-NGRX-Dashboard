@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { HighchartsChartComponent, HighchartsChartModule } from 'highcharts-angular';
 import Highcharts from 'highcharts';
 import { GridsterItem, GridsterModule, GridType } from 'angular-gridster2';
@@ -22,7 +22,6 @@ import { HighchartsComponent } from '../highcharts/highcharts.component';
 })
 export class DashboardComponent implements OnInit {
   hostID!: string;
-
   Highcharts = Highcharts;
   highChartsOptionsMap: { [key: string]: any } = {};
   dashboard: GridsterItem[] = [];

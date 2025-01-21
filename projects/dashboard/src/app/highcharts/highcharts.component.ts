@@ -2,11 +2,13 @@ import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { HighChartsModule } from '../../../../shared/libs/highcharts.module';
 import { coreModule } from '../../../../shared/libs/core.module';
 import Highcharts from 'highcharts';
-import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ChartOptionsState } from '../../../../shared/store/states/state';
 import HighchartsMore from 'highcharts/highcharts-more';
+import ExportingModule from 'highcharts/modules/exporting';
+
 HighchartsMore
+ExportingModule
 @Component({
   selector: 'app-highcharts',
   standalone: true,
@@ -15,6 +17,7 @@ HighchartsMore
   styleUrl: './highcharts.component.scss'
 })
 export class HighchartsComponent implements OnChanges {
+    @Input() showRemoveOption!:boolean;
   Highcharts: typeof Highcharts = Highcharts;
   @Input() isChartLoaded: boolean = false;
   chart!: ChartOptionsState
@@ -22,11 +25,33 @@ export class HighchartsComponent implements OnChanges {
   constructor(private store: Store<{ chartState: ChartOptionsState }>) {
   }
   ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-    this.isChartLoaded = false;
-    this.chartOptions = { ...this.chartOptions };
-    this.isChartLoaded = true;
+    let buttons:any={}
+    if (Highcharts && Highcharts.getOptions()?.exporting?.buttons?.contextButton?.menuItems) {
+      buttons = Highcharts.getOptions().exporting?.buttons?.contextButton?.menuItems?.slice();
+      buttons?.push({
+          text: 'Export to PNG (small)',
+          onclick: function () {
+              this.exportChart({
+                  width: 250,
+              });
+          },
+      });
+  
+      // Safely merge and update the menuItems
+      this.chartOptions.exporting = this.chartOptions.exporting || {};
+      this.chartOptions.exporting.buttons = this.chartOptions.exporting.buttons || {};
+      this.chartOptions.exporting.buttons.contextButton = this.chartOptions.exporting.buttons.contextButton || {};
+      this.chartOptions.exporting.buttons.contextButton.menuItems = [
+          ...(this.chartOptions.exporting.buttons.contextButton.menuItems || []),
+          ...buttons,
+      ];
   }
+  
+  // Apply the changes to the chart
+  // chart.update(this.chartOptions, true);
+  
+  }
+
   ngOnInit() {
 
   }
