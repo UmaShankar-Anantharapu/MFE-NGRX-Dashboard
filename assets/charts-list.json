@@ -1,0 +1,168 @@
+[
+    {
+        "title": "Active-power",
+        "xAxis": {
+            "axisKey": "time",
+            "axisName": "time"
+        },
+        "yAxis": [
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "pitch_angle",
+                        "axisName": "pitch angle"
+                    }
+                ],
+                "title": "Angle"
+            },
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "power_mw",
+                        "axisName": "power_mw"
+                    }
+                ],
+                "title": "power"
+            }
+        ],
+        "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
+        "type": "line",
+        "dataset": "active-power"
+    },
+    {
+        "title": "day wise power generation",
+        "xAxis": {
+            "axisKey": "day",
+            "axisName": "Day"
+        },
+        "yAxis": [
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "generation",
+                        "axisName": "generated power"
+                    }
+                ],
+                "title": "Power"
+            }
+        ],
+        "id": "31246d0b-a965-4148-95fd-a91fbd53871e",
+        "type": "column",
+        "dataset": "power-generation"
+    },
+    {
+        "title": "position-monitoring",
+        "xAxis": {
+            "axisKey": "turbine_name",
+            "axisName": "Turbine"
+        },
+        "yAxis": [
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "nacelle_position",
+                        "axisName": "nacelle"
+                    },
+                    {
+                        "axisKey": "mean_nacelle_position",
+                        "axisName": "mean_nacelle"
+                    },
+                    {
+                        "axisKey": "minus10_mean_nacelle_position",
+                        "axisName": "minus10_mean_nacelle"
+                    },
+                    {
+                        "axisKey": "minus20_mean_nacelle_position",
+                        "axisName": "minus20_mean_nacelle"
+                    },
+                    {
+                        "axisKey": "plus10_mean_nacelle_position",
+                        "axisName": "plus10_mean_nacelle"
+                    },
+                    {
+                        "axisKey": "plus20_mean_nacelle_position",
+                        "axisName": "plus20_mean_nacelle"
+                    }
+                ],
+                "title": "position"
+            }
+        ],
+        "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e",
+        "type": "line",
+        "dataset": "position-monitoring"
+    },
+    {
+        "title": "Active-power multi-y",
+        "xAxis": {
+            "axisKey": "time",
+            "axisName": "time"
+        },
+        "yAxis": [
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "power_mw",
+                        "axisName": "in MW"
+                    }
+                ],
+                "title": "power"
+            },
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "blade_angle",
+                        "axisName": "blade"
+                    },
+                    {
+                        "axisKey": "pitch_angle",
+                        "axisName": "pitch"
+                    }
+                ],
+                "title": "angle"
+            },
+            {
+                "seriesConf": [
+                    {}
+                ]
+            }
+        ],
+        "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
+        "type": "column",
+        "dataset": "active-power"
+    },
+    {
+        "title": "Energy consumption by state",
+        "subTitle": "",
+        "isDrillDownEnabled": false,
+        "seriesConfigurations": {
+            "label": "State",
+            "value": "Consumption_kWh"
+        },
+        "id": "fd86aa27-82da-4b5f-b115-bfecfe8744b8",
+        "type": "pie",
+        "dataset": "india-energy-consumption"
+    },
+    {
+        "title": "Energy Consumption by city",
+        "subTitle": "",
+        "isDrillDownEnabled": false,
+        "xAxis": {
+            "axisKey": "City",
+            "axisName": "City"
+        },
+        "yAxis": [
+            {
+                "seriesConf": [
+                    {
+                        "axisKey": "Consumption_kWh",
+                        "axisName": "in KW"
+                    }
+                ],
+                "title": "power"
+            }
+        ],
+        "id": "33a51b7d-50fe-4fa8-9ead-e7b73c2800d5",
+        "type": "column",
+        "dataset": "india-energy-consumption"
+    }
+]

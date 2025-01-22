@@ -1,0 +1,42 @@
+[
+    {
+        "Region": "East Zone",
+        "Solar Energy (MWh)": 1250.45,
+        "Wind Energy (MWh)": 980.25,
+        "Hydro Energy (MWh)": 1625.00,
+        "BioEnergy (MWh)": 450.75,
+        "Geothermal Energy (MWh)": 320.00,
+        "Total Energy (MWh)": 4626.45,
+        "Renewable Share (%)": 62.75
+    },
+    {
+        "Region": "West Zone",
+        "Solar Energy (MWh)": 1450.65,
+        "Wind Energy (MWh)": 1120.45,
+        "Hydro Energy (MWh)": 1250.00,
+        "BioEnergy (MWh)": 520.50,
+        "Geothermal Energy (MWh)": 280.75,
+        "Total Energy (MWh)": 4622.35,
+        "Renewable Share (%)": 65.25
+    },
+    {
+        "Region": "South Zone",
+        "Solar Energy (MWh)": 1332,
+        "Wind Energy (MWh)": 1021,
+        "Hydro Energy (MWh)": 1443,
+        "BioEnergy (MWh)": 520.50,
+        "Geothermal Energy (MWh)": 280.75,
+        "Total Energy (MWh)": 4622.35,
+        "Renewable Share (%)": 65.25
+    },
+    {
+        "Region": "North Zone",
+        "Solar Energy (MWh)": 1843,
+        "Wind Energy (MWh)": 1890,
+        "Hydro Energy (MWh)": 1744,
+        "BioEnergy (MWh)": 520.50,
+        "Geothermal Energy (MWh)": 280.75,
+        "Total Energy (MWh)": 4622.35,
+        "Renewable Share (%)": 65.25
+    }
+]
