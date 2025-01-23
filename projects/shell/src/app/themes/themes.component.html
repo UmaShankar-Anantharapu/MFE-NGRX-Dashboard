@@ -1,0 +1,23 @@
+<div [ngClass]="themeMode" class="app-container">
+    <h1>Dynamic Theme Switching</h1>
+    <button (click)="setPredefinedTheme('indigoPink')">Indigo Pink</button>
+    <button (click)="setPredefinedTheme('azureBlue')">Azure Blue</button>
+    <button (click)="toggleMode()">Toggle Light/Dark Mode</button>
+
+    <h2>Custom Theme</h2>
+    <form (ngSubmit)="applyCustomTheme()">
+        <label>
+            Primary Color:
+            <input type="color" [(ngModel)]="customTheme['primary-color']" name="primary-color" />
+        </label>
+        <label>
+            Accent Color:
+            <input type="color" [(ngModel)]="customTheme['accent-color']" name="accent-color" />
+        </label>
+        <label>
+            Warn Color:
+            <input type="color" [(ngModel)]="customTheme['warn-color']" name="warn-color" />
+        </label>
+        <button type="submit">Apply Custom Theme</button>
+    </form>
+</div>

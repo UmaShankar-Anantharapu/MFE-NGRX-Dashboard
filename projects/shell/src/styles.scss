@@ -1,10 +1,47 @@
-* {
-    padding: 0px;
-    // margin: 0px;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
+:root {
+    --primary-color: #3f51b5;
+    /* Default primary color */
+    --accent-color: #e91e63;
+    /* Default accent color */
+    --warn-color: #f44336;
+    /* Default warn color */
+    --background-color: #ffffff;
+    /* Default background color */
+    --text-color: #000000;
+    /* Default text color */
 }
 
-body{
-    margin: 0px;
+/* Light mode overrides */
+.light-mode {
+    --background-color: #ffffff;
+    --text-color: #000000;
+}
+
+/* Dark mode overrides */
+.dark-mode {
+    --background-color: #121212;
+    --text-color: #ffffff;
+}
+
+/* Global theme application */
+.app-container {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    padding: 16px;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+button {
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    border: none;
+    padding: 8px 16px;
+    margin: 8px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: var(--accent-color);
 }
