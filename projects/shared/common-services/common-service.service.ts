@@ -11,7 +11,7 @@ export class CommonService {
   fetchDataSets(){
     
     //static names as of now
-    return ['renewableenergymix', 'india-energy-consumption', 'industrialpower', 'active-power', 'wind', 'griddistribution', 'hydro', 'power-generation', 'position-monitoring', 'windrose', 'drilldown01', 'countries'];
+    return ['renewableenergymix', 'india-energy-consumption', 'industrialpower', 'activepower', 'wind', 'griddistribution', 'hydro', 'power-generation', 'position-monitoring', 'windrose', 'drilldown01', 'countries'];
     
     // this.http.get('https://jsonplaceholder.typicode.com/todos/1').subscribe((res)=>{
     //   console.log(res);

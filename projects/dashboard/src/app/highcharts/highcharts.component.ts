@@ -1,7 +1,7 @@
-import { Component, Input, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, output } from '@angular/core';
 import { HighChartsModule } from '../../../../shared/libs/highcharts.module';
 import { coreModule } from '../../../../shared/libs/core.module';
-import Highcharts from 'highcharts';
+import Highcharts, { PointOptionsType } from 'highcharts';
 import { Store } from '@ngrx/store';
 import { ChartOptionsState } from '../../../../shared/store/states/state';
 import HighchartsMore from 'highcharts/highcharts-more';
@@ -20,29 +20,38 @@ ExportingModule
 })
 export class HighchartsComponent implements OnChanges,OnInit {
   @Input() showRemoveOption!:boolean;
+  @Input() latestData:any;
+  @Input() 
   Highcharts: typeof Highcharts = Highcharts;
   @Input() chartId!:string;
   @Input() isChartLoaded: boolean = false;
   chart!: ChartOptionsState
   @Input() chartOptions: Highcharts.Options = {};
+  HighChartInstance: any;
   
   private socket!: Socket;
 
   constructor(private store: Store<{ chartState: ChartOptionsState }>) {
-    this.socket = io('http://localhost:3000'); // WebSocket server URL
 
-  }
-
-  onChartDataUpdate(callback: (data: any) => void) {
-    this.socket.on('chartDataUpdate', callback);
-  }
-
-  // Send updates to the server
-  sendChartUpdate(data: any) {
-    this.socket.emit('updateChart', data);
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    // this.removeOptions()
+    const latestData: any = changes['latestData']
+    if(latestData && latestData.currentValue){
+      const document = latestData.currentValue
+      switch(document.action){
+        case 'insert':
+          this.addPointsInChart(document)
+          break;
+        case 'update':
+          break;
+      }
+    } 
+  
+  }
+
+  removeOptions(){
     if(this.showRemoveOption){
 
       let buttons:any={}
@@ -67,10 +76,6 @@ export class HighchartsComponent implements OnChanges,OnInit {
         ];
     }
   }
-  
-  // Apply the changes to the chart
-  // chart.update(this.chartOptions, true);
-  
   }
 
 
@@ -81,6 +86,10 @@ export class HighchartsComponent implements OnChanges,OnInit {
     });
   }
 
+  onChartLoad(event:any){
+    this.HighChartInstance = event;
+  }
+
   ngOnDestroy(): void {
     // Clean up the socket connection
     this.socket.disconnect();
@@ -88,6 +97,32 @@ export class HighchartsComponent implements OnChanges,OnInit {
 
   get hasChartOptions(): boolean {
     return this.chartOptions && Object.keys(this.chartOptions).length > 0;
+  }
+
+  addPointsInChart(data: any) {
+    // this.HighChartInstance.xAxis[0].categories.push(data.category);
+    // this.HighChartInstance.series[0].addPoint(data.value)
+    this.HighChartInstance.xAxis[0].categories.push(data.categoryValue);
+    data.value.forEach((updatedVal: any) => {
+      const point: PointOptionsType = {y: Number(updatedVal.value)}
+      let series = this.HighChartInstance.series.filter((s:any) => s.yAxis.index === updatedVal.axisInx)[updatedVal.seriesInx];
+      console.log(series);
+      series.addPoint(point)
+      this.HighChartInstance.series[series.index] = series
+      // this.HighChartInstance.yAxis[updatedVal.axisInx].series[updatedVal.seriesInx].data.push({y: updatedVal.value})
+    })
+  }
+
+  updatePointsInChart(data: any) {
+    let inx = this.HighChartInstance.xAxis[0].categories.findInx((cat:any) => cat === data.category)
+    if(inx!==1){
+      this.HighChartInstance.xAxis[0].categories[0] = data.category;
+      this.HighChartInstance.series[0].data[inx].update(data.value);
+    }
+  }
+
+  deletePointsInChart(data: any){
+
   }
 
 }

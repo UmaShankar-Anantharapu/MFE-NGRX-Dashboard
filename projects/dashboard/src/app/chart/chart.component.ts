@@ -9,7 +9,10 @@ import { ChartOptionsState, GlobalState } from '../../../../shared/store/states/
 import { HighchartsComponent } from '../highcharts/highcharts.component';
 import { selectChartData } from '../../../../shared/store/selectors/selector';
 import { CommonService } from '../../../../shared/common-services/common-service.service';
-import { v4 as uuidv4 } from 'uuid';@Component({
+import { v4 as uuidv4 } from 'uuid';
+import { LoadChartService } from '../services/load-chart.service';
+
+@Component({
   selector: 'app-chart',
   standalone: true,
   imports: [MaterialModule, HighChartsModule, coreModule, HighchartsComponent],
@@ -26,7 +29,7 @@ export class ChartComponent implements OnInit {
   chartOptionsLocal:ChartOptionsState={};
   data:any;
   chartOptionsForHighCharts:Highcharts.Options={};
-  constructor(private store: Store<GlobalState>,private commonService:CommonService) {
+  constructor(private store: Store<GlobalState>,private commonService:CommonService, public loadChartService: LoadChartService) {
     this.chartOptionsSubs = this.store.select(selectChartData)
     this.chartOptionsSubs.subscribe((res: any) => {
       if (res) {
@@ -37,23 +40,23 @@ export class ChartComponent implements OnInit {
   }
 
   fetchDataForChartAnLoad(){
-    if(this.chartOptionsLocal.dataset){
-      this.commonService.fetchData(this.chartOptionsLocal.dataset).subscribe((res:any)=>{
-        this.data = res;
-        this.onChartLoad();
-      })
+    if(this.chartOptionsLocal && this.chartOptionsLocal.dataset){
+      this.onChartLoad();
     }
   }
   ngOnInit() {
 
   }
 
-  onChartLoad(designproperty?: string) {
+  async onChartLoad() {
+    const res = await this.loadChartService.fetchData(this.chartOptionsLocal.dataset || '');
+    this.chartOptionsForHighCharts = this.loadChartService.loadChart(this.chartOptionsLocal);
+    return;
     // if (this.chartOptionsForHighCharts.chart && !designproperty) {
       // this.isChartLoaded = false;
       if (this.chartOptionsLocal.type !== 'combination'){
         this.chartOptionsForHighCharts.chart={};
-        this.chartOptionsForHighCharts.chart.type = this.chartOptionsLocal.type as any
+        // this.chartOptionsForHighCharts.chart.type = this.chartOptionsLocal.type as any
       }
       switch (this.chartOptionsLocal.type) {
         case 'bar':

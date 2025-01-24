@@ -13,11 +13,12 @@ import { MaterialModule } from '../../../../../shared/materialUI/material.module
 })
 export class CreateDashboardConfigComponent {
   chartsList: any[] = [
-    { id: '1', title: 'Zone Wise Power Consumption' },
-    { id: '2', title: 'Day Wise Power Consumption' },
-    { id: '3', title: 'State Wise Share In Power Generation' },
-    { id: '4', title: 'Solar and Wind Power Generation' },
-    { id: '5', title: 'Wind Speed Vs Direction' },
+    { id: '1', title: 'Active-power' },
+    { id: '2', title: 'day wise power generation' },
+    { id: '3', title: 'position-monitoring' },
+    { id: '4', title: 'Active-power multi-y' },
+    { id: '5', title: 'Energy consumption by state' },
+    { id: '6', title: 'Energy Consumption by city' },
 
   ];
   onDragStart(event: any): void {

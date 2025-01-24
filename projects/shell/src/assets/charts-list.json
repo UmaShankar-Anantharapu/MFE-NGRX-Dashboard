@@ -27,7 +27,7 @@
         ],
         "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
         "type": "line",
-        "dataset": "active-power"
+        "dataset": "activepower"
     },
     {
         "title": "day wise power generation",
@@ -122,13 +122,16 @@
             },
             {
                 "seriesConf": [
-                    {}
+                    {
+                        "axisKey": "pitch_angle_set",
+                        "axisName": "pitch angle set"
+                    }
                 ]
             }
         ],
         "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
         "type": "column",
-        "dataset": "active-power"
+        "dataset": "activepower"
     },
     {
         "title": "Energy consumption by state",
