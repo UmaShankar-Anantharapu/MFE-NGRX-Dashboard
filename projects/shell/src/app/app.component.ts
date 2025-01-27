@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { Apollo } from 'apollo-angular';
-import { GET_DATASET } from './graphQl/dataset.queries';
-import { Observable } from 'rxjs';
+import { GET_DATASET, NEW_MESSAGE_SUBSCRIPTION } from './graphQl/dataset.queries';
+import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-root',
   standalone: true,
@@ -14,6 +14,7 @@ import { Observable } from 'rxjs';
   host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class AppComponent implements OnInit {
+  subscription!:Subscription;
   constructor(private apollo: Apollo){}
   ngOnInit() {
     this.getData()
@@ -26,6 +27,15 @@ export class AppComponent implements OnInit {
     this.apollo.watchQuery({query: GET_DATASET}).valueChanges.subscribe((res: any) => {
       console.log(res);
     })
+    this.subscription = this.apollo
+    .subscribe({
+      query: NEW_MESSAGE_SUBSCRIPTION,
+    })
+    .subscribe(({ data }) => {
+      if (data) {
+        console.log(data)
+      }
+    });
   }
   
   getDataSet(): Observable<any> {
