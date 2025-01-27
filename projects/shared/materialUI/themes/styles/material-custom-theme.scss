@@ -265,11 +265,18 @@ $theme-dark: mat.m2-define-dark-theme(
     @include mat.all-component-themes($theme-light);
     @include mat.toolbar-theme($theme-light);
     @include mat.form-field-theme($theme-light);
+    @include mat.slide-toggle-theme($theme-light);
+    @include mat.core-theme($theme-light);
+    @media (prefers-color-scheme: dark) {
+        @include mat.all-component-colors(m3.$theme-light);
+      }
 }
 .dark-theme{
     @include mat.all-component-themes($theme-dark);
     @include mat.toolbar-theme($theme-dark);
     @include mat.form-field-theme($theme-dark);  
+    @include mat.slide-toggle-theme($theme-dark);
+}
 }
 
 // mat-toolbar {

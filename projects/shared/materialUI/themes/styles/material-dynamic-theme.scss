@@ -296,14 +296,24 @@ $light-theme: mat.m2-define-light-theme($theme-primary, $theme-accent, $theme-wa
 $dark-theme: mat.m2-define-dark-theme($theme-primary, $theme-accent, $theme-warn);
 
 .light-theme{
-    // @include mat.core-theme($theme-light);
-    // @include mat.button-theme($theme-light);
-    @include mat.all-component-themes($light-theme)
+    @include mat.all-component-themes($light-theme);
+    @include mat.toolbar-theme($light-theme);
+    @include mat.form-field-theme($light-theme);
+    @include mat.slide-toggle-theme($light-theme);
+    @include mat.core-theme($light-theme);
+    @media (prefers-color-scheme: dark) {
+        @include mat.all-component-colors($light-theme);
+      }
 }   
 .dark-theme{
-    // @include mat.core-theme($theme-dark);
-    // @include mat.button-theme($theme-dark);
-    @include mat.all-component-themes($dark-theme)
+    @include mat.all-component-themes($dark-theme);
+    @include mat.toolbar-theme($dark-theme);
+    @include mat.form-field-theme($dark-theme);
+    @include mat.slide-toggle-theme($dark-theme);
+    @include mat.core-theme($dark-theme);
+    @media (prefers-color-scheme: dark) {
+        @include mat.all-component-colors($dark-theme);
+      }
 }
 
 
