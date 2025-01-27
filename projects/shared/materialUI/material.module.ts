@@ -19,6 +19,20 @@ import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatRadioModule } from '@angular/material/radio';
 import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
+import { MatBadgeModule } from '@angular/material/badge';
+import { MatBottomSheetModule } from '@angular/material/bottom-sheet';
+import { MatLineModule, MatOptionModule, MatNativeDateModule } from '@angular/material/core';
+import { MatListModule } from '@angular/material/list';
+import { MatChipsModule } from '@angular/material/chips';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatSliderModule } from '@angular/material/slider';
+import { MatStepperModule } from '@angular/material/stepper';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
+import { MatButtonToggleModule } from '@angular/material/button-toggle';
+import { MatExpansionModule } from '@angular/material/expansion';
+
+
 
 @NgModule({
   imports: [
@@ -41,7 +55,40 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatSlideToggleModule,
     MatMenuModule,
     MatRadioModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMenuModule,
+    MatCardModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatLineModule,
+    MatListModule,
+    MatTabsModule,
+    MatTableModule,
+    MatChipsModule,
+    MatInputModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatSliderModule,
+    MatSidenavModule,
+    MatStepperModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatOptionModule,
+    MatProgressBarModule,
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    MatButtonToggleModule,
+    MatExpansionModule
   ],
   exports: [
     MatButtonModule,
@@ -63,7 +110,40 @@ import { MatDatepickerModule } from '@angular/material/datepicker';
     MatSlideToggleModule,
     MatMenuModule,
     MatRadioModule,
-    MatDatepickerModule
+    MatDatepickerModule,
+    MatMenuModule,
+    MatCardModule,
+    MatAutocompleteModule,
+    MatBadgeModule,
+    MatBottomSheetModule,
+    MatButtonModule,
+    MatNativeDateModule,
+    MatCheckboxModule,
+    MatIconModule,
+    MatLineModule,
+    MatListModule,
+    MatTabsModule,
+    MatTableModule,
+    MatChipsModule,
+    MatInputModule,
+    MatRadioModule,
+    MatDialogModule,
+    MatSelectModule,
+    MatTooltipModule,
+    MatSliderModule,
+    MatSidenavModule,
+    MatStepperModule,
+    MatToolbarModule,
+    MatTooltipModule,
+    MatSnackBarModule,
+    MatFormFieldModule,
+    MatDatepickerModule,
+    MatOptionModule,
+    MatProgressBarModule,
+    MatSlideToggleModule,
+    MatProgressSpinnerModule,
+    MatButtonToggleModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule {}

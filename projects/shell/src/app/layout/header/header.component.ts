@@ -4,6 +4,7 @@ import { MaterialModule } from '../../../../../shared/materialUI/material.module
 import { coreModule } from '../../../../../shared/libs/core.module';
 import { CustomThemeService } from '../../../../../shared/materialUI/custom-theme.service';
 import { CommonService } from '../../services/common.service';
+import { DynamicThemeService } from '../../../../../shared/materialUI/dynamic-theme.service';
 
 @Component({
   selector: 'app-header',
@@ -23,7 +24,7 @@ export class HeaderComponent implements OnInit {
   themes: any;
   @Output() emitTheme = new EventEmitter<boolean>();
 
-  constructor(private dialog: MatDialog, private customThemeService: CustomThemeService, private commonService: CommonService) { 
+  constructor(private dialog: MatDialog, private customThemeService: CustomThemeService, private commonService: CommonService, private dynamicThemeService: DynamicThemeService) { 
     this.commonService.getTheme().subscribe((res: any) => {
       console.log(res.themes);
       this.themes = res.themes;
@@ -38,9 +39,8 @@ export class HeaderComponent implements OnInit {
 
   applyTheme() {
     let themeValue: any = this.themes.filter((theme: any) => Object.keys(theme)[0] === this.selectedTheme)
-
     let themeObject = themeValue[0][this.selectedTheme]
-    this.customThemeService.generateMaterialPalette2(themeObject.primary, themeObject.accent, themeObject.warn)
+    this.dynamicThemeService.generatePalette(themeObject.primary, themeObject.accent, themeObject.warn);
   }
 
 
@@ -58,7 +58,8 @@ export class HeaderComponent implements OnInit {
     dialog.afterClosed().subscribe((res) => {
       console.log(res);
       if(res.data.primary && res.data.accent){
-        this.customThemeService.generateMaterialPalette2(res.data.primary, res.data.accent, res.data.warn)
+        this.dynamicThemeService.generatePalette(res.data.primary, res.data.accent, res.data.warn);
+        // this.customThemeService.generateMaterialPalette2(res.data.primary, res.data.accent, res.data.warn)
       }
     })
   }

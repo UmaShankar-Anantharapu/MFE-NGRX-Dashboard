@@ -1,58 +1,144 @@
 <app-header (emitTheme)="getTheme($event)"></app-header>
-<div>
-  <h2>Theme Customization Demo</h2>
+  <!-- <h2>Theme Customization Demo</h2>
+
+  <button mat-raised-button color="primary">Primary Button</button>
+  <button mat-raised-button color="accent">Accent Button</button>
+  <button mat-raised-button color="warn">Warn Button</button> -->
+
+  <div>
+    <mat-sidenav-container class="sidenav-container">
+      <mat-sidenav #drawer class="sidenav" fixedInViewport="true" [attr.role]="'navigation'" [mode]="'side'">
+        <mat-toolbar color="primary">Menu</mat-toolbar>
+        <mat-nav-list>
+          <a mat-list-item>Home</a>
+          <a mat-list-item>Account</a>
+          <a mat-list-item>Sign Out</a>
+        </mat-nav-list>
+      </mat-sidenav>
+      <mat-sidenav-content>
+        <mat-toolbar color="primary">
+          <mat-toolbar-row>
+            <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+              <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+            </button>
+            <span>Sample Application</span>
+            <span class="spacer"></span>
+            <mat-icon>favorite</mat-icon>
+            <mat-icon>delete</mat-icon>
+          </mat-toolbar-row>
+        </mat-toolbar>
+        <mat-toolbar color="accent">
+          <mat-toolbar-row>
+            <span>Status</span>
+            <span class="spacer"></span>
+            <mat-icon>home</mat-icon>
+            <mat-icon matBadge="22" matBadgePosition="above after">email</mat-icon>
+          </mat-toolbar-row>
+        </mat-toolbar>
+          <mat-tab-group>
+            <mat-tab>
+                <mat-card class="shipping-card">
+                  <mat-card-header>
+                    <mat-card-title>Order Form</mat-card-title>
+                  </mat-card-header>
+                  <mat-card-content>
+                    <h3>Quantity</h3>
+                    <label>Amount <mat-slider [min]="1" [max]="20"></mat-slider>
+                    </label>
+                    <label>Large? <mat-checkbox></mat-checkbox></label>
+                    <label>Options:
+                      <!-- <mat-chip-list>
+                        <mat-chip>Expansion Pack</mat-chip>
+                        <mat-chip>Extra Credits</mat-chip>
+                        <mat-chip>Secret Key</mat-chip>
+                      </mat-chip-list> -->
+                    </label>
+              
+                    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+              
+                    <h3>Ship To</h3>
+                    <mat-form-field appearance="outline">
+                      <mat-label>Name</mat-label>
+                      <input matInput placeholder="Name">
+                      <mat-error >
+                        Name is <strong>required</strong>
+                      </mat-error>
+                    </mat-form-field>
+                    <fieldset>
+                      <legend>Shipping Address</legend>
+                      <mat-form-field>
+                        <textarea matInput placeholder="Street"></textarea>
+                        <mat-error >
+                          Street is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput placeholder="City" >
+                        <mat-error >
+                          City is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <mat-select placeholder="State">
+                          <mat-option>
+                            state.name 
+                          </mat-option>
+                        </mat-select>
+                        <mat-error>
+                          State is <strong>required</strong>
+                        </mat-error>
+                      </mat-form-field>
+                      <mat-form-field>
+                        <input matInput #postalCode maxlength="5" placeholder="Postal Code" type="number"
+                         >
+                        <mat-hint align="end">{{postalCode.value.length}} / 5</mat-hint>
+                      </mat-form-field>
+                    </fieldset>
+                    <h3>Shipping Method
+                      <mat-radio-group >
+                        <mat-radio-button value="free">Free Shipping</mat-radio-button>
+                        <mat-radio-button value="priority">Priority Shipping</mat-radio-button>
+                        <mat-radio-button value="nextday">Next Day Shipping</mat-radio-button>
+                      </mat-radio-group>
+                    </h3>
+                    <h3>Tracking? <mat-slide-toggle ></mat-slide-toggle>
+                    </h3>
+                    <mat-form-field>
+                      <input matInput [matDatepicker]="picker"
+                        placeholder="Desired Arrival Date">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    </mat-form-field>
+                  </mat-card-content>
+                  <mat-card-actions>
+                    <button mat-raised-button color="accent" type="submit"
+                      matTooltip="Submit the form!">Submit</button>
+                  </mat-card-actions>
+                </mat-card>
+              
+            </mat-tab>
+            <mat-tab aria-label="Containers">
+              <ng-template mat-tab-label>
+                <span matTooltip="General containers, like tables/dialogs">Containers</span>
+              </ng-template>
+            </mat-tab>
+            <mat-tab>
+              <ng-template mat-tab-label>
+                <span matTooltip="Preview of typography">
+                  Typography
+                </span>
+              </ng-template>
+            </mat-tab>
+            <mat-tab aria-label="General Layout">
+              <ng-template mat-tab-label>
+                <span matTooltip="General Layout">General Layout</span>
+              </ng-template>
+            </mat-tab>
+          </mat-tab-group>
+      </mat-sidenav-content>
+    </mat-sidenav-container>
+  </div>
   
-  <!-- Buttons to test theme colors -->
-  <button mat-raised-button color="primary" >Primary Button</button>
-  <button mat-raised-button color="accent" >Accent Button</button>
-  <button mat-raised-button color="warn" >Warn Button</button>
-  
-  <br /><br />
-  
-  <!-- Form fields to test input and accent colors -->
-  <mat-form-field appearance="fill">
-    <mat-label>Primary Themed Input</mat-label>
-    <input matInput placeholder="Type something..." />
-  </mat-form-field>
-  
-  <mat-form-field appearance="outline">
-    <mat-label>Accent Themed Input</mat-label>
-    <mat-select>
-      <mat-option value="1">Option 1</mat-option>
-      <mat-option value="2">Option 2</mat-option>
-    </mat-select>
-  </mat-form-field>
-  
-  <br /><br />
-  
-  <!-- Progress bar to test primary and accent colors -->
-  <!-- <mat-progress-bar mode="indeterminate" color="primary"></mat-progress-bar>
-    <mat-progress-bar mode="indeterminate" color="accent"></mat-progress-bar>
-    <mat-progress-bar mode="indeterminate" color="warn"></mat-progress-bar> -->
-    
-    <br /><br />
-    
-    <!-- Chips for theme testing -->
-    <!-- <mat-chip-list>
-      <mat-chip color="primary">Primary Chip</mat-chip>
-      <mat-chip color="accent">Accent Chip</mat-chip>
-      <mat-chip color="warn">Warn Chip</mat-chip>
-    </mat-chip-list> -->
-    
-    <br /><br />
-    
-    <!-- Theme Picker -->
-    <div>
-      <!-- <label for="primary">Primary Color:</label>
-        <input type="color" id="primary" [(ngModel)]="primaryColor" />
-        <label for="accent">Accent Color:</label>
-        <input type="color" id="accent" [(ngModel)]="accentColor" />
-        <label for="warn">Warn Color:</label>
-        <input type="color" id="warn" [(ngModel)]="warnColor" /> -->
-        
-        <!-- <button (click)="applyCustomTheme()">Apply Custom Theme</button>
-          <button (click)="setLightTheme()">Light Theme</button>
-          <button (click)="setDarkTheme()">Dark Theme</button> -->
-        </div>
-      </div>
-      <router-outlet></router-outlet>
+
+
+  <router-outlet></router-outlet>
