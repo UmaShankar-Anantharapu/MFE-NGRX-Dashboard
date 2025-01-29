@@ -11,6 +11,7 @@ import { LoadChartService } from '../services/load-chart.service';
 import { WebSocketService } from '../services/websocket.service';
 import { ChartOptionsState, axisConfiguration } from '../../../../shared/store/states/state';
 import { update } from 'lodash';
+import { GraphqlService } from '../services/graphql.service';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -59,7 +60,7 @@ export class DashboardComponent implements OnInit {
     enableOccupiedCellDrop: true,
     
   }
-  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService) {
+  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService) {
     this.webSocketService.updatedData$.subscribe((res: any) => {
       console.log(res);
       if(res.event in Object.keys(this.chartIdsByDataSetNamesMap)){
@@ -83,12 +84,33 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  async load(recievedData: any) {
-    await this.loadChartService.fetchData(recievedData.dataset)
-    this.highChartsOptionsMap[recievedData.id] = this.loadChartService.loadChart(recievedData)
-    if(!this.chartIdsByDataSetNamesMap[recievedData.dataset])
-      this.chartIdsByDataSetNamesMap[recievedData.dataset] = [];
-    this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)
+  load(recievedData: any) {
+    const usedKeys = this.getAllKeysInChart(recievedData)
+    this.graphqlService.fetchDataFromCollectionByKeys(usedKeys, recievedData.dataset).valueChanges.subscribe((res: any) => {
+      console.log(res);
+      // this.loadChartService.fetchData(recievedData.dataset)
+      this.loadChartService.updateData(res.data[recievedData.dataset], recievedData.dataset);
+      this.highChartsOptionsMap[recievedData.id] = this.loadChartService.loadChart(recievedData)
+      if(!this.chartIdsByDataSetNamesMap[recievedData.dataset])
+        this.chartIdsByDataSetNamesMap[recievedData.dataset] = [];
+      this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)
+    });
+    this.graphqlService.subscriptionForCollection(usedKeys, recievedData.subscriptionName).subscribe((res: any) => {
+      console.log(res);
+      let data = res.data[recievedData.subscriptionName].publishObj
+      if(data){
+        switch(data.operationType){
+          case 'insert': 
+            this.insertNewDataInChart(data.fullDocument, recievedData.dataset);
+            break;
+          case 'update':
+            this.updateDataInChart(data.fullDocument, data.documentKey, recievedData.dataset, usedKeys);
+            break;
+          case 'delete':
+            break;
+        }
+      }
+    });
   }
 
   trackById(ind: any, item: any) {
@@ -108,7 +130,7 @@ export class DashboardComponent implements OnInit {
   updateChartData(updatedObj: any) {
     switch(updatedObj.action) {
       case 'update':
-
+        // this.updateDataInChart()
         break;
       case 'insert':
         this.insertNewDataInChart(updatedObj.document, updatedObj.collection)
@@ -118,7 +140,7 @@ export class DashboardComponent implements OnInit {
 
   insertNewDataInChart(document: any, dataSetName: string){
     this.chartIdsByDataSetNamesMap[dataSetName].forEach((chartOptLocal: any) => {
-      let updatedVal: any = []
+      let insertedValues: any = []
       chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
         axis.seriesConf.forEach((series: any, seriesInx: number) => {
           let val = {
@@ -127,21 +149,67 @@ export class DashboardComponent implements OnInit {
             axisKey: series.axisKey,
             value: document[series.axisKey]
           }
-          updatedVal.push(val)
+          insertedValues.push(val)
         })
       })
       let updatedObj: UpdateObjectType = {action: 'insert',
                                           chartType: chartOptLocal.type, 
                                           category: chartOptLocal.xAxis.axisKey,
                                           categoryValue: document[chartOptLocal.xAxis.axisKey],
-                                          value: updatedVal}
-      console.log(updatedVal);
+                                          value: insertedValues}
       this.latestDataFromWebSocketByChartIds[chartOptLocal.id] = updatedObj
     })
   }
+  updateDataInChart(document: any,documentKey: string, dataSetName: string, usedKeys: string[]) {
+    let commonKeys = Object.keys(document).some(item => usedKeys.includes(item))
+    if(commonKeys){
+      this.chartIdsByDataSetNamesMap[dataSetName].forEach((chartOptLocal: any) =>{
+        let updatedVal: any = [];
+        // if(Object.keys(document).includes(chartOptLocal.xAxis.axisKey)){
+
+        // }
+        chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
+          axis.seriesConf.forEach((series: any, seriesInx: number) => {
+            if(Object.keys(document).includes(series.axisKey)){
+              console.log(series);
+              let val = {
+                axisInx: axisInx,
+                seriesInx: seriesInx,
+                axisKey: series.axisKey,
+                value: document[series.axisKey]
+              }
+              updatedVal.push(val)
+            }
+          })
+        })
+        const dataSetData = this.loadChartService.getDocumentFromDataSetById(dataSetName, documentKey)
+        let updatedObj = {
+          action: 'update',
+          chartType: chartOptLocal.type,
+          categoryValue: dataSetData[chartOptLocal.xAxis.axisKey],
+          values: updatedVal
+        }
+        this.latestDataFromWebSocketByChartIds[chartOptLocal.id] = updatedObj;
+      });
+    }
+  }
+
+
   insert(id: string){
     this.insertNewDataInChart({time: 'abc', power_mw: "233", blade_angle: "2.1", pitch_angle: "2.3", pitch_angle_set: "3"}, 'activepower')
     // this.latestDataFromWebSocketByChartIds[id] = {insert: {updatedFields: {power: 55}}}
+  }
+
+  private getAllKeysInChart(chartData: any): string[] {
+    let keys: string[] = [];
+    console.log(chartData);
+    keys.push(chartData.xAxis.axisKey);
+    chartData.yAxis.forEach((axis: any) => {
+      axis.seriesConf.forEach((series: any) => {
+        keys.push(series.axisKey)
+      })
+    })
+    return keys;
   }
 
 }

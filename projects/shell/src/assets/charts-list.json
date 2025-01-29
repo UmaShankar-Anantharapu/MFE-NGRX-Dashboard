@@ -27,7 +27,8 @@
         ],
         "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
         "type": "line",
-        "dataset": "activepower"
+        "dataset": "power",
+        "subscriptionName": "dataChanged" 
     },
     {
         "title": "day wise power generation",
@@ -89,7 +90,8 @@
         ],
         "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e",
         "type": "line",
-        "dataset": "position-monitoring"
+        "dataset": "getPositionMonitorings",
+        "subscriptionName": "powerChanged"
     },
     {
         "title": "Active-power multi-y",
@@ -131,7 +133,8 @@
         ],
         "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
         "type": "column",
-        "dataset": "activepower"
+        "dataset": "power",
+        "subscriptionName": "dataChanged"
     },
     {
         "title": "Energy consumption by state",

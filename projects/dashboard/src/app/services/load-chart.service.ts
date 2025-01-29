@@ -20,8 +20,18 @@ export class LoadChartService {
     })
   }
 
+  updateData(data: any, dataset: string){
+    this.dataSetData[dataset] = data
+  }
+
   dataSetData: {[key: string]: any} = {}
 
+  getDataFromDataSet(dataSetName: string){
+    return this.dataSetData[dataSetName];
+  }
+  getDocumentFromDataSetById(dataSetName: string, documentKey: string){
+    return this.dataSetData[dataSetName].filter((doc: any) => doc._id === documentKey)[0]
+  }
 
   loadChart(chartOptionsConfig: any) {
     this.webSocketService.subscribeToDataSet(chartOptionsConfig.dataset);

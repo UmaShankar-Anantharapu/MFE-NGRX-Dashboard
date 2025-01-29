@@ -45,6 +45,7 @@ export class HighchartsComponent implements OnChanges,OnInit {
           this.addPointsInChart(document)
           break;
         case 'update':
+          this.updatePointsInChart(document)
           break;
       }
     } 
@@ -106,7 +107,6 @@ export class HighchartsComponent implements OnChanges,OnInit {
     data.value.forEach((updatedVal: any) => {
       const point: PointOptionsType = {y: Number(updatedVal.value)}
       let series = this.HighChartInstance.series.filter((s:any) => s.yAxis.index === updatedVal.axisInx)[updatedVal.seriesInx];
-      console.log(series);
       series.addPoint(point)
       this.HighChartInstance.series[series.index] = series
       // this.HighChartInstance.yAxis[updatedVal.axisInx].series[updatedVal.seriesInx].data.push({y: updatedVal.value})
@@ -114,11 +114,20 @@ export class HighchartsComponent implements OnChanges,OnInit {
   }
 
   updatePointsInChart(data: any) {
-    let inx = this.HighChartInstance.xAxis[0].categories.findInx((cat:any) => cat === data.category)
-    if(inx!==1){
-      this.HighChartInstance.xAxis[0].categories[0] = data.category;
-      this.HighChartInstance.series[0].data[inx].update(data.value);
+    let inx = this.HighChartInstance.xAxis[0].categories.findIndex((cat: string) => cat === data.categoryValue);
+    if(inx !== 1){
+      data.values.forEach((updatedVal: any) => {
+        const point: PointOptionsType = {y: Number(updatedVal.value)}
+        let series = this.HighChartInstance.series.filter((s: any) => s.yAxis.index === updatedVal.axisInx)[updatedVal.seriesInx];
+        series.data[inx].update(point)
+        this.HighChartInstance.series[series.index] = series;
+      })
     }
+    // let inx = this.HighChartInstance.xAxis[0].categories.findInx((cat:any) => cat === data.category)
+    // if(inx!==1){
+    //   this.HighChartInstance.xAxis[0].categories[0] = data.category;
+    //   this.HighChartInstance.series[0].data[inx].update(data.value);
+    // }
   }
 
   deletePointsInChart(data: any){
