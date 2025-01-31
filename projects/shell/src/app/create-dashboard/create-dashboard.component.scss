@@ -1,17 +1,59 @@
-.container{
+.container {
     height: calc(100vh - 60px);
     width: 100%;
     display: grid;
-    grid-template-columns: 4fr 1fr;
+    grid-template-rows: auto 1fr; /* Header takes auto height, panels take remaining space */
+    grid-template-columns: 4fr 1fr; /* Left and right panel ratio */
+    gap: 0; /* No gap between header and panels */
 }
-.left-panel
-.right-panel{
+
+.header {
+    grid-column: 1 / -1; /* Header spans all columns */
+    display: flex;
+    justify-content: space-between; /* Title on the left, button on the right */
+    align-items: center; /* Vertically center items */
+    padding: 10px 20px; /* Add padding for spacing */
+    background-color: #f8f9fa; /* Example background color */
+    border-bottom: 1px solid #ddd; /* Add a border below the header */
+}
+
+.title {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.save-btn {
+    display: flex; /* Use flexbox for alignment */
+    align-items: center; /* Vertically center the icon and text */
+    justify-content: center; /* Horizontally center the content (optional) */
+    gap: 8px;
+    padding: 8px 15px;
+    border: none;
+    background: black;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.save-btn:hover {
+    opacity: 0.9;
+}
+
+.left-panel,
+.right-panel {
+    height: 100%;
+    overflow: auto; /* Add scroll if content overflows */
+}
+
+.right-panel ::ng-deep .mat-mdc-tab-body-wrapper {
+    flex-grow: 1;
+}
+
+mat-tab-group {
     height: 100%;
 }
-.right-panel ::ng-deep .mat-mdc-tab-body-wrapper // angular >= 16
-{
-  flex-grow: 1;
-}
-mat-tab-group{
-    height: 100%;
+.buttons-group{
+    display: flex;
+    gap: 1rem;
 }
