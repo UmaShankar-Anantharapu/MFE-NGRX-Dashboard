@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, HostListener } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-dashboard',
@@ -9,6 +10,7 @@ import { Component, HostListener } from '@angular/core';
   styleUrl: './view-dashboard.component.scss'
 })
 export class ViewDashboardComponent {
+
   gridView:boolean=true;
   isLargeScreen: boolean = window.innerWidth >= 768;
   viewMode: 'grid' | 'list' = 'grid';
@@ -39,7 +41,7 @@ export class ViewDashboardComponent {
     }
   ];
 
-  constructor(){
+  constructor(private router:Router){
 
   }
   setView(mode: 'grid' | 'list') {
@@ -49,5 +51,8 @@ export class ViewDashboardComponent {
   @HostListener('window:resize', ['$event'])
   onResize(event: any) {
     this.isLargeScreen = event.target.innerWidth >= 768;
+  }
+  navigateToCreateDashboard(){
+    this.router.navigate(['/dashboard']);
   }
 }

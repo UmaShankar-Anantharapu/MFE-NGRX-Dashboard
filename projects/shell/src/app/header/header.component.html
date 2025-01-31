@@ -1,36 +1,41 @@
-<header class="navbar">
-    <div class="container">
-      <!-- Logo Section (Leftmost Corner) -->
-      <div class="logo">
-        DIGITELE
-      </div>
-  
-      <!-- Navigation Links -->
-      <nav class="nav-links">
-        <ul class="nav-list">
-          <li><a routerLink="/" routerLinkActive="active" aria-label="Home">Chart</a></li>
-          <li><a routerLink="/about" routerLinkActive="active" aria-label="About">Dashboard</a></li>
-          <li><a routerLink="/services" routerLinkActive="active" aria-label="Services">Dataset</a></li>
-          <!-- <li><a routerLink="/contact" routerLinkActive="active" aria-label="Contact">Contact</a></li> -->
-        </ul>
-      </nav>
-  
-      <!-- Mobile Menu Toggle -->
-      <div class="menu-toggle" (click)="toggleMenu()">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
-      </div>
-    </div>
-  
-    <!-- Mobile Menu -->
-    <div class="mobile-menu" [class.open]="menuOpen">
-      <ul class="nav-list">
-        <li><a routerLink="/" routerLinkActive="active" aria-label="Home">Home</a></li>
-        <li><a routerLink="/about" routerLinkActive="active" aria-label="About">About</a></li>
-        <li><a routerLink="/services" routerLinkActive="active" aria-label="Services">Services</a></li>
-        <li><a routerLink="/contact" routerLinkActive="active" aria-label="Contact">Contact</a></li>
-      </ul>
-    </div>
-  </header>
-  
+<mat-toolbar class="navbar">
+  <!-- Logo Section (Leftmost Corner) -->
+  <div class="logo">
+    DIGITELE
+  </div>
+
+  <!-- Navigation Links (Center) -->
+  <nav class="nav-links">
+    <ul class="nav-list">
+      <li><a mat-button routerLink="/" routerLinkActive="active" aria-label="Chart">Chart</a></li>
+      <li><a mat-button routerLink="/about" routerLinkActive="active" aria-label="Dashboard">Dashboard</a></li>
+      <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li>
+    </ul>
+  </nav>
+
+  <!-- Theme Dropdown and User Profile (Rightmost Corner) -->
+  <div class="right-section">
+    <!-- Theme Dropdown -->
+    <mat-icon class="light-mode-button">light_mode</mat-icon>
+    <mat-icon class="dark-mode-button">dark_mode</mat-icon>
+
+    <!-- User Profile -->
+    <button mat-icon-button class="user-profile">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+  </div>
+
+  <!-- Mobile Menu Toggle -->
+  <button mat-icon-button class="menu-toggle" (click)="toggleMenu()">
+    <mat-icon>menu</mat-icon>
+  </button>
+</mat-toolbar>
+
+<!-- Mobile Menu -->
+<div class="mobile-menu" [class.open]="menuOpen">
+  <ul class="nav-list">
+    <li><a mat-button routerLink="/" routerLinkActive="active" aria-label="Chart">Chart</a></li>
+    <li><a mat-button routerLink="/about" routerLinkActive="active" aria-label="Dashboard">Dashboard</a></li>
+    <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li>
+  </ul>
+</div>
