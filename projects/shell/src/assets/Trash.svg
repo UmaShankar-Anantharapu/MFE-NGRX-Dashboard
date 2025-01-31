@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <g id="Trash" transform="translate(-110.998 -335.998)">
+    <g id="Rectangle_158480" data-name="Rectangle 158480" transform="translate(110.998 335.998)" fill="#fff" stroke="#e3dcdc" stroke-width="1">
+      <rect width="32" height="32" stroke="none"/>
+      <rect x="0.5" y="0.5" width="31" height="31" fill="none"/>
+    </g>
+    <path id="Path_352327" data-name="Path 352327" d="M3,6H17.682" transform="translate(116.799 341.262)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <path id="Path_352328" data-name="Path 352328" d="M16.419,5.263V16.682a1.631,1.631,0,0,1-1.631,1.631H6.631A1.631,1.631,0,0,1,5,16.682V5.263m2.447,0V3.631A1.631,1.631,0,0,1,9.078,2h3.263a1.631,1.631,0,0,1,1.631,1.631V5.263" transform="translate(116.43 341.998)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_9481" data-name="Line 9481" y2="4.799" transform="translate(125.539 351.355)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+    <line id="Line_9482" data-name="Line 9482" y2="4.799" transform="translate(128.74 351.355)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="1"/>
+  </g>
+</svg>

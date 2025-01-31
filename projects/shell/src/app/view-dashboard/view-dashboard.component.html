@@ -1,0 +1,67 @@
+<div class="dashboards-container">
+    <div class="header">
+        <h1 class="dashboard-header">
+            My Dashboard
+            <img src="../../assets/graph.svg" alt="Graph Icon">
+        </h1>
+
+        <!-- Search Box -->
+        <div class="search-container">
+            <input type="text" id="searchInput" placeholder="Search...">
+            <svg class="search-icon" xmlns="http://www.w3.org/2000/svg" height="20" viewBox="0 0 24 24" width="20">
+                <path d="M0 0h24v24H0z" fill="none"/>
+                <path fill="gray" d="M15.5 14h-.79l-.28-.27a6.471 6.471 0 001.48-5.34C14.82 5.02 12.47 3 9.5 3S4.18 5.02 3.57 8.39a6.471 6.471 0 005.34 8.89c1.61 0 3.09-.59 4.26-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
+            </svg>
+        </div>
+
+        <!-- Favorite Icon -->
+        <!-- <svg id="favIcon" class="icon" xmlns="http://www.w3.org/2000/svg" height="24" width="24" viewBox="0 0 24 24">
+            <path d="M0 0h24v24H0z" fill="none"/>
+            <path class="icon-path" d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.02 3.99 4 6.5 4c1.74 0 3.41.81 4.5 2.09C12.09 4.81 13.76 4 15.5 4 18.01 4 20 6.02 20 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+        </svg> -->
+
+        <!-- View Icons -->
+        <!-- <div class="view-icons">
+            @if(gridView){
+
+                <img src="../../assets/grid_view-selected.svg" alt="Grid View" (click)="gridView=!gridView">
+                <img src="../../assets/list.svg" alt="List View" (click)="gridView=!gridView">
+            }
+            @else if (!gridView) {
+                
+                <img src="../../assets/grid_view.svg" alt="Grid View" (click)="gridView=!gridView">
+                <img src="../../assets/list -selected.svg" alt="List View" (click)="gridView=!gridView">
+            }
+        </div> -->
+
+        <!-- Create Button -->
+        <button class="create-btn">
+            <img src="../../assets/add-icon.svg" alt="">
+            Create New</button>
+    </div>
+
+
+    <div class="dashboard-list" [ngClass]="viewMode">
+        <div class="dashboard-card" *ngFor="let dashboard of dashboards">
+            <!-- Dashboard Image -->
+            <img [src]="dashboard.image" alt="{{ dashboard.name }}" class="dashboard-image">
+
+            <!-- Title & Creator -->
+            <div class="dashboard-info">
+                <h3>{{ dashboard.name }}</h3>
+                <p>Created by: {{ dashboard.creator }}</p>
+            </div>
+
+            <!-- Action Icons -->
+            <div class="dashboard-actions">
+                <img src="../../assets/upload-icon.svg" alt="Share" >
+                <img src="../../assets/delete-icon.svg" alt="Edit" >
+                <img 
+                    [src]="dashboard.isFavorite ? '../../assets/favourite-icon.svg' : '../../assets/favourite-icon.svg'" 
+                    alt="Favorite" 
+                    >
+                <img src="../../assets/edit-icon.svg" alt="Preview" >
+            </div>
+        </div>
+    </div>
+</div>
