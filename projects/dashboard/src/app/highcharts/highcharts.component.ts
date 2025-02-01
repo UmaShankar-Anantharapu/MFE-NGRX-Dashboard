@@ -18,17 +18,18 @@ ExportingModule
   templateUrl: './highcharts.component.html',
   styleUrl: './highcharts.component.scss'
 })
-export class HighchartsComponent implements OnChanges,OnInit {
-  @Input() showRemoveOption!:boolean;
-  @Input() latestData:any;
-  @Input() 
+export class HighchartsComponent implements OnChanges, OnInit {
+  @Input() showRemoveOption!: boolean;
+  @Input() latestData: any;
+  @Input()
   Highcharts: typeof Highcharts = Highcharts;
-  @Input() chartId!:string;
+  @Input() chartId!: string;
   @Input() isChartLoaded: boolean = false;
   chart!: ChartOptionsState
   @Input() chartOptions: Highcharts.Options = {};
   HighChartInstance: any;
-  
+  @Output() editChartEvent = new EventEmitter<boolean>();
+
   private socket!: Socket;
 
   constructor(private store: Store<{ chartState: ChartOptionsState }>) {
@@ -36,11 +37,12 @@ export class HighchartsComponent implements OnChanges,OnInit {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
+    this.addEditChartInContextButtons()
     // this.removeOptions()
     const latestData: any = changes['latestData']
-    if(latestData && latestData.currentValue){
+    if (latestData && latestData.currentValue) {
       const document = latestData.currentValue
-      switch(document.action){
+      switch (document.action) {
         case 'insert':
           this.addPointsInChart(document)
           break;
@@ -48,36 +50,74 @@ export class HighchartsComponent implements OnChanges,OnInit {
           this.updatePointsInChart(document)
           break;
       }
-    } 
-  
+    }
+
+  }
+  handleEditChart(event: any){
+    console.log(event);
+    this.editChartEvent.emit(true);
   }
 
-  removeOptions(){
-    if(this.showRemoveOption){
-
-      let buttons:any={}
-      if (Highcharts && Highcharts.getOptions()?.exporting?.buttons?.contextButton?.menuItems) {
-        buttons = Highcharts.getOptions().exporting?.buttons?.contextButton?.menuItems?.slice();
-        buttons?.push({
-            text: 'Export to PNG (small)',
-            onclick: function () {
-                this.exportChart({
-                    width: 250,
-                });
-            },
-        });
-    
-        // Safely merge and update the menuItems
-        this.chartOptions.exporting = this.chartOptions.exporting || {};
-        this.chartOptions.exporting.buttons = this.chartOptions.exporting.buttons || {};
-        this.chartOptions.exporting.buttons.contextButton = this.chartOptions.exporting.buttons.contextButton || {};
-        this.chartOptions.exporting.buttons.contextButton.menuItems = [
-            ...(this.chartOptions.exporting.buttons.contextButton.menuItems || []),
-            ...buttons,
-        ];
+  addEditChartInContextButtons() {
+    if (Highcharts && Highcharts.getOptions()?.exporting?.buttons?.contextButton?.menuItems) {
+      let buttons: any = {};
+      buttons = Highcharts.getOptions().exporting?.buttons?.contextButton?.menuItems?.slice();
+      console.log(buttons);
+      
+      
+      // Remove the "Print Chart" button
+      const index = buttons.findIndex((item: any) => item === 'printChart');
+      if (index !== -1) {
+        buttons.splice(index, 1);
+      }
+  
+      // Add the "Edit Chart" button at the beginning
+      buttons.unshift({
+        text: 'Edit Chart',
+        onclick: () => {
+          this.handleEditChart(this.chartOptions); // Call the edit chart method with options
+        },
+      });
+  
+      this.chartOptions.exporting = this.chartOptions.exporting || {};
+      this.chartOptions.exporting.buttons = this.chartOptions.exporting.buttons || {};
+      this.chartOptions.exporting.buttons.contextButton = this.chartOptions.exporting.buttons.contextButton || {};
+      this.chartOptions.exporting.buttons.contextButton.menuItems = buttons;
     }
   }
-  }
+
+  // removeOptions() {
+  //   if (this.showRemoveOption) {
+
+  //     let buttons: any = {}
+  //     if (Highcharts && Highcharts.getOptions()?.exporting?.buttons?.contextButton?.menuItems) {
+  //       buttons = Highcharts.getOptions().exporting?.buttons?.contextButton?.menuItems?.slice();
+  //       buttons?.push({
+  //         text: 'Export to PNG (small)',
+  //         onclick: function () {
+  //           this.exportChart({
+  //             width: 250,
+  //           });
+  //         },
+  //       });
+  //       // buttons.push({
+  //       //   text: 'edit chart',
+  //       //   onclick: function () {
+  //       //     this.editChartPopup()
+  //       //   }
+  //       // })
+
+  //       // Safely merge and update the menuItems
+  //       this.chartOptions.exporting = this.chartOptions.exporting || {};
+  //       this.chartOptions.exporting.buttons = this.chartOptions.exporting.buttons || {};
+  //       this.chartOptions.exporting.buttons.contextButton = this.chartOptions.exporting.buttons.contextButton || {};
+  //       this.chartOptions.exporting.buttons.contextButton.menuItems = [
+  //         ...(this.chartOptions.exporting.buttons.contextButton.menuItems || []),
+  //         ...buttons,
+  //       ];
+  //     }
+  //   }
+  // }
 
 
   ngOnInit() {
@@ -87,7 +127,7 @@ export class HighchartsComponent implements OnChanges,OnInit {
     });
   }
 
-  onChartLoad(event:any){
+  onChartLoad(event: any) {
     this.HighChartInstance = event;
   }
 
@@ -105,8 +145,8 @@ export class HighchartsComponent implements OnChanges,OnInit {
     // this.HighChartInstance.series[0].addPoint(data.value)
     this.HighChartInstance.xAxis[0].categories.push(data.categoryValue);
     data.value.forEach((updatedVal: any) => {
-      const point: PointOptionsType = {y: Number(updatedVal.value)}
-      let series = this.HighChartInstance.series.filter((s:any) => s.yAxis.index === updatedVal.axisInx)[updatedVal.seriesInx];
+      const point: PointOptionsType = { y: Number(updatedVal.value) }
+      let series = this.HighChartInstance.series.filter((s: any) => s.yAxis.index === updatedVal.axisInx)[updatedVal.seriesInx];
       series.addPoint(point)
       this.HighChartInstance.series[series.index] = series
       // this.HighChartInstance.yAxis[updatedVal.axisInx].series[updatedVal.seriesInx].data.push({y: updatedVal.value})
@@ -115,9 +155,9 @@ export class HighchartsComponent implements OnChanges,OnInit {
 
   updatePointsInChart(data: any) {
     let inx = this.HighChartInstance.xAxis[0].categories.findIndex((cat: string) => cat === data.categoryValue);
-    if(inx !== 1){
+    if (inx !== 1) {
       data.values.forEach((updatedVal: any) => {
-        const point: PointOptionsType = {y: Number(updatedVal.value)}
+        const point: PointOptionsType = { y: Number(updatedVal.value) }
         let series = this.HighChartInstance.series.filter((s: any) => s.yAxis.index === updatedVal.axisInx)[updatedVal.seriesInx];
         series.data[inx].update(point)
         this.HighChartInstance.series[series.index] = series;
@@ -130,7 +170,7 @@ export class HighchartsComponent implements OnChanges,OnInit {
     // }
   }
 
-  deletePointsInChart(data: any){
+  deletePointsInChart(data: any) {
 
   }
 

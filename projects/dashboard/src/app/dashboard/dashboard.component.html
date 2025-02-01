@@ -11,7 +11,7 @@
                 style="width: 100%; height: 100%; display: block;">
             </highcharts-chart> -->
                 <app-highcharts [chartOptions]="highChartsOptionsMap[item['id']]" [latestData]="latestDataFromWebSocketByChartIds[item['id']]"
-                    [isChartLoaded]="true" [showRemoveOption]="true" [chartId]="item['id']"></app-highcharts>
+                    [isChartLoaded]="true" [showRemoveOption]="true" [chartId]="item['id']" (editChartEvent)="editChart($event, item['id'])"></app-highcharts>
             </div>
         </gridster-item>
         }

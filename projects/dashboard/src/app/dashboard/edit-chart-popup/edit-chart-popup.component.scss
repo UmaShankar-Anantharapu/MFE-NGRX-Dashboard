@@ -1,0 +1,83 @@
+.popup {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  padding: 20px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+
+  h2 {
+    margin-top: 0;
+  }
+
+  .chart-options {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+
+    .chart-title,
+    .x-axis {
+      flex-basis: calc(50% - 10px);
+    }
+
+    .y-axis {
+      flex-basis: calc(100% - 20px);
+    }
+
+    .y-axis > div {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ddd;
+      padding-bottom: 20px;
+
+      h3 {
+        margin-top: 0;
+      }
+
+      .axis-keys {
+        display: flex;
+        flex-wrap: wrap;
+
+        .axis-key {
+          flex-basis: calc(50% - 10px);
+          margin-bottom: 10px;
+
+          mat-form-field {
+            flex-basis: 100%;
+          }
+
+          .series-keys {
+            display: flex;
+            flex-wrap: wrap;
+
+            .series-key {
+              flex-basis: calc(50% - 10px);
+              margin-bottom: 10px;
+
+              mat-form-field {
+                flex-basis: 100%;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .form-actions {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 20px;
+
+    button {
+      margin-left: 10px;
+
+      &:first-child {
+        margin-right: 10px;
+      }
+    }
+  }
+}

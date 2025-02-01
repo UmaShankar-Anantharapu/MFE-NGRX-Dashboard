@@ -12,6 +12,8 @@ import { WebSocketService } from '../services/websocket.service';
 import { ChartOptionsState, axisConfiguration } from '../../../../shared/store/states/state';
 import { update } from 'lodash';
 import { GraphqlService } from '../services/graphql.service';
+import { MatDialog } from '@angular/material/dialog';
+import { EditChartPopupComponent } from './edit-chart-popup/edit-chart-popup.component';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -60,7 +62,7 @@ export class DashboardComponent implements OnInit {
     enableOccupiedCellDrop: true,
     
   }
-  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService) {
+  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog) {
     this.webSocketService.updatedData$.subscribe((res: any) => {
       console.log(res);
       if(res.event in Object.keys(this.chartIdsByDataSetNamesMap)){
@@ -210,6 +212,16 @@ export class DashboardComponent implements OnInit {
       })
     })
     return keys;
+  }
+  // open a popup on event is true
+  editChart(event: boolean, chartId: any){
+    if(event){
+      this.dialog.open(EditChartPopupComponent, {
+        width: '70%',
+        height: '60%',
+        // disableClose: true
+      })
+    }
   }
 
 }

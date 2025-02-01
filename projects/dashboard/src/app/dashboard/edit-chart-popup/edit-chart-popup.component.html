@@ -1,0 +1,54 @@
+<div class="popup">
+  <h2>Edit Chart</h2>
+  <mat-form-field>
+    <mat-label>Chart Type:</mat-label>
+    <mat-select >
+      <mat-option value="line">Line</mat-option>
+      <mat-option value="bar">Bar</mat-option>
+      <mat-option value="pie">Pie</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div class="chart-options">
+    <div class="chart-title">
+      <mat-form-field>
+        <mat-label>Chart Title:</mat-label>
+        <input matInput >
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Chart Subtitle:</mat-label>
+        <input matInput >
+      </mat-form-field>
+    </div>
+    <div class="x-axis">
+      <mat-form-field>
+        <mat-label>X-Axis Key:</mat-label>
+        <mat-select >
+          <mat-option *ngFor="let key of ['xAxisKeys']" [value]="key">{{key}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="y-axis">
+      <div *ngFor="let axis of ['yAxisKeys']">
+        <h3>Y-Axis {{axis}}</h3>
+        <mat-form-field>
+          <mat-label>Axis Key:</mat-label>
+          <input matInput>
+        </mat-form-field>
+        <div *ngFor="let series of axis">
+          <mat-form-field>
+            <mat-label>Series Key:</mat-label>
+            <input matInput >
+          </mat-form-field>
+          <mat-form-field>
+            <mat-label>Series Name:</mat-label>
+            <input matInput >
+          </mat-form-field>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="form-actions">
+    <button mat-raised-button color="primary" (click)="saveChartOptions()">Save</button>
+    <button mat-raised-button color="accent" (click)="cancelChartOptions()">Cancel</button>
+  </div>
+</div>
