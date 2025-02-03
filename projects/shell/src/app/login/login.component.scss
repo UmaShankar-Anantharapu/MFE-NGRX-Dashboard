@@ -1,0 +1,88 @@
+/* Centering the login form */
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  }
+  
+  /* Login card */
+  .login-card {
+    width: 400px;
+    padding: 20px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 8px;
+    background: rgba(255, 255, 255, 0.9);
+    backdrop-filter: blur(10px);
+    color: white;
+    text-align: center;
+  }
+  
+  /* Title */
+  .title {
+    color: #000000;
+    margin-bottom: 10px;
+  }
+  
+  /* Form fields */
+  .full-width {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  
+  /* Login Button */
+  .login-btn {
+    background: #ffcc00;
+    color: black;
+    font-weight: bold;
+  }
+  
+  .login-btn:hover {
+    background: #e6b800;
+  }
+  
+  /* Action links */
+  .action-links {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+  }
+  
+  .forgot-password, .signup {
+    font-size: 14px;
+    color: #000000;
+    text-decoration: none;
+  }
+  
+  .forgot-password:hover, .signup:hover {
+    text-decoration: underline;
+  }
+  .login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .login-card {
+    width: 400px;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .full-width {
+    width: 100%;
+  }
+  
+  .login-btn {
+    margin-top: 20px;
+  }
+  
+  .error-text {
+    color: red;
+    font-size: 14px;
+    text-align: left;
+  }
+  
+  
