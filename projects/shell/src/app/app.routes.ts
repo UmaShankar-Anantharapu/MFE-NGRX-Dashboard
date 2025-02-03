@@ -8,9 +8,9 @@ export const routes: Routes = [
         path: 'chart', component: CreateChartComponent
     },
     {
-        path: 'dashboard', component: CreateDashboardComponent
+        path: 'dashboard/:id', component: CreateDashboardComponent
     },
     {
-        path:'view-dashboard', component:ViewDashboardComponent
+        path:'dashboard', component:ViewDashboardComponent
     }
 ];

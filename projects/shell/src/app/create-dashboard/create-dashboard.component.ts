@@ -11,12 +11,17 @@ import { MaterialModule } from '../../../../shared/materialUI/material.module';
   host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class CreateDashboardComponent {
-  @ViewChild('gridContainer', { read: ViewContainerRef, static: false }) gridContainer!: ViewContainerRef;
+    @ViewChild('gridContainer', { read: ViewContainerRef, static: false }) gridContainer!: ViewContainerRef;
   @ViewChild('configContainer', { read: ViewContainerRef, static: false }) configContainer2!: ViewContainerRef;
   @ViewChild('designContainer', { read: ViewContainerRef, static: false }) designContainer!: ViewContainerRef;
   ngOnInit() {
     this.loadRemotes()
   }
+
+  saveDashboard(){
+    window.dispatchEvent(new CustomEvent('save-dashboard', {detail: true}));
+  }
+
   async loadRemotes() {
     const remoteComp1 = await loadRemoteModule({
       type: "module",

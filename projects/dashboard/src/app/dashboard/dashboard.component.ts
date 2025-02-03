@@ -14,6 +14,9 @@ import { update } from 'lodash';
 import { GraphqlService } from '../services/graphql.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditChartPopupComponent } from './edit-chart-popup/edit-chart-popup.component';
+import { CommonService } from '../../../../shared/common-services/common-service.service';
+import { v4 as uuid } from 'uuid'
+import { ActivatedRoute } from '@angular/router';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -62,13 +65,18 @@ export class DashboardComponent implements OnInit {
     enableOccupiedCellDrop: true,
     
   }
-  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog) {
+  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute) {
+    this.dashboard = JSON.parse(this.activatedRoute.snapshot.queryParams['data']).dashboard
+    
+    window.addEventListener('save-dashboard', (event: any) => {
+      this.saveDashboard();
+    })
     this.webSocketService.updatedData$.subscribe((res: any) => {
       console.log(res);
       if(res.event in Object.keys(this.chartIdsByDataSetNamesMap)){
         this.updateChartData(res.payload)
       }
-    })
+    });
   }
 
   ngOnInit() {
@@ -83,6 +91,12 @@ export class DashboardComponent implements OnInit {
       let recievedData = res[event.detail.data.id - 1];
       this.load(recievedData)
       this.dashboard.push({ x: 0, y: 0, rows: 6, cols: 6, id: recievedData.id });
+    })
+  }
+
+  loadDashboard(){
+    this.dashboard.forEach((item: any) => {
+      // this.http.get('./assets/charts-list.json').
     })
   }
 
@@ -222,6 +236,15 @@ export class DashboardComponent implements OnInit {
         // disableClose: true
       })
     }
+  }
+
+  saveDashboard() {
+    let saveObj = {
+      user: 'shankar',
+      id: uuid(),
+      dashboard: this.dashboard
+    }
+    console.log(saveObj);
   }
 
 }

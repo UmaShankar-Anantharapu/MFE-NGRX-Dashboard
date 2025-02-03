@@ -44,12 +44,12 @@
     <div class="dashboard-list" [ngClass]="viewMode">
         <div class="dashboard-card" *ngFor="let dashboard of dashboards">
             <!-- Dashboard Image -->
-            <img [src]="dashboard.image" alt="{{ dashboard.name }}" class="dashboard-image">
+            <img [src]="dashboard.image" alt="{{ dashboard.name }}" class="dashboard-image" (click)="navigateToDashboard(dashboard)">
 
             <!-- Title & Creator -->
-            <div class="dashboard-info">
+            <div class="dashboard-info" (click)="navigateToDashboard(dashboard)">
                 <h3>{{ dashboard.name }}</h3>
-                <p>Created by: {{ dashboard.creator }}</p>
+                <!-- <p>Created by: {{ dashboard.creator }}</p> -->
             </div>
 
             <!-- Action Icons -->

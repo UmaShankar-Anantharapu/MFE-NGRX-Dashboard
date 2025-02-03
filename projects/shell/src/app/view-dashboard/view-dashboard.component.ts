@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 import { Component, HostListener } from '@angular/core';
-import { Router } from '@angular/router';
+import { NavigationExtras, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view-dashboard',
@@ -12,9 +13,10 @@ import { Router } from '@angular/router';
 export class ViewDashboardComponent {
 
   gridView:boolean=true;
+  userName: string;
   isLargeScreen: boolean = window.innerWidth >= 768;
   viewMode: 'grid' | 'list' = 'grid';
-  dashboards = [
+  dashboards: any = [
     { 
       name: 'Sales Dashboard', 
       creator: 'John Doe', 
@@ -41,8 +43,14 @@ export class ViewDashboardComponent {
     }
   ];
 
-  constructor(private router:Router){
-
+  constructor(private router:Router, public http: HttpClient){
+    this.userName = JSON.parse(localStorage.getItem('user') || '{}').userName || 'dummy';
+    console.log(this.userName);
+    this.http.get(`./assets/dashboard-list.json`).subscribe((res: any) => {
+      console.log(res);
+      this.dashboards = res
+    })
+    
   }
   setView(mode: 'grid' | 'list') {
     this.viewMode = mode;
@@ -54,5 +62,12 @@ export class ViewDashboardComponent {
   }
   navigateToCreateDashboard(){
     this.router.navigate(['/dashboard']);
+  }
+
+  navigateToDashboard(dashboard: any){
+    const navigationExtras: NavigationExtras = {
+      state: dashboard
+    }
+    this.router.navigate([`/dashboard/${dashboard.id}`], {queryParams: {data: JSON.stringify(dashboard)}});
   }
 }
