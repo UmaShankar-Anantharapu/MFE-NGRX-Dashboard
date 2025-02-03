@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { coreModule } from '../../../../../shared/libs/core.module';
 import { MaterialModule } from '../../../../../shared/materialUI/material.module';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-create-dashboard-config',
@@ -12,15 +13,12 @@ import { MaterialModule } from '../../../../../shared/materialUI/material.module
   host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class CreateDashboardConfigComponent {
-  chartsList: any[] = [
-    { id: '1', title: 'Active-power' },
-    { id: '2', title: 'day wise power generation' },
-    { id: '3', title: 'position-monitoring' },
-    { id: '4', title: 'Active-power multi-y' },
-    { id: '5', title: 'Energy consumption by state' },
-    { id: '6', title: 'Energy Consumption by city' },
-
-  ];
+  chartsList: any[] = [];
+  constructor(public http: HttpClient){
+    this.http.get('http://localhost:3000/charts').subscribe((res: any) => {
+      this.chartsList = res
+    })
+  }
   onDragStart(event: any): void {
     localStorage.setItem('dragState', 'false');
     // const dragData = { id: 1, name: 'Item from MFE1' };

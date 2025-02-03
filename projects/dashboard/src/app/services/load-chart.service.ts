@@ -39,7 +39,8 @@ export class LoadChartService {
     let chartOptionsForHighCharts:Highcharts.Options={}
     if (chartOptionsConfig.type !== 'combination'){
       chartOptionsForHighCharts.chart={};
-      chartOptionsForHighCharts.chart.type = chartOptionsConfig.type as any
+      chartOptionsForHighCharts.chart.type = chartOptionsConfig.type as any;
+      chartOptionsForHighCharts.title = {text: chartOptionsConfig.title}
     }
     switch (chartOptionsConfig.type) {
       case 'bar':

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { Observable, Subscription } from 'rxjs';
 import { Apollo, gql } from 'apollo-angular';
 import { CommonModule } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 // import { GET_DATASET, NEW_MESSAGE_SUBSCRIPTION } from './graphql/queries';
 
 
@@ -19,8 +20,14 @@ export class AppComponent {
   isLoggedIn:boolean=false;
   title = 'shell';
   subscription!:Subscription;
-  constructor(private apollo: Apollo){
-    
+  constructor(private apollo: Apollo, public router: Router){
+    if(localStorage.getItem('user')){
+      this.isLoggedIn = true;
+      }
+      else{
+        this.isLoggedIn = false;
+        this.router.navigate(['/login'])
+      }
   }
   ngOnInit() {
     // this.getData()

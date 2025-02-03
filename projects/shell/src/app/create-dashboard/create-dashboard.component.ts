@@ -1,11 +1,13 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
 import { MaterialModule } from '../../../../shared/materialUI/material.module';
+import { CommonModule } from '@angular/common';
+import { coreModule } from '../../../../shared/libs/core.module';
 
 @Component({
   selector: 'app-create-dashboard',
   standalone: true,
-  imports: [MaterialModule],
+  imports: [MaterialModule, coreModule],
   templateUrl: './create-dashboard.component.html',
   styleUrl: './create-dashboard.component.scss',
   host: { 'hostID': crypto.randomUUID().toString() }
@@ -14,12 +16,17 @@ export class CreateDashboardComponent {
     @ViewChild('gridContainer', { read: ViewContainerRef, static: false }) gridContainer!: ViewContainerRef;
   @ViewChild('configContainer', { read: ViewContainerRef, static: false }) configContainer2!: ViewContainerRef;
   @ViewChild('designContainer', { read: ViewContainerRef, static: false }) designContainer!: ViewContainerRef;
+  dashboardName: string = 'Dashboard'
   ngOnInit() {
-    this.loadRemotes()
+    this.loadRemotes();
+    window.addEventListener('dashboard-name', (event: any) => {
+      this.dashboardName = event.detail
+    })
   }
 
   saveDashboard(){
-    window.dispatchEvent(new CustomEvent('save-dashboard', {detail: true}));
+    
+    window.dispatchEvent(new CustomEvent('save-dashboard', {detail: this.dashboardName}));
   }
 
   async loadRemotes() {

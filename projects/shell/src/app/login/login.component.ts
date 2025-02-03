@@ -50,6 +50,7 @@ export class LoginComponent{
     this.loginService.login(username, password).subscribe((isValid:any) => {
       this.isLoading = false;
       if (isValid) {
+        localStorage.setItem('user', username);
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = 'Invalid username or password!';

@@ -44,10 +44,11 @@ export class ViewDashboardComponent {
   ];
 
   constructor(private router:Router, public http: HttpClient){
-    this.userName = JSON.parse(localStorage.getItem('user') || '{}').userName || 'dummy';
+    this.userName = localStorage.getItem('user') || '{}' || 'dummy';
     console.log(this.userName);
     this.http.get(`./assets/dashboard-list.json`).subscribe((res: any) => {
       console.log(res);
+      res = res.filter((dash: any) => dash.user === this.userName);
       this.dashboards = res
     })
     
@@ -61,13 +62,10 @@ export class ViewDashboardComponent {
     this.isLargeScreen = event.target.innerWidth >= 768;
   }
   navigateToCreateDashboard(){
-    this.router.navigate(['/dashboard']);
+    this.router.navigate(['/create-dashboard/']);
   }
 
   navigateToDashboard(dashboard: any){
-    const navigationExtras: NavigationExtras = {
-      state: dashboard
-    }
-    this.router.navigate([`/dashboard/${dashboard.id}`], {queryParams: {data: JSON.stringify(dashboard)}});
+    this.router.navigate([`/dashboard/${dashboard.id}`]);
   }
 }

@@ -21,5 +21,27 @@
                 "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e"
             }
         ]
+    },{
+        "user": "tarun",
+        "name" : "tarun dashboard",
+        "isFavorite": false, 
+        "id": "0dd3d901-400e-4fb7-9bbc-b08b18d4df7f",
+        "image": "../../assets/dummy-chart-image-1.png",
+        "dashboard": [
+            {
+                "x": 0,
+                "y": 0,
+                "rows": 6,
+                "cols": 6,
+                "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736"
+            },
+            {
+                "x": 6,
+                "y": 0,
+                "rows": 6,
+                "cols": 6,
+                "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e"
+            }
+        ]
     }
 ]

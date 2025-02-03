@@ -66,10 +66,22 @@ export class DashboardComponent implements OnInit {
     
   }
   constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute) {
-    this.dashboard = JSON.parse(this.activatedRoute.snapshot.queryParams['data']).dashboard
+    if(this.activatedRoute.snapshot.routeConfig?.path !== 'create-dashboard'){
+      const id = this.activatedRoute.snapshot.paramMap.get('id');
+      this.http.get(`http://localhost:3000/dashboard/${id}`).subscribe((res: any) => {
+        console.log(res);
+        this.dashboard = res.dashboard
+        window.dispatchEvent(new CustomEvent('dashboard-name', {detail: res.name}));
+        if(this.dashboard){
+          this.loadDashboard()
+        }
+      })
+      // this.dashboard = JSON.parse(this.activatedRoute.snapshot.queryParams['data']).dashboard
+    }
+    
     
     window.addEventListener('save-dashboard', (event: any) => {
-      this.saveDashboard();
+      this.saveDashboard(event.detail);
     })
     this.webSocketService.updatedData$.subscribe((res: any) => {
       console.log(res);
@@ -87,8 +99,8 @@ export class DashboardComponent implements OnInit {
     });
   }
   async onDrop(event: any) {
-    this.http.get('/assets/charts-list.json').subscribe((res: any) => {
-      let recievedData = res[event.detail.data.id - 1];
+    this.http.get(`http://localhost:3000/charts/${event.detail.data.id}`).subscribe((res: any) => {
+      let recievedData = res;
       this.load(recievedData)
       this.dashboard.push({ x: 0, y: 0, rows: 6, cols: 6, id: recievedData.id });
     })
@@ -96,7 +108,10 @@ export class DashboardComponent implements OnInit {
 
   loadDashboard(){
     this.dashboard.forEach((item: any) => {
-      // this.http.get('./assets/charts-list.json').
+      this.http.get(`http://localhost:3000/charts/${item.id}`).subscribe((res: any) => {
+        console.log(res);
+        this.load(res)
+      })
     })
   }
 
@@ -238,13 +253,17 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  saveDashboard() {
-    let saveObj = {
+  saveDashboard(dashboardName: string) {
+    let saveObj:any = {
       user: 'shankar',
       id: uuid(),
+      name: dashboardName,
       dashboard: this.dashboard
     }
     console.log(saveObj);
+    this.http.post(`http://localhost:3000/charts`, saveObj)
+    console.log('saved');
+    
   }
 
 }

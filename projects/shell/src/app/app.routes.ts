@@ -6,10 +6,16 @@ import { LoginComponent } from './login/login.component';
 
 export const routes: Routes = [
     {
+        path: '', pathMatch: 'full', redirectTo: 'dashboard'
+    },
+    {
         path: 'chart', component: CreateChartComponent
     },
     {
         path: 'dashboard/:id', component: CreateDashboardComponent
+    },
+    {
+        path: 'create-dashboard', component: CreateDashboardComponent
     },
     {
         path:'dashboard', component:ViewDashboardComponent

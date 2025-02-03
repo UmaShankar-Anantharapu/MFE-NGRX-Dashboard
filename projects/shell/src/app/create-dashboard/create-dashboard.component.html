@@ -1,6 +1,7 @@
 <div class="container">
     <div class="header">
-        <span class="title">Marketing Dashboard</span>
+        <!-- <span class="title">{{dashboardName}}</span><mat-icon>edit-icon</mat-icon> -->
+        <input [(ngModel)]="dashboardName" matInput class="input-dname">
         <div class="buttons-group">
             <button class="save-btn">Load</button>
         <button class="save-btn" (click)="saveDashboard()">Save</button>
