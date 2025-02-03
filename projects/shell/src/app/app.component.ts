@@ -3,21 +3,25 @@ import { RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { Observable, Subscription } from 'rxjs';
 import { Apollo, gql } from 'apollo-angular';
+import { CommonModule } from '@angular/common';
 // import { GET_DATASET, NEW_MESSAGE_SUBSCRIPTION } from './graphql/queries';
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HeaderComponent],
+  imports: [RouterOutlet, HeaderComponent,CommonModule],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class AppComponent {
+  isLoggedIn:boolean=false;
   title = 'shell';
   subscription!:Subscription;
-  constructor(private apollo: Apollo){}
+  constructor(private apollo: Apollo){
+    
+  }
   ngOnInit() {
     // this.getData()
   }
