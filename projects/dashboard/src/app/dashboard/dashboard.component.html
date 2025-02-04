@@ -10,9 +10,11 @@
                 [options]="this.highChartsOptionsMap[item['id']]"
                 style="width: 100%; height: 100%; display: block;">
             </highcharts-chart> -->
-                <app-table [rowData]="tableDataMap[item['id']]" *ngIf="item['type'] === 'table'">
-
+            <div class="table-chart-container" *ngIf="item['type'] === 'table'">
+                <app-table [rowData]="tableDataMap[item['id']]" >
                 </app-table>
+            </div>
+
                 <app-highcharts *ngIf="item['type'] !== 'table'" [chartOptions]="highChartsOptionsMap[item['id']]" [latestData]="latestDataFromWebSocketByChartIds[item['id']]"
                     [isChartLoaded]="true" [showRemoveOption]="true" [chartId]="item['id']" (editChartEvent)="editChart($event, item['id'])"></app-highcharts>
             </div>
