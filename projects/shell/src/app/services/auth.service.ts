@@ -19,4 +19,8 @@ export class AuthService {
       })
     );
   }
+
+  signUp(username: string, password: string): Observable<any> {
+    return this.http.post(this.apiUrl, {username, password});
+  }
 }

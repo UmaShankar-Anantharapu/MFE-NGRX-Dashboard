@@ -1,0 +1,75 @@
+<div class="login-container">
+    <mat-card class="login-card">
+      <mat-card-header>
+        <mat-card-title>
+          <h2 class="title">Hello and Welcome</h2>
+        </mat-card-title>
+        <mat-card-subtitle>
+          Sign Up to your Analytics Dashboard
+        </mat-card-subtitle>
+      </mat-card-header>
+  
+      <mat-card-content>
+        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+          <!-- Username Input -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Username</mat-label>
+            <input matInput type="text" formControlName="username" required autocomplete="false">
+            <mat-icon matSuffix>person</mat-icon>
+            <mat-error *ngIf="signUpForm.get('username')?.hasError('required')">
+              Username is required
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('username')?.hasError('minlength')">
+              Username must be at least 3 characters long
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('username')?.hasError('maxlength')">
+              Username cannot be more than 20 characters long
+            </mat-error>
+          </mat-form-field>
+  
+          <!-- Password Input -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" required autocomplete="new-password">
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('required')">
+              Password is required
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('minlength')">
+              Password must be at least 8 characters long
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('password')?.hasError('pattern')">
+              Password must contain at least one uppercase letter, one lowercase letter, and one digit
+            </mat-error>
+          </mat-form-field>
+          
+          <!-- confirm password -->
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword" required autocomplete="new-password">
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error *ngIf="signUpForm.get('confirmPassword')?.hasError('required')">
+              Confirm Password is required
+            </mat-error>
+            <mat-error *ngIf="signUpForm.get('confirmPassword')?.hasError('mismatch')">
+              Passwords do not match
+            </mat-error>
+          </mat-form-field>
+
+          <!-- Error Message -->
+          <p *ngIf="errorMessage" class="error-text">{{ errorMessage }}</p>
+  
+          <!-- Login Button -->
+          <button mat-raised-button color="primary" class="full-width login-btn" [disabled]="isLoading">
+            Sign Up
+          </button>
+        </form>
+      </mat-card-content>
+  
+      <mat-card-actions class="action-links">
+        <a href="#" class="forgot-password">Forgot Password?</a>
+        <a href="/login" class="signup">Login</a>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+  
