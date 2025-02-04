@@ -7,9 +7,9 @@
   <!-- Navigation Links (Center) -->
   <nav class="nav-links">
     <ul class="nav-list">
-      <li><a mat-button routerLink="/chart" routerLinkActive="active" aria-label="Chart">Chart</a></li>
-      <li><a mat-button routerLink="/dashboard" routerLinkActive="active" aria-label="Dashboard">Dashboard</a></li>
-      <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li>
+      <li  (click)="navigateTo('/chart')"><a mat-button aria-label="Chart">Chart</a></li>
+      <li  (click)="navigateTo('/dashboard')"><a mat-button aria-label="Dashboard">Dashboard</a></li>
+      <!-- <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li> -->
     </ul>
   </nav>
 
@@ -54,8 +54,8 @@
 <!-- Mobile Menu -->
 <div class="mobile-menu" [class.open]="menuOpen">
   <ul class="nav-list">
-    <li><a mat-button routerLink="/" routerLinkActive="active" aria-label="Chart">Chart</a></li>
-    <li><a mat-button routerLink="/about" routerLinkActive="active" aria-label="Dashboard">Dashboard</a></li>
-    <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li>
+    <li (click)="navigateTo('/chart')"><a mat-button aria-label="Chart" >Chart</a></li>
+    <li (click)="navigateTo('/dashboard')"><a mat-button routerLink="/about" routerLinkActive="active" aria-label="Dashboard" >Dashboard</a></li>
+    <!-- <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li> -->
   </ul>
 </div>

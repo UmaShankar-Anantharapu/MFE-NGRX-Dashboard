@@ -8,6 +8,7 @@ import { MaterialModule } from '../../../../shared/angular-themes/material.modul
 import { HttpClient } from '@angular/common/http';
 import { coreModule } from '../../../../shared/libs/core.module';
 import { ThemeService } from '../../../../shared/angular-themes/themes.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -20,7 +21,7 @@ export class HeaderComponent implements OnInit{
   menuOpen = false;
   selectedTheme: string;
   themes: any;
-  constructor(private http: HttpClient, private themeService: ThemeService) {
+  constructor(private http: HttpClient, private themeService: ThemeService, private router: Router) {
     this.selectedTheme = localStorage.getItem('theme') || 'light';
     this.onThemeChanged(this.selectedTheme);
   }
@@ -30,6 +31,10 @@ export class HeaderComponent implements OnInit{
       this.themes = res[0]
       this.applyTheme(this.themes)
     })
+  }
+
+  navigateTo(link:string){
+    this.router.navigate([`${link}`])
   }
 
   toggleMenu() {

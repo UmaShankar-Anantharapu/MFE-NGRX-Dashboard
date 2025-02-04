@@ -13,6 +13,14 @@
   ],
   "charts": [
     {
+      "title": "Power Generation Details",
+      "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
+      "type": "table",
+      "dataset": "power",
+      "subscriptionName": "dataChanged",
+      "usedColumns": ["time", "power_mw", "pitch_angle", "blade_angle", "pitch_angle_set"]
+  },
+    {
       "title": "Active-power",
       "xAxis": {
         "axisKey": "time",
