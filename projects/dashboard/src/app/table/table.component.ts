@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, input } from '@angular/core';
+import { CommonModule } from '@angular/common';
+import { Component, Input, OnChanges, OnInit, SimpleChanges, input } from '@angular/core';
 import { AgGridAngular } from 'ag-grid-angular'; // Angular Data Grid Component
 import type { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
@@ -9,24 +10,36 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [AgGridAngular],
+  imports: [AgGridAngular,CommonModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
-export class TableComponent implements OnInit {
+export class TableComponent implements OnInit, OnChanges {
   @Input() rowData: any[] = [];
   columns: ColDef[] = [];
 
-  constructor(){ 
+  constructor() {
     this.rowData[0]
   }
-  ngOnInit() {
-    Object.keys(this.rowData[0]).forEach((col: string) => {
-      this.columns.push({
-        headerName: col,
-        field: col,
-        editable: true
-      })
-    })
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['rowData']) {
+      this.rowData = changes['rowData'].currentValue;
+      if(this.rowData){
+        Object.keys(this.rowData[0]).forEach((col: string) => {
+          if(col !== '__typename' && col !== '_id')
+          this.columns.push({
+            field: col, flex: 1, sortable: true, sort: 'asc', filter: 'agTextColumnFilter'
+          })
+        })
+      }
     }
+  }
+  ngOnInit() {
+    
+  }
+  onColumnDragStarted(event: any) {
+    console.log(event);
+    event.stopPropagation();
+  }
+
 }

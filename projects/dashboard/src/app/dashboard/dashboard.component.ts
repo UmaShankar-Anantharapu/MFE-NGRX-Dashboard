@@ -127,63 +127,14 @@ export class DashboardComponent implements OnInit {
   }
 
   loadTableData(recievedData: any){
-    // this.graphqlService.fetchDataFromCollectionByKeys(recievedData.usedColumns, recievedData.dataset).valueChanges.subscribe((res: any) => {
-      let data = [{
-        "time": "11/11/2024 16:00",
-        "power_mw": "541",
-        "blade_angle": "1.93",
-        "pitch_angle": "1.93",
-        "pitch_angle_set": "2.00"
-    },
-    {
-        "time": "11/11/2024 16:10",
-        "power_mw": "565",
-        "blade_angle": "2.81",
-        "pitch_angle": "2.77",
-        "pitch_angle_set": "2.84"
-    },
-    {
-        "time": "11/11/2024 16:20",
-        "power_mw": "572",
-        "blade_angle": "2.28",
-        "pitch_angle": "2.28",
-        "pitch_angle_set": "2.35"
-    },
-    {
-        "time": "11/11/2024 16:30",
-        "power_mw": "615",
-        "blade_angle": "2.28",
-        "pitch_angle": "2.28",
-        "pitch_angle_set": "2.37"
-    },
-    {
-        "time": "11/11/2024 16:40",
-        "power_mw": "672",
-        "blade_angle": "1.71",
-        "pitch_angle": "1.71",
-        "pitch_angle_set": "1.77"
-    },
-    {
-        "time": "11/11/2024 16:50",
-        "power_mw": "717",
-        "blade_angle": "1.44",
-        "pitch_angle": "1.44",
-        "pitch_angle_set": "1.51"
-    },
-    {
-        "time": "11/11/2024 17:00",
-        "power_mw": "676",
-        "blade_angle": "1.91",
-        "pitch_angle": "1.91",
-        "pitch_angle_set": "1.98"
-    }]
-      // let data = res.data[recievedData.dataset]
+    this.graphqlService.fetchDataFromCollectionByKeys(recievedData.usedColumns, recievedData.dataset).valueChanges.subscribe((res: any) => {
+      let data = res.data[recievedData.dataset]
       this.loadChartService.updateData(data, recievedData.dataset);
       this.tableDataMap[recievedData.id] = data;
       if(!this.chartIdsByDataSetNamesMap[recievedData.dataset])
         this.chartIdsByDataSetNamesMap[recievedData.dataset] = [];
       this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)
-    // })
+    })
   }
 
   load(recievedData: any) {

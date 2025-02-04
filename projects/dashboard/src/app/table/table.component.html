@@ -1,6 +1,7 @@
-<ag-grid-angular
-        style="height: 100%; width:100%"
-        [rowData]="rowData"
-        [columnDefs]="columns"
-        domLayout="autoHeight" size="fit"
-        class="chart"/>
+<ag-grid-angular [rowData]="rowData" 
+        [columnDefs]="columns" 
+        style="height: 100%;" 
+        class="chart"
+        (mouseover)="onColumnDragStarted($event)"
+        (mousedown)="onColumnDragStarted($event)"
+        *ngIf="columns.length>0" />
