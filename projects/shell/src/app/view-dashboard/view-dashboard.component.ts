@@ -44,9 +44,9 @@ export class ViewDashboardComponent {
   ];
 
   constructor(private router:Router, public http: HttpClient){
-    this.userName = localStorage.getItem('user') || '{}' || 'dummy';
+    this.userName = localStorage.getItem('user') || '{}';
     console.log(this.userName);
-    this.http.get(`./assets/dashboard-list.json`).subscribe((res: any) => {
+    this.http.get(`http://localhost:3000/dashboard?user=${this.userName}`).subscribe((res: any) => {
       console.log(res);
       res = res.filter((dash: any) => dash.user === this.userName);
       this.dashboards = res

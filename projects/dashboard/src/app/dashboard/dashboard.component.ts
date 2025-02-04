@@ -117,7 +117,11 @@ export class DashboardComponent implements OnInit {
     this.dashboard.forEach((item: any) => {
       this.http.get(`http://localhost:3000/charts/${item.id}`).subscribe((res: any) => {
         console.log(res);
-        this.load(res)
+        if(res.type === 'table'){
+          this.loadTableData(res)
+        }else{
+          this.load(res)
+        }
       })
     })
   }
@@ -321,14 +325,19 @@ export class DashboardComponent implements OnInit {
   }
 
   saveDashboard(dashboardName: string) {
+    const randomNum = Math.floor(Math.random() * 3)+1
     let saveObj:any = {
-      user: 'shankar',
+      user: localStorage.getItem('user'),
       id: uuid(),
       name: dashboardName,
+      "image": `../../assets/dummy-chart-image-${randomNum}.png`,
+      "isFavorite": false,
       dashboard: this.dashboard
     }
     console.log(saveObj);
-    this.http.post(`http://localhost:3000/charts`, saveObj)
+    this.http.post(`http://localhost:3000/dashboard`, saveObj).subscribe((res: any) => {
+      console.log(res);
+    })
     console.log('saved');
     
   }

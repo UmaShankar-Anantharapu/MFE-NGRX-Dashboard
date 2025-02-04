@@ -49,4 +49,8 @@ export class HeaderComponent implements OnInit{
     console.log(theme);
     this.themeService.generatePalette(theme.primary, theme.accent, theme.warn);
   }
+  logout(){
+    localStorage.removeItem('user');
+    this.router.navigate(['/login'])
+  }
 }
