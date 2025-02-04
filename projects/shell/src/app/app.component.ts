@@ -1,10 +1,11 @@
 import { Component, HostBinding } from '@angular/core';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { Observable, Subscription } from 'rxjs';
 import { Apollo, gql } from 'apollo-angular';
 import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
+import { AuthService } from './services/auth.service';
 // import { GET_DATASET, NEW_MESSAGE_SUBSCRIPTION } from './graphql/queries';
 
 
@@ -21,10 +22,18 @@ export class AppComponent {
   isLoggedIn: boolean = false;
   title = 'shell';
   subscription!: Subscription;
-  constructor(private apollo: Apollo, public router: Router) {
+  constructor(private apollo: Apollo, public router: Router, public authService: AuthService) {
+    this.authService.isLoggedIn$.subscribe((res: boolean) => {
+      this.isLoggedIn = res
+    })
   }
   ngOnInit() {
-    // this.getData()
+    let user = localStorage.getItem('user')
+    if(user){
+      this.authService.isLoggedIn.next(true);
+    }else{
+      this.authService.isLoggedIn.next(false)
+    }
   }
 
   onThemeChange(event: string) {

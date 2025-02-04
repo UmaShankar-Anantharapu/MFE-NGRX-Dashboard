@@ -6,7 +6,6 @@ import { Store } from '@ngrx/store';
 import { ChartOptionsState } from '../../../../shared/store/states/state';
 import HighchartsMore from 'highcharts/highcharts-more';
 import ExportingModule from 'highcharts/modules/exporting';
-import { io, Socket } from 'socket.io-client';
 
 
 HighchartsMore
@@ -30,26 +29,28 @@ export class HighchartsComponent implements OnChanges, OnInit {
   HighChartInstance: any;
   @Output() editChartEvent = new EventEmitter<boolean>();
 
-  private socket!: Socket;
 
   constructor(private store: Store<{ chartState: ChartOptionsState }>) {
 
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    this.addEditChartInContextButtons()
     // this.removeOptions()
     const latestData: any = changes['latestData']
+    const latestChartOptions: any = changes['chartOptions']
     if (latestData && latestData.currentValue) {
       const document = latestData.currentValue
       switch (document.action) {
         case 'insert':
           this.addPointsInChart(document)
           break;
-        case 'update':
-          this.updatePointsInChart(document)
-          break;
-      }
+          case 'update':
+            this.updatePointsInChart(document)
+            break;
+          }
+        }else if(latestChartOptions){
+      this.addEditChartInContextButtons()
+      this.chartOptions = {...latestChartOptions.currentValue} as any;
     }
 
   }
@@ -121,10 +122,6 @@ export class HighchartsComponent implements OnChanges, OnInit {
 
 
   ngOnInit() {
-    this.socket.on('updateChart', (data: any[]) => {
-      console.log('Received chart updates:', data);
-      // this.charts = data;
-    });
   }
 
   onChartLoad(event: any) {
@@ -132,8 +129,6 @@ export class HighchartsComponent implements OnChanges, OnInit {
   }
 
   ngOnDestroy(): void {
-    // Clean up the socket connection
-    this.socket.disconnect();
   }
 
   get hasChartOptions(): boolean {

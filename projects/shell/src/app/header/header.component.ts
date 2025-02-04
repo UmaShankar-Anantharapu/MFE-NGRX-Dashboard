@@ -9,6 +9,7 @@ import { HttpClient } from '@angular/common/http';
 import { coreModule } from '../../../../shared/libs/core.module';
 import { ThemeService } from '../../../../shared/angular-themes/themes.service';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 @Component({
   selector: 'app-header',
   standalone: true,
@@ -21,7 +22,7 @@ export class HeaderComponent implements OnInit{
   menuOpen = false;
   selectedTheme: string;
   themes: any;
-  constructor(private http: HttpClient, private themeService: ThemeService, private router: Router) {
+  constructor(private http: HttpClient, private themeService: ThemeService, private router: Router, public authService: AuthService) {
     this.selectedTheme = localStorage.getItem('theme') || 'light';
     this.onThemeChanged(this.selectedTheme);
   }
@@ -50,6 +51,7 @@ export class HeaderComponent implements OnInit{
     this.themeService.generatePalette(theme.primary, theme.accent, theme.warn);
   }
   logout(){
+    this.authService.isLoggedIn.next(false);
     localStorage.removeItem('user');
     this.router.navigate(['/login'])
   }

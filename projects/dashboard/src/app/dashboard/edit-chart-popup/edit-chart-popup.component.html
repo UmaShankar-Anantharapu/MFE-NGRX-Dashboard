@@ -1,54 +1,82 @@
-<div class="popup">
-  <h2>Edit Chart</h2>
-  <mat-form-field>
-    <mat-label>Chart Type:</mat-label>
-    <mat-select >
-      <mat-option value="line">Line</mat-option>
-      <mat-option value="bar">Bar</mat-option>
-      <mat-option value="pie">Pie</mat-option>
-    </mat-select>
-  </mat-form-field>
-  <div class="chart-options">
-    <div class="chart-title">
-      <mat-form-field>
-        <mat-label>Chart Title:</mat-label>
-        <input matInput >
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Chart Subtitle:</mat-label>
-        <input matInput >
-      </mat-form-field>
-    </div>
-    <div class="x-axis">
-      <mat-form-field>
-        <mat-label>X-Axis Key:</mat-label>
-        <mat-select >
-          <mat-option *ngFor="let key of ['xAxisKeys']" [value]="key">{{key}}</mat-option>
+<mat-dialog-content class="popup-container">
+  <!-- Popup Header inside a Mat Card -->
+  <mat-card-header class="popup-header">
+    <mat-card-title>Edit Chart Configuration</mat-card-title>
+  </mat-card-header>
+
+  <!-- Chart Type & Title Row -->
+  <mat-card class="chart-config-card">
+    <div class="chart-config-row">
+      <mat-form-field class="full-width">
+        <mat-label>Edit Chart Type</mat-label>
+        <mat-select [(ngModel)]="data.chartOptions.type">
+          <mat-option *ngFor="let type of chartTypes" [value]="type">{{ type }}</mat-option>
         </mat-select>
       </mat-form-field>
+
+      <mat-form-field class="full-width">
+        <mat-label>Title</mat-label>
+        <input matInput [(ngModel)]="data.chartOptions.title" />
+      </mat-form-field>
     </div>
-    <div class="y-axis">
-      <div *ngFor="let axis of ['yAxisKeys']">
-        <h3>Y-Axis {{axis}}</h3>
-        <mat-form-field>
-          <mat-label>Axis Key:</mat-label>
-          <input matInput>
+  </mat-card>
+
+  <!-- X-Axis Section -->
+  <mat-card class="axis-container x-axis">
+    <mat-card-title>X-Axis</mat-card-title>
+    <mat-form-field class="full-width">
+      <mat-label>Axis Key</mat-label>
+      <mat-select [(ngModel)]="data.chartOptions.xAxis.axisKey">
+        <mat-option *ngFor="let field of data.fields" [value]="field">{{ field }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field class="full-width">
+      <mat-label>Axis Name</mat-label>
+      <input matInput [(ngModel)]="data.chartOptions.xAxis.axisName" />
+    </mat-form-field>
+  </mat-card>
+
+  <!-- Y-Axis Section -->
+  <mat-card class="axis-container y-axis">
+    <mat-card-title>Y-Axis</mat-card-title>
+    <div *ngFor="let axis of data.chartOptions.yAxis; let i = index" class="y-axis-item">
+      <mat-card class="y-axis-card">
+        <mat-card-title>Axis {{ i + 1 }}</mat-card-title>
+
+        <mat-form-field class="full-width">
+          <mat-label>Axis Name</mat-label>
+          <input matInput [(ngModel)]="axis.title" />
         </mat-form-field>
-        <div *ngFor="let series of axis">
-          <mat-form-field>
-            <mat-label>Series Key:</mat-label>
-            <input matInput >
-          </mat-form-field>
-          <mat-form-field>
-            <mat-label>Series Name:</mat-label>
-            <input matInput >
-          </mat-form-field>
+
+        <!-- Series inside each Y-Axis -->
+        <div *ngFor="let series of axis.seriesConf; let j = index" class="series-item">
+          <mat-card class="series-card">
+            <mat-card-title>Series {{ j + 1 }}</mat-card-title>
+            <mat-form-field class="full-width">
+              <mat-label>Axis Key</mat-label>
+              <mat-select [(ngModel)]="series.axisKey">
+                <mat-option *ngFor="let field of data.fields" [value]="field">{{ field }}</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <mat-form-field class="full-width">
+              <mat-label>Axis Name</mat-label>
+              <input matInput [(ngModel)]="series.axisName" />
+            </mat-form-field>
+          </mat-card>
         </div>
-      </div>
+        <div class="example-button-row">
+          <a mat-stroked-button class="add-series-button" (click)="addMore('series', i)">Add Series</a>
+        </div>
+      </mat-card>
     </div>
-  </div>
-  <div class="form-actions">
-    <button mat-raised-button color="primary" (click)="saveChartOptions()">Save</button>
-    <button mat-raised-button color="accent" (click)="cancelChartOptions()">Cancel</button>
-  </div>
-</div>
+    <div class="example-button-row">
+      <a mat-stroked-button class="add-axis-button" (click)="addMore('axis')">Add Axis</a>
+    </div>
+  </mat-card>
+</mat-dialog-content>
+
+<!-- Fixed Footer -->
+<mat-dialog-actions class="popup-footer">
+  <button mat-button (click)="onCancel()">Cancel</button>
+  <button mat-raised-button color="primary" (click)="onSave()">Save</button>
+</mat-dialog-actions>

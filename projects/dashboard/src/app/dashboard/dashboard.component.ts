@@ -33,6 +33,7 @@ import { TableComponent } from "../table/table.component";
   styleUrl: './dashboard.component.scss',
 })
 export class DashboardComponent implements OnInit {
+  loadChart:boolean = true;
   hostID!: string;
   Highcharts = Highcharts;
   chartIdsByDataSetNamesMap: {[key: string]:  string[]} = {};
@@ -316,10 +317,24 @@ export class DashboardComponent implements OnInit {
   // open a popup on event is true
   editChart(event: boolean, chartId: any){
     if(event){
-      this.dialog.open(EditChartPopupComponent, {
-        width: '70%',
-        height: '60%',
-        // disableClose: true
+      this.http.get(`http://localhost:3000/charts/${chartId}`).subscribe((res: any) => {
+        console.log(res);
+        let chart = res
+        this.graphqlService.getSchemaForCollection(res.schemaType).valueChanges.subscribe((res: any) => {
+          let fields:any = [];
+          Object.values(res.data.__type.fields).forEach((item: any) => {
+            fields.push(item.name)
+          })
+          const dialogRef = this.dialog.open(EditChartPopupComponent, {
+            width: '70%',
+            height: '60%',
+            data: {fields: fields, chartOptions: chart}
+            // disableClose: true
+          })
+          dialogRef.afterClosed().subscribe(result => {
+            this.load(result);
+          })
+        })
       })
     }
   }

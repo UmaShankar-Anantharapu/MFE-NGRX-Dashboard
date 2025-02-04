@@ -33,6 +33,7 @@ export class LoginComponent{
   errorMessage: string = '';
 
   constructor(private fb: FormBuilder, private loginService: AuthService, private router: Router) {
+    this.loginService.isLoggedIn.next(false);
     this.loginForm = this.fb.group({
       username: ['', Validators.required],  // Reactive Form Field
       password: ['', Validators.required]   // Reactive Form Field
@@ -51,6 +52,7 @@ export class LoginComponent{
       this.isLoading = false;
       if (isValid) {
         localStorage.setItem('user', username);
+        this.loginService.isLoggedIn.next(true);
         this.router.navigate(['/dashboard']);
       } else {
         this.errorMessage = 'Invalid username or password!';

@@ -17,6 +17,7 @@
       "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
       "type": "table",
       "dataset": "power",
+      "schemaType": "Power",
       "subscriptionName": "dataChanged",
       "usedColumns": [
         "time",
@@ -55,6 +56,7 @@
       "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
       "type": "line",
       "dataset": "power",
+      "schemaType": "Power",
       "subscriptionName": "dataChanged"
     },
     {
@@ -98,6 +100,7 @@
       "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
       "type": "column",
       "dataset": "power",
+      "schemaType": "Power",
       "subscriptionName": "dataChanged"
     },
     {
@@ -120,6 +123,7 @@
       "id": "8ec741f5-782b-4170-bfd6-b6175babf1db",
       "type": "line",
       "dataset": "power",
+      "schemaType": "Power",
       "subscriptionName": "dataChanged"
     },
     {
@@ -151,6 +155,7 @@
       "id": "47803f8b-9772-4c8d-bb3a-23bf369044344",
       "type": "column",
       "dataset": "power",
+      "schemaType": "Power",
       "subscriptionName": "dataChanged"
     },
     {
@@ -182,6 +187,7 @@
       "id": "47803f8b-9772-4c8d-bb3a-23bf3690493f",
       "type": "bar",
       "dataset": "power",
+      "schemaType": "Power",
       "subscriptionName": "dataChanged"
     },
     {
@@ -224,6 +230,7 @@
       "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e",
       "type": "line",
       "dataset": "getPositionMonitorings",
+      "schemaType": "PositionMonitoring",
       "subscriptionName": "powerChanged"
     }
   ],

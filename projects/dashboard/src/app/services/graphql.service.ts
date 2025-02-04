@@ -31,4 +31,18 @@ export class GraphqlService {
     return this.apollo.subscribe({query: subscription});
   }
 
+  getSchemaForCollection(collection: string){
+    const query = gql`
+      {
+        __type(name: "${collection}"){
+          name
+          fields{
+            name
+          }
+        }
+      }
+    `
+    return this.apollo.watchQuery({query: query})
+  }
+
 }
