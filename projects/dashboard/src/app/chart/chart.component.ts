@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MaterialModule } from '../../../../shared/materialUI/material.module';
 import { HighChartsModule } from '../../../../shared/libs/highcharts.module';
 import Highcharts, { SeriesOptionsType } from 'highcharts';
 import { coreModule } from '../../../../shared/libs/core.module';
@@ -11,6 +10,7 @@ import { selectChartData } from '../../../../shared/store/selectors/selector';
 import { CommonService } from '../../../../shared/common-services/common-service.service';
 import { v4 as uuidv4 } from 'uuid';
 import { LoadChartService } from '../services/load-chart.service';
+import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 
 @Component({
   selector: 'app-chart',

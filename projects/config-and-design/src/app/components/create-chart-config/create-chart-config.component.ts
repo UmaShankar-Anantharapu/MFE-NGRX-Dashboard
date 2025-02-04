@@ -2,7 +2,6 @@ import { Component, OnDestroy, signal, Signal } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { coreModule } from '../../../../../shared/libs/core.module';
-import { MaterialModule } from '../../../../../shared/materialUI/material.module';
 import { ChartOptionsState } from '../../../../../shared/store/states/state';
 import Highcharts, { SeriesOptionsType } from 'highcharts';
 import { v4 as uuidv4 } from 'uuid';
@@ -11,6 +10,7 @@ import { ConfigService } from '../../config.service';
 import { CommonService } from '../../../../../shared/common-services/common-service.service';
 import { updateChartOptions } from '../../../../../shared/store/actions/chart.action';
 import { cloneDeep } from 'lodash';
+import { MaterialModule } from '../../../../../shared/angular-themes/material.module';
     @Component({
   selector: 'app-create-chart-config',
   standalone: true,

@@ -1,4 +1,4 @@
-<mat-toolbar class="navbar">
+<mat-toolbar class="navbar" color="primary">
   <!-- Logo Section (Leftmost Corner) -->
   <div class="logo">
     DIGITELE
@@ -7,8 +7,8 @@
   <!-- Navigation Links (Center) -->
   <nav class="nav-links">
     <ul class="nav-list">
-      <li><a mat-button routerLink="/" routerLinkActive="active" aria-label="Chart">Chart</a></li>
-      <li><a mat-button routerLink="/about" routerLinkActive="active" aria-label="Dashboard">Dashboard</a></li>
+      <li><a mat-button routerLink="/chart" routerLinkActive="active" aria-label="Chart">Chart</a></li>
+      <li><a mat-button routerLink="/dashboard" routerLinkActive="active" aria-label="Dashboard">Dashboard</a></li>
       <li><a mat-button routerLink="/services" routerLinkActive="active" aria-label="Dataset">Dataset</a></li>
     </ul>
   </nav>
@@ -20,9 +20,29 @@
     <mat-icon class="dark-mode-button">dark_mode</mat-icon>
 
     <!-- User Profile -->
-    <button mat-icon-button class="user-profile">
+    <button mat-icon-button class="user-profile" [matMenuTriggerFor]="userMenu">
       <mat-icon>account_circle</mat-icon>
     </button>
+    <mat-menu #userMenu="matMenu">
+      <button mat-menu-item [matMenuTriggerFor]="themesMenu">
+        <mat-icon>palette</mat-icon>
+        <span>Themes</span>
+      </button>
+      <mat-menu #themesMenu="matMenu" xPosition="before">
+        <button mat-menu-item *ngFor="let theme of themes | keyvalue" (click)="applyTheme(theme.value)">
+          <mat-icon>brush</mat-icon>
+          <span>{{theme.key}}</span>
+        </button>
+      </mat-menu>
+      <button mat-menu-item>
+        <mat-icon>color_lens</mat-icon>
+        <span>Custom Theme</span>
+      </button>
+      <button mat-menu-item >
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+    </mat-menu>
   </div>
 
   <!-- Mobile Menu Toggle -->

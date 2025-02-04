@@ -44,48 +44,6 @@
       "subscriptionName": "dataChanged"
     },
     {
-      "title": "position-monitoring",
-      "xAxis": {
-        "axisKey": "turbine_name",
-        "axisName": "Turbine"
-      },
-      "yAxis": [
-        {
-          "seriesConf": [
-            {
-              "axisKey": "nacelle_position",
-              "axisName": "nacelle"
-            },
-            {
-              "axisKey": "mean_nacelle_position",
-              "axisName": "mean_nacelle"
-            },
-            {
-              "axisKey": "minus10_mean_nacelle_position",
-              "axisName": "minus10_mean_nacelle"
-            },
-            {
-              "axisKey": "minus20_mean_nacelle_position",
-              "axisName": "minus20_mean_nacelle"
-            },
-            {
-              "axisKey": "plus10_mean_nacelle_position",
-              "axisName": "plus10_mean_nacelle"
-            },
-            {
-              "axisKey": "plus20_mean_nacelle_position",
-              "axisName": "plus20_mean_nacelle"
-            }
-          ],
-          "title": "position"
-        }
-      ],
-      "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e",
-      "type": "line",
-      "dataset": "getPositionMonitorings",
-      "subscriptionName": "powerChanged"
-    },
-    {
       "title": "Active-power multi-y",
       "xAxis": {
         "axisKey": "time",
@@ -211,8 +169,54 @@
       "type": "bar",
       "dataset": "power",
       "subscriptionName": "dataChanged"
+    },
+    {
+      "title": "position-monitoring",
+      "xAxis": {
+        "axisKey": "turbine_name",
+        "axisName": "Turbine"
+      },
+      "yAxis": [
+        {
+          "seriesConf": [
+            {
+              "axisKey": "nacelle_position",
+              "axisName": "nacelle"
+            },
+            {
+              "axisKey": "mean_nacelle_position",
+              "axisName": "mean_nacelle"
+            },
+            {
+              "axisKey": "minus10_mean_nacelle_position",
+              "axisName": "minus10_mean_nacelle"
+            },
+            {
+              "axisKey": "minus20_mean_nacelle_position",
+              "axisName": "minus20_mean_nacelle"
+            },
+            {
+              "axisKey": "plus10_mean_nacelle_position",
+              "axisName": "plus10_mean_nacelle"
+            },
+            {
+              "axisKey": "plus20_mean_nacelle_position",
+              "axisName": "plus20_mean_nacelle"
+            }
+          ],
+          "title": "position"
+        }
+      ],
+      "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e",
+      "type": "line",
+      "dataset": "getPositionMonitorings",
+      "subscriptionName": "powerChanged"
     }
   ],
+
+
+
+
   "dashboard": [
     {
       "user": "shankar",
@@ -259,6 +263,60 @@
           "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e"
         }
       ]
+    }
+  ],
+  "themes": [
+    {
+      "Material Light": {
+        "primary": "#1976d2",
+        "accent": "#ff4081",
+        "warn": "#f44336"
+      },
+      "Material Dark": {
+        "primary": "#90caf9",
+        "accent": "#f50057",
+        "warn": "#e57373"
+      },
+      "Amber Waves": {
+        "primary": "#ffca28",
+        "accent": "#ff7043",
+        "warn": "#d32f2f"
+      },
+      "Forest Whisper": {
+        "primary": "#388e3c",
+        "accent": "#8bc34a",
+        "warn": "#c62828"
+      },
+      "Sunset Horizon": {
+        "primary": "#f57c00",
+        "accent": "#ffeb3b",
+        "warn": "#d32f2f"
+      },
+      "Night Sky": {
+        "primary": "#3f51b5",
+        "accent": "#673ab7",
+        "warn": "#d50000"
+      },
+      "Cool Mint": {
+        "primary": "#00bcd4",
+        "accent": "#009688",
+        "warn": "#e53935"
+      },
+      "Berry Delight": {
+        "primary": "#7b1fa2",
+        "accent": "#e91e63",
+        "warn": "#c2185b"
+      },
+      "Solar Flare": {
+        "primary": "#ff5722",
+        "accent": "#ffc107",
+        "warn": "#b71c1c"
+      },
+      "Lush Green": {
+        "primary": "#4caf50",
+        "accent": "#cddc39",
+        "warn": "#f44336"
+      }
     }
   ]
 }

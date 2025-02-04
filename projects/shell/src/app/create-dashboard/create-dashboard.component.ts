@@ -1,8 +1,9 @@
 import { loadRemoteModule } from '@angular-architects/module-federation';
 import { Component, ViewChild, ViewContainerRef } from '@angular/core';
-import { MaterialModule } from '../../../../shared/materialUI/material.module';
+
 import { CommonModule } from '@angular/common';
 import { coreModule } from '../../../../shared/libs/core.module';
+import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 
 @Component({
   selector: 'app-create-dashboard',

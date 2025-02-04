@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 
 import { coreModule } from '../../../../../shared/libs/core.module';
-import { MaterialModule } from '../../../../../shared/materialUI/material.module';
 import { HttpClient } from '@angular/common/http';
+import { MaterialModule } from '../../../../../shared/angular-themes/material.module';
 
 @Component({
   selector: 'app-create-dashboard-config',

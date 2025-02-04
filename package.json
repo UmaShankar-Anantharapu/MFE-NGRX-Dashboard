@@ -40,6 +40,8 @@
     "rxjs": "~7.8.0",
     "socket.io-client": "^4.8.1",
     "subscriptions-transport-ws": "^0.11.0",
+    "tinycolor": "^0.0.1",
+    "tinycolor2": "^1.6.0",
     "tslib": "^2.3.0",
     "uuid": "^11.0.5",
     "zone.js": "~0.14.10"
@@ -49,6 +51,7 @@
     "@angular/cli": "^18.2.12",
     "@angular/compiler-cli": "^18.2.0",
     "@types/jasmine": "~5.1.0",
+    "@types/tinycolor2": "^1.4.6",
     "jasmine-core": "~5.2.0",
     "karma": "~6.4.0",
     "karma-chrome-launcher": "~3.2.0",

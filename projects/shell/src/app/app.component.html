@@ -1,4 +1,4 @@
 <div *ngIf="isLoggedIn">
-    <app-header></app-header>
+    <app-header (themeChanged)="onThemeChange($event)"></app-header>
 </div>
 <router-outlet></router-outlet>

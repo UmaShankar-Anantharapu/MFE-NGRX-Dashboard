@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, HostBinding } from '@angular/core';
 import { Router, RouterOutlet } from '@angular/router';
 import { HeaderComponent } from "./header/header.component";
 import { Observable, Subscription } from 'rxjs';
@@ -17,6 +17,7 @@ import { HttpClient } from '@angular/common/http';
   host: { 'hostID': crypto.randomUUID().toString() }
 })
 export class AppComponent {
+  selectedtheme!: string
   isLoggedIn:boolean=false;
   title = 'shell';
   subscription!:Subscription;
@@ -33,6 +34,14 @@ export class AppComponent {
     // this.getData()
   }
 
+  onThemeChange(event: string){
+    console.log(event);
+    this.selectedtheme = event
+  }
+  @HostBinding('class')
+  get returnTheme() {
+    return this.selectedtheme==='light'?'light-theme': 'dark-theme';
+  }
   // getData(){
   //   this.getDataSet().subscribe((res: any) => {
   //     console.log(res);

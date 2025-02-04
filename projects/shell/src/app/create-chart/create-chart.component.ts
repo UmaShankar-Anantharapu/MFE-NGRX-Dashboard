@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ViewContainerRef } from '@angular/core';
 import { loadRemoteModule } from '@angular-architects/module-federation';
-import { MaterialModule } from '../../../../shared/materialUI/material.module';
 import { coreModule } from '../../../../shared/libs/core.module';
+import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 
 @Component({
   selector: 'app-create-chart',

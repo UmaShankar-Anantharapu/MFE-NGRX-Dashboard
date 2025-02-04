@@ -2,7 +2,6 @@ import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core
 import { HighchartsChartComponent, HighchartsChartModule } from 'highcharts-angular';
 import Highcharts, { chart } from 'highcharts';
 import { CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridsterModule, GridType } from 'angular-gridster2';
-import { MaterialModule } from '../../../../shared/materialUI/material.module';
 import { CommonModule } from '@angular/common';
 import { coreModule } from '../../../../shared/libs/core.module';
 import { HttpClient } from '@angular/common/http';
@@ -17,6 +16,7 @@ import { EditChartPopupComponent } from './edit-chart-popup/edit-chart-popup.com
 import { CommonService } from '../../../../shared/common-services/common-service.service';
 import { v4 as uuid } from 'uuid'
 import { ActivatedRoute } from '@angular/router';
+import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 @Component({
   selector: 'app-dashboard',
   standalone: true,

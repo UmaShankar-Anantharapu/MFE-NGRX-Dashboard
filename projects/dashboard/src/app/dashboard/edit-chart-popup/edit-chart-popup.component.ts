@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { MaterialModule } from '../../../../../shared/materialUI/material.module';
 import { CommonModule } from '@angular/common';
+import { MaterialModule } from '../../../../../shared/angular-themes/material.module';
 
 @Component({
   selector: 'app-edit-chart-popup',
