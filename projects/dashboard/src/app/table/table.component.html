@@ -1,7 +1,10 @@
-<ag-grid-angular [rowData]="rowData" 
-        [columnDefs]="columns" 
-        style="height: 100%;" 
-        class="chart"
-        (mouseover)="onColumnDragStarted($event)"
-        (mousedown)="onColumnDragStarted($event)"
-        *ngIf="columns.length>0" />
+<div class="container" style="display: flex; flex-direction: column; height: 100%;">
+        <div class="header" *ngIf="title">
+                <h1 class="table-title">{{title}}</h1>
+        </div>
+        <div class="table-container" [style.flex]="title ? 1 : 0">
+                <ag-grid-angular [rowData]="rowData" [columnDefs]="columns" style="height: 100%;" class="chart"
+                        (mouseover)="onColumnDragStarted($event)" (mousedown)="onColumnDragStarted($event)"
+                        *ngIf="columns.length>0" />
+        </div>
+</div>

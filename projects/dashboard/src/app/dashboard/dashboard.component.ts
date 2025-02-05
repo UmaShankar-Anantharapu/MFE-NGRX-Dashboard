@@ -139,7 +139,7 @@ export class DashboardComponent implements OnInit {
     this.graphqlService.fetchDataFromCollectionByKeys(recievedData.usedColumns, recievedData.dataset).valueChanges.subscribe((res: any) => {
       let data = res.data[recievedData.dataset]
       this.loadChartService.updateData(data, recievedData.dataset);
-      this.tableDataMap[recievedData.id] = data;
+      this.tableDataMap[recievedData.id] = {data:data,title: recievedData.title};
       if(!this.chartIdsByDataSetNamesMap[recievedData.dataset])
         this.chartIdsByDataSetNamesMap[recievedData.dataset] = [];
       this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)

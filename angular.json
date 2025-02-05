@@ -38,7 +38,8 @@
 						],
 						"styles": [
 							"projects/shell/src/styles.scss",
-							"@angular/material/prebuilt-themes/azure-blue.css"
+							"@angular/material/prebuilt-themes/azure-blue.css",
+							"node_modules/ngx-toastr/toastr.css"
 						],
 						"scripts": [],
 						"main": "projects/shell/src/main.ts",
@@ -113,7 +114,8 @@
 						],
 						"styles": [
 							"projects/shell/src/styles.scss",
-							"@angular/material/prebuilt-themes/azure-blue.css"
+							"@angular/material/prebuilt-themes/azure-blue.css",
+							"node_modules/ngx-toastr/toastr.css"
 						],
 						"scripts": []
 					}
@@ -155,7 +157,8 @@
 						],
 						"styles": [
 							"projects/dashboard/src/styles.scss",
-							"@angular/material/prebuilt-themes/azure-blue.css"
+							"@angular/material/prebuilt-themes/azure-blue.css",
+							"node_modules/ngx-toastr/toastr.css"
 						],
 						"scripts": [],
 						"main": "projects/dashboard/src/main.ts",
@@ -230,7 +233,8 @@
 						],
 						"styles": [
 							"projects/dashboard/src/styles.scss",
-							"@angular/material/prebuilt-themes/azure-blue.css"
+							"@angular/material/prebuilt-themes/azure-blue.css",
+							"node_modules/ngx-toastr/toastr.css"
 						],
 						"scripts": []
 					}
@@ -272,7 +276,8 @@
 						],
 						"styles": [
 							"projects/config-and-design/src/styles.scss",
-							"@angular/material/prebuilt-themes/azure-blue.css"
+							"@angular/material/prebuilt-themes/azure-blue.css",
+							"node_modules/ngx-toastr/toastr.css"
 						],
 						"scripts": [],
 						"main": "projects/config-and-design/src/main.ts",
@@ -347,7 +352,8 @@
 						],
 						"styles": [
 							"projects/config-and-design/src/styles.scss",
-							"@angular/material/prebuilt-themes/azure-blue.css"
+							"@angular/material/prebuilt-themes/azure-blue.css",
+							"node_modules/ngx-toastr/toastr.css"
 						],
 						"scripts": []
 					}

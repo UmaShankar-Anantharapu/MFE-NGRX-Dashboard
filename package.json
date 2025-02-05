@@ -38,6 +38,7 @@
     "highcharts-angular": "^4.0.1",
     "json-server": "^1.0.0-beta.3",
     "lodash": "^4.17.21",
+    "ngx-toastr": "^18.0.0",
     "rxjs": "~7.8.0",
     "socket.io-client": "^4.8.1",
     "subscriptions-transport-ws": "^0.11.0",

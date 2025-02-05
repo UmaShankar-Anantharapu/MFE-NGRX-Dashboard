@@ -12,6 +12,7 @@ import { HttpLink } from 'apollo-angular/http';
 import { InMemoryCache, ApolloLink, split } from '@apollo/client/core';
 import { WebSocketLink } from '@apollo/client/link/ws';
 import { getMainDefinition } from '@apollo/client/utilities';
+import { provideToastr } from 'ngx-toastr';
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -62,6 +63,7 @@ export const appConfig: ApplicationConfig = {
     };
   }),
   
-  provideHttpClient()
+  provideHttpClient(),
+  provideToastr(),
   ]
 };
