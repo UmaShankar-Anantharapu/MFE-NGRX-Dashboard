@@ -129,7 +129,11 @@ export class DashboardComponent implements OnInit {
         if(res.type === 'table'){
           this.loadTableData(res)
         }else{
-          this.load(res)
+          if(this.dashboardObj.chartOptions[item['id']]?.id === res.id){
+            this.load(this.dashboardObj.chartOptions[item['id']])
+          }else{
+            this.load(res)
+          }
         }
       })
     })
@@ -265,12 +269,25 @@ export class DashboardComponent implements OnInit {
   private getAllKeysInChart(chartData: any): string[] {
     let keys: string[] = [];
     console.log(chartData);
-    keys.push(chartData.xAxis.axisKey);
-    chartData.yAxis.forEach((axis: any) => {
-      axis.seriesConf.forEach((series: any) => {
-        keys.push(series.axisKey)
-      })
-    })
+    switch(chartData.type){
+      case 'line':
+      case 'bar':
+      case 'area':
+      case 'column':
+        keys.push(chartData.xAxis.axisKey);
+        chartData.yAxis.forEach((axis: any) => {
+          axis.seriesConf.forEach((series: any) => {
+            keys.push(series.axisKey)
+          })
+        })
+        break;
+      case 'windrose':
+        keys.push(chartData.xAxis.axisKey);
+        keys = [...keys, ...chartData.windRoseFrequencies]
+        break;
+      default:
+        break;
+    }
     return keys;
   }
   // open a popup on event is true
@@ -284,14 +301,18 @@ export class DashboardComponent implements OnInit {
           Object.values(res.data.__type.fields).forEach((item: any) => {
             fields.push(item.name)
           })
+          let passingData = {
+            fields: fields,
+            chartOptions: this.dashboardObj.chartOptions[chartId] ? this.dashboardObj.chartOptions[chartId] : chart
+          }
           const dialogRef = this.dialog.open(EditChartPopupComponent, {
             width: '70%',
             height: '60%',
-            data: {fields: fields, chartOptions: chart}
+            data: passingData
             // disableClose: true
           })
           dialogRef.afterClosed().subscribe(result => {
-
+            this.addEditChartOptionsInDashboard(chartId, result)
             this.load(result, true);
           })
         })
@@ -299,12 +320,20 @@ export class DashboardComponent implements OnInit {
     }
   }
 
-  
+  addEditChartOptionsInDashboard(chartId: string, updatedObj: any) {
+    console.log(updatedObj);
+    this.dashboardObj.chartOptions[chartId] = updatedObj;
+  }
 
   saveDashboard(dashboardName: string) {
     this.isSaveDashboard = true
     if(this.dashboardObj?.id){
-      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, {name: dashboardName, dashboard: this.dashboard}).subscribe((res: any) => {
+      let updateObj = {
+        ...this.dashboardObj,
+        dashboard: this.dashboard,
+        name: dashboardName
+      }
+      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, updateObj).subscribe((res: any) => {
         console.log(res);
       })
     }else{
@@ -312,6 +341,7 @@ export class DashboardComponent implements OnInit {
       let saveObj:any = {
         user: localStorage.getItem('user'),
         id: uuid(),
+        chartOptions: {},
         name: dashboardName,
         "image": `../../assets/dummy-chart-image-${randomNum}.png`,
         "isFavorite": false,

@@ -232,11 +232,53 @@
       "dataset": "getPositionMonitorings",
       "schemaType": "PositionMonitoring",
       "subscriptionName": "powerChanged"
+    },
+    {
+      "title": "wind rose",
+      "id": "4d749b4e-08eb-45f3-a687-2a1ecb4143543",
+      "type": "windrose",
+      "dataset": "getWindRose",
+      "subscriptionName": "windroseChanged",
+      "schemaType": "WindRose",
+      "xAxis": {
+        "axisKey": "direction"
+      },
+      "windRoseFrequencies": [
+        "range_0_5_ms",
+        "range_5_10_ms",
+        "range_10_15_ms",
+        "range_15_20_ms"
+      ]
     }
   ],
   "dashboard": [
     {
       "name": "naresh dashboard",
+      "chartOptions": {
+        "4d749b4e-08eb-45f3-a687-2a1ecb414736": {
+          "title": "Active-power",
+          "xAxis": {
+            "axisKey": "time",
+            "axisName": "time"
+          },
+          "yAxis": [
+            {
+              "seriesConf": [
+                {
+                  "axisKey": "pitch_angle",
+                  "axisName": "pitch angle"
+                }
+              ],
+              "title": "Angle"
+            }
+          ],
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
+          "type": "line",
+          "dataset": "power",
+          "schemaType": "Power",
+          "subscriptionName": "dataChanged"
+        }
+      },
       "dashboard": [
         {
           "x": 0,
@@ -266,6 +308,7 @@
     {
       "user": "tarun",
       "name": "tarun dashboard",
+      "chartOptions": {},
       "isFavorite": false,
       "id": "0dd3d901-400e-4fb7-9bbc-b08b18d4df7f",
       "image": "../../assets/dummy-chart-image-1.png",
@@ -289,6 +332,7 @@
     {
       "id": "3d96e8d9-f123-40a1-849b-6c7df88b1adc",
       "user": "shankar",
+      "chartOptions": {},
       "image": "../../assets/dummy-chart-image-2.png",
       "isFavorite": false,
       "name": "basic dashboard",
@@ -322,6 +366,7 @@
     {
       "id": "abb8060f-a428-4d32-8e1e-303ff7ac5b17",
       "user": "shankar",
+      "chartOptions": {},
       "name": "dashboard-piw3123",
       "image": "../../assets/dummy-chart-image-3.png",
       "isFavorite": false,
@@ -362,36 +407,9 @@
     },
     {
       "name": "naresh dashboard",
-      "dashboard": [
-        {
-          "x": 0,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
-          "type": "line"
-        },
-        {
-          "x": 6,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
-          "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e",
-          "type": "line"
-        },
-        {
-          "x": 0,
-          "y": 6,
-          "rows": 6,
-          "cols": 6,
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
-          "type": "table"
-        }
-      ],
-      "id": "78dc23e2-9439-4331-8b47-d42c495ff040"
-    },
-    {
-      "name": "naresh dashboard",
+      "user": "shankar",
+      "chartOptions": {},
+      "image": "../../assets/dummy-chart-image-3.png",
       "dashboard": [
         {
           "x": 0,
@@ -443,19 +461,65 @@
       "id": "db76e416-6f54-47cb-8b84-66806bc03844"
     },
     {
-      "id": "ff208eca-dd68-492a-aa91-6a8fbea250af",
-      "user": "tarun",
       "name": "Dashboard-sigle",
+      "user": "tarun",
+      "chartOptions": {
+        "4d749b4e-08eb-45f3-a687-2a1ecb414736": {
+          "title": "Active-power",
+          "xAxis": {
+            "axisKey": "time",
+            "axisName": "time"
+          },
+          "yAxis": [
+            {
+              "seriesConf": [
+                {
+                  "axisKey": "pitch_angle",
+                  "axisName": "pitch angle"
+                },
+                {
+                  "axisKey": "pitch_angle_set",
+                  "axisName": "PAs"
+                }
+              ],
+              "title": "Angle"
+            }
+          ],
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
+          "type": "line",
+          "dataset": "power",
+          "schemaType": "Power",
+          "subscriptionName": "dataChanged"
+        }
+      },
       "image": "../../assets/dummy-chart-image-3.png",
-      "isFavorite": false,
       "dashboard": [
         {
           "x": 0,
           "y": 0,
           "rows": 6,
-          "cols": 6,
+          "cols": 12,
           "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
           "type": "line"
+        }
+      ],
+      "id": "ff208eca-dd68-492a-aa91-6a8fbea250af"
+    },
+    {
+      "id": "192a6fe6-db83-4c59-805c-485a12e71410",
+      "user": "tarun",
+      "chartOptions": {},
+      "name": "wind rose dashboard",
+      "image": "../../assets/dummy-chart-image-2.png",
+      "isFavorite": false,
+      "dashboard": [
+        {
+          "x": 0,
+          "y": 0,
+          "rows": 8,
+          "cols": 8,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4143543",
+          "type": "windrose"
         }
       ]
     }

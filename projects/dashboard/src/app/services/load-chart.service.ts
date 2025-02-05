@@ -55,7 +55,7 @@ export class LoadChartService {
       case 'donut':
         this.setSeriesDataForPieChart(chartOptionsConfig, chartOptionsForHighCharts);
         break;
-      case 'wind rose':
+      case 'windrose':
         this.setFrequencyDataForWindRoseChart(chartOptionsConfig, chartOptionsForHighCharts)
         break;
       default:
@@ -309,6 +309,7 @@ export class LoadChartService {
   setFrequencyDataForWindRoseChart(chartOptionsConfig: any, chartOptionsForHighCharts: Highcharts.Options) {
     if (chartOptionsForHighCharts.chart) {
       chartOptionsForHighCharts.chart.polar = true;
+      chartOptionsForHighCharts.title = {text: chartOptionsConfig.title}
       chartOptionsForHighCharts.chart.type = 'column'
       chartOptionsForHighCharts.pane = {
         size: '85%'
