@@ -32,11 +32,11 @@ export const appConfig: ApplicationConfig = {
   ),
   provideApollo(() => {
     const httpLink = inject(HttpLink).create({
-      uri: 'http://10.91.97.102:5000/graphql',
+      uri: 'http://10.91.97.111:5000/graphql',
     });
 
     const wsLink = new WebSocketLink({
-      uri: 'ws://10.91.97.102:5000/graphql',
+      uri: 'ws://10.91.97.111:5000/graphql',
       options: {
         reconnect: true,
       },

@@ -54,8 +54,8 @@
 
             <!-- Action Icons -->
             <div class="dashboard-actions">
-                <img src="../../assets/upload-icon.svg" alt="Share" >
-                <img src="../../assets/delete-icon.svg" alt="Edit" >
+                <img src="../../assets/upload-icon.svg" alt="Export" >
+                <img src="../../assets/delete-icon.svg" alt="Delete" (click)="deleteDashboard(dashboard)">
                 <img 
                     [src]="dashboard.isFavorite ? '../../assets/favourite-icon.svg' : '../../assets/favourite-icon.svg'" 
                     alt="Favorite" 

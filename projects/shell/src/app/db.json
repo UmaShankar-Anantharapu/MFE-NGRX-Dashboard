@@ -236,11 +236,7 @@
   ],
   "dashboard": [
     {
-      "user": "shankar",
-      "name": "dashboard 01",
-      "isFavorite": true,
-      "id": "0dd3d901-400e-4fb7-9bbc-b08b18d4df7f",
-      "image": "../../assets/dummy-chart-image-1.png",
+      "name": "naresh dashboard",
       "dashboard": [
         {
           "x": 0,
@@ -255,8 +251,17 @@
           "rows": 6,
           "cols": 6,
           "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "rows": 6,
+          "cols": 6,
+          "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
+          "type": "column"
         }
-      ]
+      ],
+      "id": "0dd3d901-400e-4fb7-9bbc-b08b18d4df7f"
     },
     {
       "user": "tarun",
@@ -356,11 +361,7 @@
       ]
     },
     {
-      "id": "78dc23e2-9439-4331-8b47-d42c495ff040",
-      "user": "tarun",
-      "name": "tarun dash0923",
-      "image": "../../assets/dummy-chart-image-3.png",
-      "isFavorite": false,
+      "name": "naresh dashboard",
       "dashboard": [
         {
           "x": 0,
@@ -385,6 +386,76 @@
           "cols": 6,
           "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
           "type": "table"
+        }
+      ],
+      "id": "78dc23e2-9439-4331-8b47-d42c495ff040"
+    },
+    {
+      "name": "naresh dashboard",
+      "dashboard": [
+        {
+          "x": 0,
+          "y": 0,
+          "rows": 6,
+          "cols": 6,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "rows": 6,
+          "cols": 6,
+          "id": "6d2b36f3-9116-44ac-a3f6-4e8e6db3fb2e"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "rows": 6,
+          "cols": 6,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
+          "type": "table"
+        },
+        {
+          "x": 6,
+          "y": 6,
+          "rows": 6,
+          "cols": 6,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
+          "type": "table"
+        },
+        {
+          "x": 0,
+          "y": 12,
+          "rows": 6,
+          "cols": 6,
+          "id": "47803f8b-9772-4c8d-bb3a-23bf369044344",
+          "type": "column"
+        },
+        {
+          "x": 6,
+          "y": 12,
+          "rows": 6,
+          "cols": 6,
+          "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
+          "type": "column"
+        }
+      ],
+      "id": "db76e416-6f54-47cb-8b84-66806bc03844"
+    },
+    {
+      "id": "ff208eca-dd68-492a-aa91-6a8fbea250af",
+      "user": "tarun",
+      "name": "Dashboard-sigle",
+      "image": "../../assets/dummy-chart-image-3.png",
+      "isFavorite": false,
+      "dashboard": [
+        {
+          "x": 0,
+          "y": 0,
+          "rows": 6,
+          "cols": 6,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
+          "type": "line"
         }
       ]
     }

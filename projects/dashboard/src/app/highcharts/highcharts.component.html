@@ -1,7 +1,7 @@
 <p *ngIf="!isChartLoaded">Chart will be displayed here...</p>
         <div  style="height: 100%;" *ngIf="hasChartOptions">
             <div class="chart-container">
-                <highcharts-chart class="isOpen" [Highcharts]="Highcharts" [options]="chartOptions" (chartInstance)="onChartLoad($event)"
+                <highcharts-chart *ngIf="chartOptions && reload" class="isOpen" [Highcharts]="Highcharts" [options]="chartOptions" (chartInstance)="onChartLoad($event)"
                     style="width: 100%; height: 99%; display: block;">
                 </highcharts-chart>
             </div>

@@ -15,7 +15,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { EditChartPopupComponent } from './edit-chart-popup/edit-chart-popup.component';
 import { CommonService } from '../../../../shared/common-services/common-service.service';
 import { v4 as uuid } from 'uuid'
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 import { TableComponent } from "../table/table.component";
 @Component({
@@ -42,6 +42,8 @@ export class DashboardComponent implements OnInit {
   tableDataMap: {[key: string]: any} = {};
   highChartInstanceMap: {[key: string]: any} = {}
   dashboard: GridsterItem[] = [];
+  dashboardObj: any;
+  isSaveDashboard = false;
   options: GridsterConfig = {
     gridType: GridType.VerticalFixed,
     compactType: CompactType.None,
@@ -69,13 +71,13 @@ export class DashboardComponent implements OnInit {
     enableOccupiedCellDrop: true,
     
   }
-  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute) {
+  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute, private router: Router) {
     if(this.activatedRoute.snapshot.routeConfig?.path !== 'create-dashboard'){
       const id = this.activatedRoute.snapshot.paramMap.get('id');
       this.http.get(`http://localhost:3000/dashboard/${id}`).subscribe((res: any) => {
-        console.log(res);
         this.dashboard = res.dashboard
-        window.dispatchEvent(new CustomEvent('dashboard-name', {detail: res.name}));
+        this.dashboardObj = res;
+        window.dispatchEvent(new CustomEvent('dashboard', {detail: res}));
         if(this.dashboard){
           this.loadDashboard()
         }
@@ -85,7 +87,13 @@ export class DashboardComponent implements OnInit {
     
     
     window.addEventListener('save-dashboard', (event: any) => {
-      this.saveDashboard(event.detail);
+      if(this.dashboardObj?.id){
+        this.saveDashboard(event.detail);
+      }else{
+        if(!this.isSaveDashboard){
+          this.saveDashboard(event.detail);
+        }
+      }
     })
     this.webSocketService.updatedData$.subscribe((res: any) => {
       console.log(res);
@@ -138,13 +146,13 @@ export class DashboardComponent implements OnInit {
     })
   }
 
-  load(recievedData: any) {
+  load(recievedData: any,edit: boolean = false) {
     const usedKeys = this.getAllKeysInChart(recievedData)
     this.graphqlService.fetchDataFromCollectionByKeys(usedKeys, recievedData.dataset).valueChanges.subscribe((res: any) => {
       console.log(res);
       // this.loadChartService.fetchData(recievedData.dataset)
       this.loadChartService.updateData(res.data[recievedData.dataset], recievedData.dataset);
-      this.highChartsOptionsMap[recievedData.id] = this.loadChartService.loadChart(recievedData)
+      this.highChartsOptionsMap[recievedData.id] = {...this.loadChartService.loadChart(recievedData), edit: edit}
       if(!this.chartIdsByDataSetNamesMap[recievedData.dataset])
         this.chartIdsByDataSetNamesMap[recievedData.dataset] = [];
       this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)
@@ -283,28 +291,39 @@ export class DashboardComponent implements OnInit {
             // disableClose: true
           })
           dialogRef.afterClosed().subscribe(result => {
-            this.load(result);
+
+            this.load(result, true);
           })
         })
       })
     }
   }
 
+  
+
   saveDashboard(dashboardName: string) {
-    const randomNum = Math.floor(Math.random() * 3)+1
-    let saveObj:any = {
-      user: localStorage.getItem('user'),
-      id: uuid(),
-      name: dashboardName,
-      "image": `../../assets/dummy-chart-image-${randomNum}.png`,
-      "isFavorite": false,
-      dashboard: this.dashboard
+    this.isSaveDashboard = true
+    if(this.dashboardObj?.id){
+      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, {name: dashboardName, dashboard: this.dashboard}).subscribe((res: any) => {
+        console.log(res);
+      })
+    }else{
+      const randomNum = Math.floor(Math.random() * 3)+1
+      let saveObj:any = {
+        user: localStorage.getItem('user'),
+        id: uuid(),
+        name: dashboardName,
+        "image": `../../assets/dummy-chart-image-${randomNum}.png`,
+        "isFavorite": false,
+        dashboard: this.dashboard
+      }
+      console.log(saveObj);
+      this.http.post(`http://localhost:3000/dashboard`, saveObj).subscribe((res: any) => {
+        console.log(res);
+        this.router.navigate(['/dashboard'])
+      })
+      console.log('saved');
     }
-    console.log(saveObj);
-    this.http.post(`http://localhost:3000/dashboard`, saveObj).subscribe((res: any) => {
-      console.log(res);
-    })
-    console.log('saved');
     
   }
 

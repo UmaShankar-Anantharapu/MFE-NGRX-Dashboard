@@ -4,7 +4,7 @@
         <input [(ngModel)]="dashboardName" matInput class="input-dname">
         <div class="buttons-group">
             <button class="save-btn">Load</button>
-        <button class="save-btn" (click)="saveDashboard()">Save</button>
+        <button class="save-btn" (click)="saveDashboard()">{{isExistingDashboard ? 'update' : 'save'}}</button>
         </div>
         
     </div>

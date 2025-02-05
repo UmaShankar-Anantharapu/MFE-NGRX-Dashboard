@@ -40,4 +40,11 @@ export class EditChartPopupComponent {
       this.data.chartOptions.yAxis.push({seriesConf: [], title: ''})
     }
   }
+  delete(type: string, Axisinx: number, seriesInx?: number){
+    if(type === 'series'){
+      this.data.chartOptions.yAxis[Axisinx].seriesConf.splice(seriesInx, 1);
+    }else{
+      this.data.chartOptions.yAxis.splice(Axisinx, 1);
+    }
+  }
 }

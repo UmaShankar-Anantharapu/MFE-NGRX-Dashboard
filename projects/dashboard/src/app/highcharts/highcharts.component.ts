@@ -28,6 +28,7 @@ export class HighchartsComponent implements OnChanges, OnInit {
   @Input() chartOptions: Highcharts.Options = {};
   HighChartInstance: any;
   @Output() editChartEvent = new EventEmitter<boolean>();
+  reload: boolean = true;
 
 
   constructor(private store: Store<{ chartState: ChartOptionsState }>) {
@@ -49,9 +50,21 @@ export class HighchartsComponent implements OnChanges, OnInit {
             break;
           }
         }else if(latestChartOptions){
-      this.addEditChartInContextButtons()
-      this.chartOptions = {...latestChartOptions.currentValue} as any;
-    }
+          if(latestChartOptions?.currentValue?.edit){
+            this.reload = false
+            // this.chartOptions = {}
+            setTimeout(() => {
+              this.reload = true
+              this.chartOptions = {...this.chartOptions} as any;
+              if(this.HighChartInstance){
+                this.HighChartInstance.redraw()
+              }
+            })
+            // this.HighChartInstance.redraw();
+          }
+          // this.HighChartInstance.redraw();
+        }
+        this.addEditChartInContextButtons();
 
   }
   handleEditChart(event: any){

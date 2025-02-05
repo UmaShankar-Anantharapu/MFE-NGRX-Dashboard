@@ -68,4 +68,14 @@ export class ViewDashboardComponent {
   navigateToDashboard(dashboard: any){
     this.router.navigate([`/dashboard/${dashboard.id}`]);
   }
+  deleteDashboard(dashboard: any){
+    this.http.delete(`http://localhost:3000/dashboard/${dashboard.id}`).subscribe((res: any) => {
+      console.log(res);
+      this.http.get(`http://localhost:3000/dashboard?user=${this.userName}`).subscribe((res: any) => {
+        console.log(res);
+        res = res.filter((dash: any) => dash.user === this.userName);
+        this.dashboards = res
+      })
+    })
+  }
 }

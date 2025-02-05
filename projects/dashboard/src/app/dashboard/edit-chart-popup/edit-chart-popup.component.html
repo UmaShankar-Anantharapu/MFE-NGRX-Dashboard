@@ -41,7 +41,7 @@
     <mat-card-title>Y-Axis</mat-card-title>
     <div *ngFor="let axis of data.chartOptions.yAxis; let i = index" class="y-axis-item">
       <mat-card class="y-axis-card">
-        <mat-card-title>Axis {{ i + 1 }}</mat-card-title>
+        <mat-card-title>Axis {{ i + 1 }}</mat-card-title> <mat-icon (click)="delete('axis', i)">delete</mat-icon>
 
         <mat-form-field class="full-width">
           <mat-label>Axis Name</mat-label>
@@ -51,7 +51,7 @@
         <!-- Series inside each Y-Axis -->
         <div *ngFor="let series of axis.seriesConf; let j = index" class="series-item">
           <mat-card class="series-card">
-            <mat-card-title>Series {{ j + 1 }}</mat-card-title>
+            <mat-card-title>Series {{ j + 1 }}</mat-card-title> <mat-icon (click)="delete('series', i, j)">delete</mat-icon>
             <mat-form-field class="full-width">
               <mat-label>Axis Key</mat-label>
               <mat-select [(ngModel)]="series.axisKey">
