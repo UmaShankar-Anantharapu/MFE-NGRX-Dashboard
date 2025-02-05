@@ -16,6 +16,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 })
 export class TableComponent implements OnInit, OnChanges {
   @Input() rowData: any[] = [];
+  @Input() title!:string;
   columns: ColDef[] = [];
 
   constructor() {
