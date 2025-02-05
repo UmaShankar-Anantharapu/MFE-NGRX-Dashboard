@@ -145,7 +145,7 @@ export class HighchartsComponent implements OnChanges, OnInit {
   }
 
   get hasChartOptions(): boolean {
-    return this.chartOptions && Object.keys(this.chartOptions).length > 0;
+    return Boolean(this.chartOptions && this.chartOptions.series && this.chartOptions.series.length > 0);
   }
 
   addPointsInChart(data: any) {
