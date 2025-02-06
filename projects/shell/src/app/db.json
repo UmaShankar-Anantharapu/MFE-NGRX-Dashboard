@@ -364,51 +364,41 @@
       ]
     },
     {
-      "id": "abb8060f-a428-4d32-8e1e-303ff7ac5b17",
+      "name": "Dashboard-testing-1",
       "user": "shankar",
-      "chartOptions": {},
-      "name": "dashboard-piw3123",
-      "image": "../../assets/dummy-chart-image-3.png",
-      "isFavorite": false,
-      "dashboard": [
-        {
-          "x": 0,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
+      "chartOptions": {
+        "4d749b4e-08eb-45f3-a687-2a1ecb414736": {
+          "title": "Active-power",
+          "xAxis": {
+            "axisKey": "time",
+            "axisName": "time"
+          },
+          "yAxis": [
+            {
+              "seriesConf": [
+                {
+                  "axisKey": "pitch_angle",
+                  "axisName": "pitch angle"
+                },
+                {
+                  "axisKey": "power_mw",
+                  "axisName": "power"
+                },
+                {
+                  "axisKey": "blade_angle",
+                  "axisName": ""
+                }
+              ],
+              "title": "Angle"
+            }
+          ],
           "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
-          "type": "line"
-        },
-        {
-          "x": 6,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
-          "type": "table"
-        },
-        {
-          "x": 0,
-          "y": 6,
-          "rows": 6,
-          "cols": 6,
-          "id": "8ec741f5-782b-4170-bfd6-b6175babf1db",
-          "type": "line"
-        },
-        {
-          "x": 6,
-          "y": 6,
-          "rows": 6,
-          "cols": 6,
-          "id": "47803f8b-9772-4c8d-bb3a-23bf3690493f",
-          "type": "bar"
+          "type": "line",
+          "dataset": "power",
+          "schemaType": "Power",
+          "subscriptionName": "dataChanged"
         }
-      ]
-    },
-    {
-      "name": "naresh dashboard",
-      "user": "shankar",
-      "chartOptions": {},
+      },
       "image": "../../assets/dummy-chart-image-3.png",
       "dashboard": [
         {
@@ -456,6 +446,22 @@
           "cols": 6,
           "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
           "type": "column"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "rows": 6,
+          "cols": 6,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
+          "type": "table"
+        },
+        {
+          "x": 0,
+          "y": 0,
+          "rows": 6,
+          "cols": 6,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
+          "type": "line"
         }
       ],
       "id": "db76e416-6f54-47cb-8b84-66806bc03844"

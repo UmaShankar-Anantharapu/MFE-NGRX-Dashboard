@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { HttpClient } from '@angular/common/http';
 import { Component, HostListener } from '@angular/core';
 import { NavigationExtras, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-view-dashboard',
@@ -43,7 +44,7 @@ export class ViewDashboardComponent {
     }
   ];
 
-  constructor(private router:Router, public http: HttpClient){
+  constructor(private router:Router, public http: HttpClient,private toastr: ToastrService) {
     this.userName = localStorage.getItem('user') || '{}';
     console.log(this.userName);
     this.http.get(`http://localhost:3000/dashboard?user=${this.userName}`).subscribe((res: any) => {
@@ -70,6 +71,7 @@ export class ViewDashboardComponent {
   }
   deleteDashboard(dashboard: any){
     this.http.delete(`http://localhost:3000/dashboard/${dashboard.id}`).subscribe((res: any) => {
+      this.toastr.success('Dashboard deleted successfully');
       console.log(res);
       this.http.get(`http://localhost:3000/dashboard?user=${this.userName}`).subscribe((res: any) => {
         console.log(res);

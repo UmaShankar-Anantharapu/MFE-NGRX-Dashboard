@@ -18,6 +18,8 @@ import { v4 as uuid } from 'uuid'
 import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 import { TableComponent } from "../table/table.component";
+import { ToastrService } from 'ngx-toastr';
+import { take } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -71,7 +73,9 @@ export class DashboardComponent implements OnInit {
     enableOccupiedCellDrop: true,
     
   }
-  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute, private router: Router) {
+  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute, private router: Router,
+    private toastr: ToastrService
+  ) {
     if(this.activatedRoute.snapshot.routeConfig?.path !== 'create-dashboard'){
       const id = this.activatedRoute.snapshot.paramMap.get('id');
       this.http.get(`http://localhost:3000/dashboard/${id}`).subscribe((res: any) => {
@@ -333,7 +337,8 @@ export class DashboardComponent implements OnInit {
         dashboard: this.dashboard,
         name: dashboardName
       }
-      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, updateObj).subscribe((res: any) => {
+      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, updateObj).pipe(take(1)).subscribe((res: any) => {
+        this.toastr.success('Dashboard Updated successfully');
         console.log(res);
       })
     }else{
@@ -348,11 +353,12 @@ export class DashboardComponent implements OnInit {
         dashboard: this.dashboard
       }
       console.log(saveObj);
-      this.http.post(`http://localhost:3000/dashboard`, saveObj).subscribe((res: any) => {
-        console.log(res);
-        this.router.navigate(['/dashboard'])
+      this.http.post(`http://localhost:3000/dashboard`, saveObj).pipe(take(1)).subscribe((res: any) => {
+        if(res){
+          this.toastr.success('Dashboard saved successfully');
+          this.router.navigate(['/dashboard'])
+        }
       })
-      console.log('saved');
     }
     
   }

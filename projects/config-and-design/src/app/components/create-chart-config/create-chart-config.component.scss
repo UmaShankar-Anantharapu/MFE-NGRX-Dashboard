@@ -6,4 +6,16 @@
 }
 .drilldown-checkbox{
     margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+}
+.edit-icon{
+    position: relative;
+    top: 10px;
+    cursor: pointer;
+}
+.mat-expansion-panel {
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 15px;
 }
