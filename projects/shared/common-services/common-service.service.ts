@@ -1,12 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { GraphqlService } from '../../dashboard/src/app/services/graphql.service';
+import { Subject } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CommonService {
   apiUrl:string='';
-  constructor(private http:HttpClient) { }
+  dashboardStatus = new Subject<string>();
+  dashboardStatus$ = this.dashboardStatus.asObservable();
+  constructor(private http:HttpClient,private graphqlService:GraphqlService) { }
 
   fetchDataSets(){
     
@@ -18,7 +22,10 @@ export class CommonService {
     // })
   }
   fetchData(datasetName: string) {
-    return this.http.get(`./assets/${datasetName}.json`)
+    return this.graphqlService.getSchemaForCollection(datasetName);
   }
+
+
+  
 
 }

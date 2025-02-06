@@ -24,6 +24,8 @@ import { MaterialModule } from '../../../../../shared/angular-themes/material.mo
 export class CreateChartConfigComponent implements OnDestroy{
   chartData$: Observable<any> = new Observable;
   chartState = signal<ChartOptionsState>({});
+  selectedDataSet: string = ''
+  selectedSchemaType: string = ''
   constructor(private store: Store<any>, private configService:ConfigService,private commonService:CommonService){
     this.fetchDataSets();
     this.fetchChartData();
@@ -356,13 +358,13 @@ export class CreateChartConfigComponent implements OnDestroy{
       this.chartOptionsLocal.type = this.selectedChartType;
       this.chartOptionsLocal.dataset = this.selectedDataSet;
     }
-    selectedDataSet: string = ''
+   
     selectDataSet(event: any) {
-      this.commonService.fetchData(event.source.value).subscribe((res: any) => {
-        this.selectedDataSet = event.source.value
-        // this.chartOptionsLocal.dataset = event.source.value
-        this.data = res
-        this.columnsList = Object.keys(this.data[0])
+      this.commonService.fetchData(event.source.value.schemaType).valueChanges.subscribe((res: any) => {
+        const columnsArray = res.data.__type.fields.map((field:any) => field.name);
+        this.selectedDataSet = event.source.value.dataset;
+        this.selectedSchemaType = event.source.value.schemaType;
+        this.columnsList = columnsArray
       })
     }
     selectChart(event: any) {

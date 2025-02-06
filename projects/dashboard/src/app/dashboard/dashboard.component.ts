@@ -1,5 +1,5 @@
-import { ChangeDetectionStrategy, Component, Input, OnInit } from '@angular/core';
-import { HighchartsChartComponent, HighchartsChartModule } from 'highcharts-angular';
+import {  Component, NgZone, OnInit } from '@angular/core';
+import {  HighchartsChartModule } from 'highcharts-angular';
 import Highcharts, { chart } from 'highcharts';
 import { CompactType, DisplayGrid, GridsterConfig, GridsterItem, GridsterModule, GridType } from 'angular-gridster2';
 import { CommonModule } from '@angular/common';
@@ -8,8 +8,6 @@ import { HttpClient } from '@angular/common/http';
 import { HighchartsComponent } from '../highcharts/highcharts.component';
 import { LoadChartService } from '../services/load-chart.service';
 import { WebSocketService } from '../services/websocket.service';
-import { ChartOptionsState, axisConfiguration } from '../../../../shared/store/states/state';
-import { update } from 'lodash';
 import { GraphqlService } from '../services/graphql.service';
 import { MatDialog } from '@angular/material/dialog';
 import { EditChartPopupComponent } from './edit-chart-popup/edit-chart-popup.component';
@@ -19,7 +17,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 import { TableComponent } from "../table/table.component";
 import { ToastrService } from 'ngx-toastr';
-import { take } from 'rxjs';
+import { debounceTime, take } from 'rxjs';
 @Component({
   selector: 'app-dashboard',
   standalone: true,
@@ -73,41 +71,83 @@ export class DashboardComponent implements OnInit {
     enableOccupiedCellDrop: true,
     
   }
-  constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute, private router: Router,
-    private toastr: ToastrService
-  ) {
-    if(this.activatedRoute.snapshot.routeConfig?.path !== 'create-dashboard'){
-      const id = this.activatedRoute.snapshot.paramMap.get('id');
-      this.http.get(`http://localhost:3000/dashboard/${id}`).subscribe((res: any) => {
-        this.dashboard = res.dashboard
-        this.dashboardObj = res;
-        window.dispatchEvent(new CustomEvent('dashboard', {detail: res}));
-        if(this.dashboard){
-          this.loadDashboard()
-        }
-      })
-      // this.dashboard = JSON.parse(this.activatedRoute.snapshot.queryParams['data']).dashboard
-    }
-    
-    
-    window.addEventListener('save-dashboard', (event: any) => {
-      if(this.dashboardObj?.id){
-        this.saveDashboard(event.detail);
-      }else{
-        if(!this.isSaveDashboard){
-          this.saveDashboard(event.detail);
-        }
-      }
-    })
-    this.webSocketService.updatedData$.subscribe((res: any) => {
-      console.log(res);
-      if(res.event in Object.keys(this.chartIdsByDataSetNamesMap)){
-        this.updateChartData(res.payload)
-      }
-    });
-  }
+
+  private eventListenerRef: any;
+
+  constructor(
+    private http: HttpClient,
+    public loadChartService: LoadChartService,
+    private webSocketService: WebSocketService,
+    public graphqlService: GraphqlService,
+    private dialog: MatDialog,
+    private commonService: CommonService,
+    private activatedRoute: ActivatedRoute,
+    private router: Router,
+    private toastr: ToastrService,
+    private ngZone: NgZone
+  ) {}
+
+
+
+  // constructor(private http: HttpClient, public loadChartService: LoadChartService, private webSocketService: WebSocketService, public graphqlService: GraphqlService, private dialog: MatDialog, private commonService: CommonService, private activatedRoute: ActivatedRoute, private router: Router,
+  //   private toastr: ToastrService,private ngZone: NgZone
+  // ) {
+  //   if(this.activatedRoute.snapshot.routeConfig?.path !== 'create-dashboard'){
+  //     const id = this.activatedRoute.snapshot.paramMap.get('id');
+  //     this.http.get(`http://localhost:3000/dashboard/${id}`).subscribe((res: any) => {
+  //       this.dashboard = res.dashboard
+  //       this.dashboardObj = res;
+  //       window.dispatchEvent(new CustomEvent('dashboard', {detail: res}));
+  //       if(this.dashboard){
+  //         this.loadDashboard()
+  //       }
+  //     })
+  //     // this.dashboard = JSON.parse(this.activatedRoute.snapshot.queryParams['data']).dashboard
+  //   }
+  //   this.removeExistingListener();
+
+  //   this.eventListenerRef = (event: any) => {
+  //     if (this.dashboardObj?.id) {
+  //       this.saveDashboard(event.detail);
+  //     } else {
+  //       if (!this.isSaveDashboard) {
+  //         this.saveDashboard(event.detail);
+  //       }
+  //     }
+  //   };
+  //   window.addEventListener('save-dashboard', this.eventListenerRef);
+
+
+
+  //   this.webSocketService.updatedData$.subscribe((res: any) => {
+  //     console.log(res);
+  //     if(res.event in Object.keys(this.chartIdsByDataSetNamesMap)){
+  //       this.updateChartData(res.payload)
+  //     }
+  //   });
+  // }
+  
+
+
+
+  // removeExistingListener() {
+  //   if (this.eventListenerRef) {
+  //     window.removeEventListener('save-dashboard', this.eventListenerRef);
+  //   }
+  // }
+
+  // ngOnDestroy() {
+  //    this.removeExistingListener(); // Cleanup when component is destroyed
+  // }
+
+
+  
 
   ngOnInit() {
+
+    this.loadDashboardData();
+    this.setupEventListener();
+    this.setupWebSocketListener();
     this.webSocketService.connect()
     // this.dashboard.push({ x: 0, y: 0, rows: 2, cols: 2, id: 20 })
     window.addEventListener('mfe-drag-end', (event: any) => {
@@ -125,6 +165,61 @@ export class DashboardComponent implements OnInit {
       this.dashboard.push({ x: 0, y: 0, rows: 6, cols: 6, id: recievedData.id, type: recievedData.type });
     })
   }
+
+  private loadDashboardData() {
+    if (this.activatedRoute.snapshot.routeConfig?.path !== 'create-dashboard') {
+      const id = this.activatedRoute.snapshot.paramMap.get('id');
+      this.http.get(`http://localhost:3000/dashboard/${id}`).subscribe((res: any) => {
+        this.dashboard = res.dashboard;
+        this.dashboardObj = res;
+        window.dispatchEvent(new CustomEvent('dashboard', { detail: res }));
+        if (this.dashboard) {
+          this.loadDashboard();
+        }
+      });
+    }
+  }
+
+  // 🟢 Set Up Custom Event Listener for "save-dashboard"
+private setupEventListener() {
+  this.removeExistingListener(); // Ensure no duplicate listeners
+
+  this.eventListenerRef = (event: any) => {
+    if (this.dashboardObj?.id) {
+      this.saveDashboard(event.detail);
+    } else if (!this.isSaveDashboard) {
+      this.saveDashboard(event.detail);
+    }
+  };
+
+  window.addEventListener('save-dashboard', this.eventListenerRef);
+}
+
+// 🟢 Set Up WebSocket Listener
+private setupWebSocketListener() {
+  this.ngZone.runOutsideAngular(() => {
+    this.webSocketService.updatedData$.subscribe((res: any) => {
+      console.log(res);
+      if (res.event in Object.keys(this.chartIdsByDataSetNamesMap)) {
+        this.updateChartData(res.payload);
+      }
+    });
+  });
+}
+
+// 🟢 Remove Event Listener
+private removeExistingListener() {
+  if (this.eventListenerRef) {
+    window.removeEventListener('save-dashboard', this.eventListenerRef);
+  }
+}
+
+// 🔴 Cleanup in Component Destruction
+ngOnDestroy() {
+  this.removeExistingListener();
+}
+
+
 
   loadDashboard(){
     this.dashboard.forEach((item: any) => {
@@ -337,7 +432,7 @@ export class DashboardComponent implements OnInit {
         dashboard: this.dashboard,
         name: dashboardName
       }
-      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, updateObj).pipe(take(1)).subscribe((res: any) => {
+      this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, updateObj).pipe(take(1),debounceTime(1000)).subscribe((res: any) => {
         this.toastr.success('Dashboard Updated successfully');
         console.log(res);
       })
@@ -353,7 +448,7 @@ export class DashboardComponent implements OnInit {
         dashboard: this.dashboard
       }
       console.log(saveObj);
-      this.http.post(`http://localhost:3000/dashboard`, saveObj).pipe(take(1)).subscribe((res: any) => {
+      this.http.post(`http://localhost:3000/dashboard`, saveObj).pipe(take(1),debounceTime(1000)).subscribe((res: any) => {
         if(res){
           this.toastr.success('Dashboard saved successfully');
           this.router.navigate(['/dashboard'])

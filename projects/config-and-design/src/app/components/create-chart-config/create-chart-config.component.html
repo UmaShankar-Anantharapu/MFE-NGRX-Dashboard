@@ -4,7 +4,7 @@
         <mat-label>Select Dataset</mat-label>
         <mat-select>
             <mat-option *ngFor="let dataset of datasets" [value]="dataset"
-                (onSelectionChange)="selectDataSet($event)">{{ dataset }}</mat-option>
+                (onSelectionChange)="selectDataSet($event)">{{ dataset.schemaType }}</mat-option>
         </mat-select>
     </mat-form-field>
 

@@ -10,6 +10,11 @@ export class ConfigService {
   }
 
   fetchDataSets(){
-    return this.commonService.fetchDataSets();
+    return [
+      {dataset:'power',schemaType:'Power'},
+      {dataset:'getPositionMonitorings',schemaType:'PositionMonitoring'},
+      {dataset:'getWindRose',schemaType:'WindRose'}
+    ];
+    // return this.commonService.fetchDataSets();
   }
 }

@@ -13,7 +13,7 @@ export class LoadChartService {
 
   fetchData(datasetName: string) {
     return new Promise((resolve, reject) => {
-      this.commonService.fetchData(datasetName).subscribe((res: any) => {
+      this.commonService.fetchData(datasetName).valueChanges.subscribe((res: any) => {
         this.dataSetData[datasetName] = res
         resolve(res)
       })

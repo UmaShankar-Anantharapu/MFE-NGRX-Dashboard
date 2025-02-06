@@ -49,7 +49,7 @@ export class ViewDashboardComponent {
     console.log(this.userName);
     this.http.get(`http://localhost:3000/dashboard?user=${this.userName}`).subscribe((res: any) => {
       console.log(res);
-      res = res.filter((dash: any) => dash.user === this.userName);
+      // res = res.filter((dash: any) => dash.user === this.userName);
       this.dashboards = res
     })
     
