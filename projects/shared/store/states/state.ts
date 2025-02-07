@@ -20,6 +20,7 @@ export interface ChartOptionsState{
     tooltip?: TooltipOptions;
     xAxis?: axisConfiguration;
     usedColumns?:string[];
+    subscriptionName?:string;
     yAxis?: { title?: string, seriesConf?: axisConfiguration[], isStackable?: boolean }[];
     seriesConfigurations?: {
         label?: string, value?: string

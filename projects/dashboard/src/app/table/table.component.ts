@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, Input, OnChanges, OnInit, SimpleChanges, input } from '@angular/core';
+import { MatIconModule } from '@angular/material/icon';
 import { AgGridAngular } from 'ag-grid-angular'; // Angular Data Grid Component
 import type { ColDef } from 'ag-grid-community'; // Column Definition Type Interface
 import { AllCommunityModule, ModuleRegistry } from 'ag-grid-community';
@@ -10,7 +11,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
 @Component({
   selector: 'app-table',
   standalone: true,
-  imports: [AgGridAngular,CommonModule],
+  imports: [AgGridAngular,CommonModule,MatIconModule],
   templateUrl: './table.component.html',
   styleUrl: './table.component.scss'
 })
@@ -40,7 +41,6 @@ export class TableComponent implements OnInit, OnChanges {
     
   }
   onColumnDragStarted(event: any) {
-    console.log(event);
     event.stopPropagation();
   }
 

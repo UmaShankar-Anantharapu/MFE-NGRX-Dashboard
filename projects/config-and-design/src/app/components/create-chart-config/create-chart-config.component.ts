@@ -28,6 +28,7 @@ export class CreateChartConfigComponent implements OnDestroy{
   chartState = signal<ChartOptionsState>({});
   selectedDataSet: string = ''
   selectedSchemaType: string = ''
+  selectedSubscription: string = ''
   eventListenerRef: any;
   constructor(private store: Store<any>, private configService:ConfigService,private commonService:CommonService,private http:HttpClient,private toastr:ToastrService) {
     this.fetchDataSets();
@@ -73,6 +74,7 @@ export class CreateChartConfigComponent implements OnDestroy{
     this.chartOptionsLocal.dataset = this.selectedDataSet;
     this.chartOptionsLocal.type = this.selectedChartType;
     this.chartOptionsLocal.schemaType = this.selectedSchemaType;
+    this.chartOptionsLocal.subscriptionName = this.selectedSubscription;
     const clonedOptions = cloneDeep(this.chartOptionsLocal);
     // this.chartOptionsLocal = clonedOptions;
     this.store.dispatch(updateChartOptions({data:clonedOptions}));
@@ -399,6 +401,7 @@ export class CreateChartConfigComponent implements OnDestroy{
         const columnsArray = res.data.__type.fields.map((field:any) => field.name);
         this.selectedDataSet = event.source.value.dataset;
         this.selectedSchemaType = event.source.value.schemaType;
+        this.selectedSubscription = event.source.value.subscriptionName;
         this.columnsList = columnsArray
       })
     }

@@ -11,10 +11,10 @@ export class ConfigService {
 
   fetchDataSets(){
     return [
-      {dataset:'power',schemaType:'Power'},
-      {dataset:'getPositionMonitorings',schemaType:'PositionMonitoring'},
-      {dataset:'getWindRose',schemaType:'WindRose'},
-      {dataset:'getHydro',schemaType:'Hydro'}
+      {dataset:'power',schemaType:'Power',subscriptionName:'dataChanged'},
+      {dataset:'getPositionMonitorings',schemaType:'PositionMonitoring',subscriptionName:'powerChanged'},
+      {dataset:'getWindRose',schemaType:'WindRose',subscriptionName:'windroseChanged'},
+      {dataset:'getHydro',schemaType:'Hydro',subscriptionName:'hydroChanged'}
     ];
     // return this.commonService.fetchDataSets();
   }
