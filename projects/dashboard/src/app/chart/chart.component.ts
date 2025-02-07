@@ -11,6 +11,7 @@ import { CommonService } from '../../../../shared/common-services/common-service
 import { v4 as uuidv4 } from 'uuid';
 import { LoadChartService } from '../services/load-chart.service';
 import { MaterialModule } from '../../../../shared/angular-themes/material.module';
+import { GraphqlService } from '../services/graphql.service';
 
 @Component({
   selector: 'app-chart',
@@ -29,7 +30,7 @@ export class ChartComponent implements OnInit {
   chartOptionsLocal:ChartOptionsState={};
   data:any;
   chartOptionsForHighCharts:Highcharts.Options={};
-  constructor(private store: Store<GlobalState>,private commonService:CommonService, public loadChartService: LoadChartService) {
+  constructor(private store: Store<GlobalState>,private commonService:CommonService, public loadChartService: LoadChartService,private graphqlService:GraphqlService) {
     this.chartOptionsSubs = this.store.select(selectChartData)
     this.chartOptionsSubs.subscribe((res: any) => {
       if (res) {
@@ -47,73 +48,43 @@ export class ChartComponent implements OnInit {
   ngOnInit() {
 
   }
+  private getAllKeysInChart(chartData: any): string[] {
+    let keys: string[] = [];
+    console.log(chartData);
+    switch(chartData.type){
+      case 'line':
+      case 'bar':
+      case 'area':
+      case 'column':
+        keys.push(chartData.xAxis.axisKey);
+        chartData.yAxis.forEach((axis: any) => {
+          axis.seriesConf.forEach((series: any) => {
+            keys.push(series.axisKey)
+          })
+        })
+        break;
+      case 'windrose':
+        keys.push(chartData.xAxis.axisKey);
+        keys = [...keys, ...chartData.windRoseFrequencies]
+        break;
+      default:
+        break;
+    }
+    return keys;
+  }
 
   async onChartLoad() {
-    const res = await this.loadChartService.fetchData(this.chartOptionsLocal.dataset || '');
-    this.chartOptionsForHighCharts = this.loadChartService.loadChart(this.chartOptionsLocal);
+    const usedKeys = this.getAllKeysInChart(this.chartOptionsLocal);
+    const dataset = this.chartOptionsLocal.dataset || '';
+    if (this.chartOptionsLocal.dataset !== undefined) {
+      this.graphqlService.fetchDataFromCollectionByKeys(usedKeys, dataset).valueChanges.subscribe((res: any) => {
+        console.log(res);
+        this.loadChartService.updateData(res.data[dataset], dataset);
+        this.chartOptionsForHighCharts = { ...this.loadChartService.loadChart(this.chartOptionsLocal) }
+        this.chartOptionsForHighCharts = this.loadChartService.loadChart(this.chartOptionsLocal)});
+    }
     return;
-    // if (this.chartOptionsForHighCharts.chart && !designproperty) {
-      // this.isChartLoaded = false;
-      if (this.chartOptionsLocal.type !== 'combination'){
-        this.chartOptionsForHighCharts.chart={};
-        // this.chartOptionsForHighCharts.chart.type = this.chartOptionsLocal.type as any
-      }
-      switch (this.chartOptionsLocal.type) {
-        case 'bar':
-        case 'column':
-        case 'line':
-        case 'area':
-        case 'pareto':
-        case 'combination':
-          this.setBarChartData();
-          break;
-        case 'pie':
-        case 'donut':
-          this.setSeriesDataForPieChart();
-          break;
-        case 'wind rose':
-          this.setFrequencyDataForWindRoseChart()
-          break;
-        default:
-          break;
-      }
-      this.chartOptionsForHighCharts = {...this.chartOptionsForHighCharts}
-      this.chartOptionsFinal = this.chartOptionsForHighCharts as any
-      this.chartOptionsFinal = {
-        ...this.chartOptionsFinal,
-        navigation: {
-          buttonOptions: {
-            enabled: true
-          }
-        },
-        "exporting": {
-          enabled: true,
-          "buttons": {
-            "contextButton": {
-              "menuItems": [
-                "viewFullscreen",
-                "separator",
-                "downloadPNG",
-                "downloadJPEG",
-                "downloadPDF",
-                "downloadSVG",
-              ]
-            }
-          }
-        },
-        credits: {
-          enabled: false
-        }
-      }
-      setTimeout(() => {
-        this.isChartLoaded = true
-      })
-    // }
-    // else {
-    //   this.chartOptionsForHighCharts = { ...this.chartOptionsFinal, [designproperty as keyof Highcharts.Options]: this.chartOptionsLocal[designproperty as keyof ChartOptionsState] } as any;
-    //   this.chartOptionsFinal = { ...this.chartOptionsFinal, [designproperty as keyof Highcharts.Options]: this.chartOptionsLocal[designproperty as keyof ChartOptionsState] }
-    // }
-  }
+}
 
   setBarChartData() {
   

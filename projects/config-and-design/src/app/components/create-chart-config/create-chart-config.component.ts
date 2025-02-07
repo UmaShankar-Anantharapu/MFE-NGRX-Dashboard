@@ -11,6 +11,8 @@ import { CommonService } from '../../../../../shared/common-services/common-serv
 import { updateChartOptions } from '../../../../../shared/store/actions/chart.action';
 import { cloneDeep } from 'lodash';
 import { MaterialModule } from '../../../../../shared/angular-themes/material.module';
+import { HttpClient } from '@angular/common/http';
+import { Toast, ToastrService } from 'ngx-toastr';
     @Component({
   selector: 'app-create-chart-config',
   standalone: true,
@@ -26,19 +28,32 @@ export class CreateChartConfigComponent implements OnDestroy{
   chartState = signal<ChartOptionsState>({});
   selectedDataSet: string = ''
   selectedSchemaType: string = ''
-  constructor(private store: Store<any>, private configService:ConfigService,private commonService:CommonService){
+  constructor(private store: Store<any>, private configService:ConfigService,private commonService:CommonService,private http:HttpClient,private toastr:ToastrService) {
     this.fetchDataSets();
     this.fetchChartData();
     this.addLoadChartEVent();
+    this.addSaveChartEvent();
   }
 
   addLoadChartEVent(){
     window.addEventListener('load-chart',this.emitChartOptions.bind(this))
   }
 
+  addSaveChartEvent(){
+    window.addEventListener('save-chart',this.saveChartOptions.bind(this))
+  }
+
+  saveChartOptions(){
+    this.http.post('http://localhost:3000/charts',this.chartOptionsLocal).subscribe((res)=>{
+      this.toastr.success('Chart saved successfully');
+      console.log('saved chart')
+    })
+  }
+
   emitChartOptions(){
     this.chartOptionsLocal.dataset = this.selectedDataSet;
     this.chartOptionsLocal.type = this.selectedChartType;
+    this.chartOptionsLocal.schemaType = this.selectedSchemaType;
     const clonedOptions = cloneDeep(this.chartOptionsLocal);
     // this.chartOptionsLocal = clonedOptions;
     this.store.dispatch(updateChartOptions({data:clonedOptions}));

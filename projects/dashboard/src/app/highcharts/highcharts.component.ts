@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges, output, viewChild } from '@angular/core';
 import { HighChartsModule } from '../../../../shared/libs/highcharts.module';
 import { coreModule } from '../../../../shared/libs/core.module';
 import Highcharts, { PointOptionsType } from 'highcharts';
@@ -17,7 +17,7 @@ ExportingModule
   templateUrl: './highcharts.component.html',
   styleUrl: './highcharts.component.scss'
 })
-export class HighchartsComponent implements OnChanges, OnInit {
+export class HighchartsComponent implements OnChanges, OnInit {  
   @Input() showRemoveOption!: boolean;
   @Input() latestData: any;
   @Input()
@@ -50,12 +50,12 @@ export class HighchartsComponent implements OnChanges, OnInit {
             break;
           }
         }else if(latestChartOptions){
+          this.chartOptions = {...this.chartOptions} as any;
           if(latestChartOptions?.currentValue?.edit){
             this.reload = false
             // this.chartOptions = {}
             setTimeout(() => {
               this.reload = true
-              this.chartOptions = {...this.chartOptions} as any;
               if(this.HighChartInstance){
                 this.HighChartInstance.redraw()
               }

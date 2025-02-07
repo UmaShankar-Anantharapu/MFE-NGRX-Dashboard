@@ -14,6 +14,7 @@ export interface ChartOptionsState{
     id?: string;
     type?: string;
     dataset?: string;
+    schemaType?:string;
     title?: TitleOptions;
     subTitle?: SubtitleOptions;
     tooltip?: TooltipOptions;

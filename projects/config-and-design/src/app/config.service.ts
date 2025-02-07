@@ -13,7 +13,8 @@ export class ConfigService {
     return [
       {dataset:'power',schemaType:'Power'},
       {dataset:'getPositionMonitorings',schemaType:'PositionMonitoring'},
-      {dataset:'getWindRose',schemaType:'WindRose'}
+      {dataset:'getWindRose',schemaType:'WindRose'},
+      {dataset:'getHydro',schemaType:'Hydro'}
     ];
     // return this.commonService.fetchDataSets();
   }

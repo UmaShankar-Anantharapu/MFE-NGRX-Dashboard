@@ -249,6 +249,52 @@
         "range_10_15_ms",
         "range_15_20_ms"
       ]
+    },
+    {
+      "id": "a6b8",
+      "xAxis": {
+        "axisKey": "Turbine_Name"
+      },
+      "yAxis": [
+        {
+          "seriesConf": [
+            {
+              "axisKey": "Expected_Energy",
+              "axisName": "expected energy"
+            },
+            {
+              "axisKey": "Actual_Energy",
+              "axisName": "actual energy"
+            }
+          ]
+        }
+      ],
+      "dataset": "getHydro",
+      "schemaType": "Hydro",
+      "type": "column",
+      "title": "Turbines Expected Energy vs Actual Energy"
+    },
+    {
+      "id": "ce22",
+      "xAxis": {
+        "axisKey": "time",
+        "axisName": "Time"
+      },
+      "yAxis": [
+        {
+          "seriesConf": [
+            {
+              "axisKey": "power_mw",
+              "axisName": "Power generated"
+            }
+          ],
+          "title": "Power(in mW)"
+        }
+      ],
+      "title": "Power Generation ",
+      "dataset": "power",
+      "type": "column",
+      "schemaType": "Power"
     }
   ],
   "dashboard": [
@@ -467,7 +513,28 @@
     {
       "id": "4a84c161-907b-45d8-9663-eb20152de19c",
       "user": "shankar",
-      "chartOptions": {},
+      "chartOptions": {
+        "a6b8": {
+          "id": "a6b8",
+          "xAxis": {
+            "axisKey": "Turbine_Name"
+          },
+          "yAxis": [
+            {
+              "seriesConf": [
+                {
+                  "axisKey": "Expected_Energy",
+                  "axisName": "expected energy"
+                }
+              ]
+            }
+          ],
+          "dataset": "getHydro",
+          "schemaType": "Hydro",
+          "type": "column",
+          "title": "Turbines Expected Energy vs Actual Energy"
+        }
+      },
       "name": "test-01",
       "image": "../../assets/dummy-chart-image-1.png",
       "isFavorite": false,
@@ -486,6 +553,14 @@
           "rows": 6,
           "cols": 6,
           "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
+          "type": "column"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "rows": 6,
+          "cols": 6,
+          "id": "a6b8",
           "type": "column"
         }
       ]

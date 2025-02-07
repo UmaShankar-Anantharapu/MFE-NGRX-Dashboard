@@ -86,7 +86,8 @@ export class LoadChartService {
       },
       credits: {
         enabled: false
-      }
+      },
+      
     }
     return chartOptionsForHighCharts
   }

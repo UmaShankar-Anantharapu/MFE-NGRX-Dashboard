@@ -49,5 +49,9 @@ export class CreateChartComponent implements OnInit {
     const customEvent = new CustomEvent('load-chart');
     window.dispatchEvent(customEvent);
   }
+  onSaveChart(){
+    const customEvent = new CustomEvent('save-chart');
+    window.dispatchEvent(customEvent);
+  }
   
 }
