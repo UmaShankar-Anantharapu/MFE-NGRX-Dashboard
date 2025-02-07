@@ -400,69 +400,6 @@
       ]
     },
     {
-      "id": "458d1298-6409-456d-902c-72dbd17a7fe2",
-      "user": "shankar",
-      "chartOptions": {
-        "4d749b4e-08eb-45f3-a687-2a1ecb414736": {
-          "title": "Active-power",
-          "xAxis": {
-            "axisKey": "time",
-            "axisName": "time"
-          },
-          "yAxis": [
-            {
-              "seriesConf": [
-                {
-                  "axisKey": "pitch_angle",
-                  "axisName": "pitch angle"
-                },
-                {
-                  "axisKey": "blade_angle",
-                  "axisName": "blade angle"
-                }
-              ],
-              "title": "Angle"
-            },
-            {
-              "seriesConf": [
-                {
-                  "axisKey": "power_mw",
-                  "axisName": "power_mw"
-                }
-              ],
-              "title": "power"
-            }
-          ],
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
-          "type": "line",
-          "dataset": "power",
-          "schemaType": "Power",
-          "subscriptionName": "dataChanged"
-        }
-      },
-      "name": "Dashboardqwqw",
-      "image": "../../assets/dummy-chart-image-3.png",
-      "isFavorite": false,
-      "dashboard": [
-        {
-          "x": 0,
-          "y": 0,
-          "rows": 6,
-          "cols": 12,
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
-          "type": "table"
-        },
-        {
-          "x": 0,
-          "y": 6,
-          "rows": 7,
-          "cols": 12,
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb414736",
-          "type": "line"
-        }
-      ]
-    },
-    {
       "id": "05c484c9-59e1-4834-b11b-495e9e7bc4fd",
       "user": "shankar",
       "chartOptions": {
@@ -525,115 +462,25 @@
       ]
     },
     {
-      "id": "4a84c161-907b-45d8-9663-eb20152de19c",
+      "id": "64b3b82f-df05-4d9a-b6b2-c6a156550645",
       "user": "shankar",
-      "chartOptions": {
-        "a6b8": {
-          "id": "a6b8",
-          "xAxis": {
-            "axisKey": "Turbine_Name"
-          },
-          "yAxis": [
-            {
-              "seriesConf": [
-                {
-                  "axisKey": "Expected_Energy",
-                  "axisName": "expected energy"
-                }
-              ]
-            }
-          ],
-          "dataset": "getHydro",
-          "schemaType": "Hydro",
-          "type": "column",
-          "title": "Turbines Expected Energy vs Actual Energy"
-        }
-      },
-      "name": "test-01",
-      "image": "../../assets/dummy-chart-image-1.png",
+      "chartOptions": {},
+      "name": "Hydro Dashboard",
+      "image": "../../assets/dummy-chart-image-3.png",
       "isFavorite": false,
       "dashboard": [
         {
           "x": 0,
           "y": 0,
           "rows": 6,
-          "cols": 6,
-          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
+          "cols": 12,
+          "id": "5efc",
           "type": "table"
         },
         {
-          "x": 6,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
-          "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
-          "type": "column"
-        },
-        {
           "x": 0,
           "y": 6,
-          "rows": 6,
-          "cols": 6,
-          "id": "a6b8",
-          "type": "column"
-        }
-      ]
-    },
-    {
-      "id": "13623416-d255-480d-a8bc-7e290251eca7",
-      "user": "shankar",
-      "chartOptions": {
-        "ce22": {
-          "id": "ce22",
-          "xAxis": {
-            "axisKey": "time",
-            "axisName": "Time"
-          },
-          "yAxis": [
-            {
-              "seriesConf": [
-                {
-                  "axisKey": "blade_angle",
-                  "axisName": "blade angle"
-                },
-                {
-                  "axisKey": "pitch_angle",
-                  "axisName": "pitch angle"
-                }
-              ],
-              "title": "Angle"
-            }
-          ],
-          "title": "Power Generation ",
-          "dataset": "power",
-          "type": "area",
-          "schemaType": "Power"
-        }
-      },
-      "name": "test-02",
-      "image": "../../assets/dummy-chart-image-1.png",
-      "isFavorite": false,
-      "dashboard": [
-        {
-          "x": 0,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
-          "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
-          "type": "column"
-        },
-        {
-          "x": 6,
-          "y": 0,
-          "rows": 6,
-          "cols": 6,
-          "id": "ce22",
-          "type": "column"
-        },
-        {
-          "x": 0,
-          "y": 6,
-          "rows": 6,
+          "rows": 8,
           "cols": 12,
           "id": "a6b8",
           "type": "column"

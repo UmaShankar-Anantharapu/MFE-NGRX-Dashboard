@@ -61,7 +61,7 @@
 
 /* Y-Axis Card */
 .y-axis-card {
-  background: #fcf3cf; /* Lighter Orange */
+  background: #f5f5f5; /* Lighter Orange */
   padding: 10px;
   border-radius: 8px;
   margin-top: 10px;
@@ -120,4 +120,8 @@
 .example-button-row {
   margin-top: 16px;
   text-align: center;
+}
+.mat-mdc-card-title, .mat-mdc-card-subtitle{
+  display: flex;
+  justify-content: space-between;
 }
