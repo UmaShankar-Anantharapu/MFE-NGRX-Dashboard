@@ -28,20 +28,39 @@ export class CreateChartConfigComponent implements OnDestroy{
   chartState = signal<ChartOptionsState>({});
   selectedDataSet: string = ''
   selectedSchemaType: string = ''
+  eventListenerRef: any;
   constructor(private store: Store<any>, private configService:ConfigService,private commonService:CommonService,private http:HttpClient,private toastr:ToastrService) {
     this.fetchDataSets();
     this.fetchChartData();
     this.addLoadChartEVent();
-    this.addSaveChartEvent();
+    this.setupEventListener();
   }
+
+  private setupEventListener() {
+    this.removeExistingListener(); // Ensure no duplicate listeners
+
+    this.eventListenerRef = (event: any) => {
+      this.saveChartOptions();
+    }
+    window.addEventListener('save-chart', this.eventListenerRef);
+  }
+
+  private removeExistingListener() {
+    if (this.eventListenerRef) {
+      window.removeEventListener('save-chart', this.eventListenerRef);
+    }
+  }
+  
+  // 🔴 Cleanup in Component Destruction
+
 
   addLoadChartEVent(){
     window.addEventListener('load-chart',this.emitChartOptions.bind(this))
   }
 
-  addSaveChartEvent(){
-    window.addEventListener('save-chart',this.saveChartOptions.bind(this))
-  }
+  // addSaveChartEvent(){
+  //   window.addEventListener('save-chart',this.saveChartOptions.bind(this))
+  // }
 
   saveChartOptions(){
     this.http.post('http://localhost:3000/charts',this.chartOptionsLocal).subscribe((res)=>{
@@ -70,6 +89,7 @@ export class CreateChartConfigComponent implements OnDestroy{
     })
   }
   ngOnDestroy(): void {
+    this.removeExistingListener();
   }
     chart: any = {};
     data: any;

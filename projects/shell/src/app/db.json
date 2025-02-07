@@ -568,7 +568,34 @@
     {
       "id": "13623416-d255-480d-a8bc-7e290251eca7",
       "user": "shankar",
-      "chartOptions": {},
+      "chartOptions": {
+        "ce22": {
+          "id": "ce22",
+          "xAxis": {
+            "axisKey": "time",
+            "axisName": "Time"
+          },
+          "yAxis": [
+            {
+              "seriesConf": [
+                {
+                  "axisKey": "blade_angle",
+                  "axisName": "blade angle"
+                },
+                {
+                  "axisKey": "pitch_angle",
+                  "axisName": "pitch angle"
+                }
+              ],
+              "title": "Angle"
+            }
+          ],
+          "title": "Power Generation ",
+          "dataset": "power",
+          "type": "area",
+          "schemaType": "Power"
+        }
+      },
       "name": "test-02",
       "image": "../../assets/dummy-chart-image-1.png",
       "isFavorite": false,
@@ -579,6 +606,22 @@
           "rows": 6,
           "cols": 6,
           "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
+          "type": "column"
+        },
+        {
+          "x": 6,
+          "y": 0,
+          "rows": 6,
+          "cols": 6,
+          "id": "ce22",
+          "type": "column"
+        },
+        {
+          "x": 0,
+          "y": 6,
+          "rows": 6,
+          "cols": 12,
+          "id": "a6b8",
           "type": "column"
         }
       ]
