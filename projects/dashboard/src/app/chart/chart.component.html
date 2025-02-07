@@ -3,6 +3,9 @@
         <mat-card-title>Chart Preview</mat-card-title>
     </mat-card-header>
     <mat-card-content>
-        <app-highcharts [chartOptions]="chartOptionsForHighCharts" [isChartLoaded]="isChartLoaded"></app-highcharts>
-    </mat-card-content>
+        <app-highcharts [chartOptions]="chartOptionsForHighCharts" [isChartLoaded]="isChartLoaded" *ngIf="chartOptionsLocal.type !== 'table'"></app-highcharts>
+        
+        <app-table [rowData]="tableChartOptions['data']" [title]="tableChartOptions['title']"  *ngIf="chartOptionsLocal.type === 'table' && tableChartOptions['data']">
+            {{tableChartOptions|json}}
+        </app-table>    </mat-card-content>
 </mat-card>

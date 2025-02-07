@@ -102,7 +102,7 @@ export class CreateChartConfigComponent implements OnDestroy{
     Highcharts: typeof Highcharts = Highcharts;
     drillDownCharts: string[] = ['bar', 'column', 'pie', 'funnel', 'pareto', 'donut']
     // chartTypes = ['bar', 'column', 'area', 'line', 'pie', 'radar', 'scatter', 'bubble', 'heatmap', 'donut', 'polar', 'funnel', 'pyramid', 'gauge', 'pareto', 'wind rose'];
-    chartTypes = ['bar', 'column', 'area', 'line', 'pie', 'donut', 'pareto', 'wind rose', 'combination'];
+    chartTypes = ['bar', 'column', 'area', 'line', 'pie', 'donut','table','pareto', 'wind rose', 'combination'];
     combinationChartTypes = ['bar', 'column', 'area', 'line']
     chartOptions: Highcharts.Options = { chart: {} }
     chartOptionsFinal: Highcharts.Options = {}
@@ -526,5 +526,16 @@ export class CreateChartConfigComponent implements OnDestroy{
     designChange(map: any) {
       this.chartOptionsLocal = { ...this.chartOptionsLocal, [map.mainCategory]: map.chartOptions }
       this.onChartLoad(map.mainCategory);
+    }
+
+    onColumnSelectionInTableChart(event:any,columnName:string){
+      if(event.checked){
+        this.chartOptionsLocal.usedColumns = this.chartOptionsLocal.usedColumns || [];
+        this.chartOptionsLocal.usedColumns.push(columnName);
+      }else{
+        let inx = this.chartOptionsLocal.usedColumns?.findIndex((item: string) => item === columnName);
+        if (inx)
+          this.chartOptionsLocal.usedColumns?.splice(inx, 1)
+      }
     }
 }

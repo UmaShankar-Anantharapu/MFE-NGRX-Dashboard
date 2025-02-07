@@ -295,6 +295,20 @@
       "dataset": "power",
       "type": "column",
       "schemaType": "Power"
+    },
+    {
+      "id": "5efc",
+      "usedColumns": [
+        "Wind_Speed",
+        "gainNegative",
+        "Actual_Energy",
+        "lossPositive",
+        "Expected_Energy"
+      ],
+      "title": "Hydro Data",
+      "dataset": "getHydro",
+      "type": "table",
+      "schemaType": "Hydro"
     }
   ],
   "dashboard": [

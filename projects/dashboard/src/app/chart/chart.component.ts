@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { HighChartsModule } from '../../../../shared/libs/highcharts.module';
 import Highcharts, { SeriesOptionsType } from 'highcharts';
 import { coreModule } from '../../../../shared/libs/core.module';
@@ -12,22 +12,25 @@ import { v4 as uuidv4 } from 'uuid';
 import { LoadChartService } from '../services/load-chart.service';
 import { MaterialModule } from '../../../../shared/angular-themes/material.module';
 import { GraphqlService } from '../services/graphql.service';
+import { TableComponent } from '../table/table.component';
+import { updateChartOptions } from '../../../../shared/store/actions/chart.action';
 
 @Component({
   selector: 'app-chart',
   standalone: true,
-  imports: [MaterialModule, HighChartsModule, coreModule, HighchartsComponent],
+  imports: [MaterialModule, HighChartsModule, coreModule, HighchartsComponent,TableComponent],
   providers: [],
   templateUrl: './chart.component.html',
   styleUrl: './chart.component.scss'
 })
-export class ChartComponent implements OnInit {
+export class ChartComponent implements OnInit,OnDestroy {
   Highcharts: typeof Highcharts = Highcharts;
   chartOptionsFinal: Highcharts.Options = {}
   isChartLoaded: boolean = false;
   chartOptionsSubs: Observable<any>;
   chart!: ChartOptionsState;
   chartOptionsLocal:ChartOptionsState={};
+  tableChartOptions:any={};
   data:any;
   chartOptionsForHighCharts:Highcharts.Options={};
   constructor(private store: Store<GlobalState>,private commonService:CommonService, public loadChartService: LoadChartService,private graphqlService:GraphqlService) {
@@ -39,10 +42,13 @@ export class ChartComponent implements OnInit {
       }
     })
   }
+  ngOnDestroy(): void {
+    this.store.dispatch(updateChartOptions({data:{}}));
+  }
 
   fetchDataForChartAnLoad(){
     if(this.chartOptionsLocal && this.chartOptionsLocal.dataset){
-      this.onChartLoad();
+      this.chartOptionsLocal.type === 'table' ? this.loadTableChart() :this.onChartLoad();
     }
   }
   ngOnInit() {
@@ -84,6 +90,21 @@ export class ChartComponent implements OnInit {
         this.chartOptionsForHighCharts = this.loadChartService.loadChart(this.chartOptionsLocal)});
     }
     return;
+}
+
+loadTableChart(){
+  const usedKeys = this.chartOptionsLocal.usedColumns || [];
+  const dataset = this.chartOptionsLocal.dataset || '';
+  this.graphqlService.fetchDataFromCollectionByKeys(usedKeys,dataset).valueChanges.subscribe((res: any) => {
+    this.tableChartOptions={};
+    this.tableChartOptions.data = res.data[dataset];
+    this.tableChartOptions.title = this.chartOptionsLocal.title
+    // this.setTableData();
+  });
+}
+
+fetchTableChartData(){
+
 }
 
   setBarChartData() {

@@ -171,6 +171,16 @@
             <a mat-stroked-button (click)="addAxisForChart()">Add Axis</a>
         </div>
     </mat-expansion-panel>
+
+    <!-- Wind Rose Frequencies for windrose chart -->
+    <mat-expansion-panel *ngIf="selectedChartType === 'table'">
+        <mat-expansion-panel-header>
+            <mat-panel-title> Column Selection </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-checkbox *ngFor="let col of columnsList" (change)="onColumnSelectionInTableChart($event, col)">
+            {{col}}
+        </mat-checkbox>
+    </mat-expansion-panel>
     
     
     <!-- Drill Down starts here -->

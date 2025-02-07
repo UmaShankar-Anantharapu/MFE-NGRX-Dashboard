@@ -26,6 +26,7 @@ export class TableComponent implements OnInit, OnChanges {
     if (changes['rowData']) {
       this.rowData = changes['rowData'].currentValue;
       if(this.rowData){
+        this.columns = [];
         Object.keys(this.rowData[0]).forEach((col: string) => {
           if(col !== '__typename' && col !== '_id')
           this.columns.push({
