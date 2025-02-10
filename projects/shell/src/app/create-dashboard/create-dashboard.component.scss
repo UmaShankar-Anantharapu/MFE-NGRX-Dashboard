@@ -10,17 +10,17 @@
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
-    background-color: #f8f9fa;
+    // background-color: #f8f9fa;
     border-bottom: 1px solid #ddd;
     height: 60px;
 }
 
-.dashboard-name-input {
-    width: 18%;
-    border: none;
-    font-size: 1.3rem;
-    font-weight: 800;
-}
+// .dashboard-name-input {
+//     width: 18%;
+//     border: none;
+//     font-size: 1.3rem;
+//     font-weight: 800;
+// }
 
 .action-buttons {
     display: flex;
@@ -85,4 +85,14 @@ mat-sidenav.opened + .toggle-sidenav-btn {
 }
 .dashboard-right-panel ::ng-deep .mat-mdc-tab-body-wrapper {
     flex-grow: 1;
+}
+.input-dname{
+    background-color: var(--accent-main);
+    color: white;
+    border: none;
+    padding: 8px;
+    outline: none;
+    width: 20%;
+    font-size: 1rem;
+    font-weight: 500;
 }

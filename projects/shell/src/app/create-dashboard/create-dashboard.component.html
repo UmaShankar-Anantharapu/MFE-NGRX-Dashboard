@@ -1,13 +1,13 @@
 <div class="dashboard-container">
-    <div class="dashboard-header" color="accent">
-        <input [(ngModel)]="dashboardName" matInput class="dashboard-name-input">
+    <mat-toolbar class="dashboard-header" color="accent">
+        <input [(ngModel)]="dashboardName" matInput class="input-dname" placeholder="Enter dashboard name" style="border: 2px solid transparent; outline: none;" [ngStyle]="{'border-color': focused ? 'var(--primary-main)' : 'transparent'}" (focus)="focused = true" (blur)="focused = false">
         <div class="action-buttons">
             <button class="dashboard-btn" mat-raised-button color="primary">Load</button>
             <button class="dashboard-btn" mat-raised-button color="primary" (click)="saveDashboard()">
                 {{ isExistingDashboard ? 'Update' : 'Save' }}
             </button>
         </div>
-    </div>
+    </mat-toolbar>
 
     <mat-sidenav-container class="dashboard-main">
         <!-- Left Panel (Main Content) -->

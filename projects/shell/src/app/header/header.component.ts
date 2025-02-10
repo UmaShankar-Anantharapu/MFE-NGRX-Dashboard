@@ -45,6 +45,9 @@ export class HeaderComponent implements OnInit{
     this.selectedTheme = theme;
     this.themeChanged.emit(theme);
     localStorage.setItem('theme', theme);
+    // document.body.classList.toggle('dark-mode');
+    // const isDarkMode = document.body.classList.contains('dark-mode');
+    // localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }
   applyTheme(theme: any){
     console.log(theme);
