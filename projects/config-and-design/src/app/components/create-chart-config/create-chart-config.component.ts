@@ -64,6 +64,10 @@ export class CreateChartConfigComponent implements OnDestroy{
   // }
 
   saveChartOptions(){
+    if(!this.chartOptionsLocal.title){
+      this.toastr.warning('Please provide a title for the chart');
+      return;
+    }
     this.http.post('http://localhost:3000/charts',this.chartOptionsLocal).subscribe((res)=>{
       this.toastr.success('Chart saved successfully');
       console.log('saved chart')
