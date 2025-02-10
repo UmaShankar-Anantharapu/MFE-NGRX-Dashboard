@@ -22,6 +22,7 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
   @ViewChild('designContainer', { read: ViewContainerRef, static: false }) designContainer!: ViewContainerRef;
   dashboardName: string = 'Dashboard'
   isExistingDashboard: boolean = false;
+  focused: boolean = false;
   ngOnInit() {
     this.loadRemotes();
     window.addEventListener('dashboard', (event: any) => {

@@ -16,6 +16,7 @@ ModuleRegistry.registerModules([AllCommunityModule]);
   styleUrl: './table.component.scss'
 })
 export class TableComponent implements OnInit, OnChanges {
+  @Input() tableObject: any;
   @Input() rowData: any[] = [];
   @Input() title!:string;
   columns: ColDef[] = [];
@@ -30,12 +31,22 @@ export class TableComponent implements OnInit, OnChanges {
       this.rowData = changes['rowData'].currentValue;
       if(this.rowData){
         this.columns = [];
-        Object.keys(this.rowData[0]).forEach((col: string) => {
-          if(col !== '__typename' && col !== '_id')
+        this.tableObject.usedColumns.forEach((col: string, index: number) => {
           this.columns.push({
-            field: col, flex: 1, sortable: true, sort: 'asc', filter: 'agTextColumnFilter'
-          })
+            field: this.tableObject.usedColumns[index],
+            headerName: `${this.tableObject.usedColumnNames[index]}`,
+            flex: 1,
+            sortable: true,
+            sort: 'asc',
+            filter: 'agTextColumnFilter'
+          });
         })
+        // Object.keys(this.rowData[0]).forEach((col: string) => {
+        //   if(col !== '__typename' && col !== '_id')
+        //   this.columns.push({
+        //     field: col, flex: 1, sortable: true, sort: 'asc', filter: 'agTextColumnFilter'
+        //   })
+        // })
       }
     }
   }

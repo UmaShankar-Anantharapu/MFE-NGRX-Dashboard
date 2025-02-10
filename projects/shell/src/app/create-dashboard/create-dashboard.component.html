@@ -1,9 +1,9 @@
 <div class="dashboard-container">
-    <div class="dashboard-header">
+    <div class="dashboard-header" color="accent">
         <input [(ngModel)]="dashboardName" matInput class="dashboard-name-input">
         <div class="action-buttons">
-            <button class="dashboard-btn">Load</button>
-            <button class="dashboard-btn" (click)="saveDashboard()">
+            <button class="dashboard-btn" mat-raised-button color="primary">Load</button>
+            <button class="dashboard-btn" mat-raised-button color="primary" (click)="saveDashboard()">
                 {{ isExistingDashboard ? 'Update' : 'Save' }}
             </button>
         </div>

@@ -19,6 +19,13 @@
       "dataset": "power",
       "schemaType": "Power",
       "subscriptionName": "dataChanged",
+      "usedColumnNames": [
+        "time",
+        "power",
+        "pitch angle",
+        "blade angle",
+        "pitch angle set"
+      ],
       "usedColumns": [
         "time",
         "power_mw",
@@ -305,6 +312,13 @@
         "Actual_Energy",
         "lossPositive",
         "Expected_Energy"
+      ],
+      "usedColumnNames": [
+        "Wind Speed",
+        "gainNegative",
+        "Actual Energy",
+        "lossPositive",
+        "Expected Energy"
       ],
       "title": "Hydro Data",
       "dataset": "getHydro",

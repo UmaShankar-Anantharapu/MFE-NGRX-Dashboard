@@ -16,8 +16,8 @@
   <!-- Theme Dropdown and User Profile (Rightmost Corner) -->
   <div class="right-section">
     <!-- Theme Dropdown -->
-    <mat-icon class="light-mode-button">light_mode</mat-icon>
-    <mat-icon class="dark-mode-button">dark_mode</mat-icon>
+    <mat-icon class="light-mode-button" (click)="onThemeChanged('light')">light_mode</mat-icon>
+    <mat-icon class="dark-mode-button" (click)="onThemeChanged('dark')">dark_mode</mat-icon>
 
     <!-- User Profile -->
     <button mat-icon-button class="user-profile" [matMenuTriggerFor]="userMenu">

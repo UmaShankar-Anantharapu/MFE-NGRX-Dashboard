@@ -261,7 +261,7 @@ ngOnDestroy() {
     this.graphqlService.fetchDataFromCollectionByKeys(recievedData.usedColumns, recievedData.dataset).valueChanges.subscribe((res: any) => {
       let data = res.data[recievedData.dataset]
       this.loadChartService.updateData(data, recievedData.dataset);
-      this.tableDataMap[recievedData.id] = {data:data,title: recievedData.title};
+      this.tableDataMap[recievedData.id] = {data:data,title: recievedData.title, receivedData: recievedData};
       if(!this.chartIdsByDataSetNamesMap[recievedData.dataset])
         this.chartIdsByDataSetNamesMap[recievedData.dataset] = [];
       this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)
@@ -349,29 +349,45 @@ ngOnDestroy() {
     if(commonKeys){
       this.chartIdsByDataSetNamesMap[dataSetName].forEach((chartOptLocal: any) =>{
         let updatedVal: any = [];
-        // if(Object.keys(document).includes(chartOptLocal.xAxis.axisKey)){
-
-        // }
-        chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
-          axis.seriesConf.forEach((series: any, seriesInx: number) => {
-            if(Object.keys(document).includes(series.axisKey)){
-              console.log(series);
-              let val = {
-                axisInx: axisInx,
-                seriesInx: seriesInx,
-                axisKey: series.axisKey,
-                value: document[series.axisKey]
+        let updatedObj: any = {};
+        if(chartOptLocal.type === 'table'){
+            // table update data goes here
+        }else{
+          chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
+            axis.seriesConf.forEach((series: any, seriesInx: number) => {
+              if(Object.keys(document).includes(series.axisKey)){
+                console.log(series);
+                let val = {
+                  axisInx: axisInx,
+                  seriesInx: seriesInx,
+                  axisKey: series.axisKey,
+                  value: document[series.axisKey]
+                }
+                updatedVal.push(val)
               }
-              updatedVal.push(val)
-            }
+            })
+          });
+          chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
+            axis.seriesConf.forEach((series: any, seriesInx: number) => {
+              if(Object.keys(document).includes(series.axisKey)){
+                console.log(series);
+                let val = {
+                  axisInx: axisInx,
+                  seriesInx: seriesInx,
+                  axisKey: series.axisKey,
+                  value: document[series.axisKey]
+                }
+                updatedVal.push(val)
+              }
+            })
           })
-        })
-        const dataSetData = this.loadChartService.getDocumentFromDataSetById(dataSetName, documentKey)
-        let updatedObj = {
-          action: 'update',
-          chartType: chartOptLocal.type,
-          categoryValue: dataSetData[chartOptLocal.xAxis.axisKey],
-          values: updatedVal
+          const dataSetData = this.loadChartService.getDocumentFromDataSetById(dataSetName, documentKey)
+          updatedObj = {
+            action: 'update',
+            chartType: chartOptLocal.type,
+            categoryValue: dataSetData[chartOptLocal.xAxis.axisKey],
+            values: updatedVal
+          }
         }
         this.latestDataFromWebSocketByChartIds[chartOptLocal.id] = updatedObj;
       });
