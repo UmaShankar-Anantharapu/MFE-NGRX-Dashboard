@@ -1,24 +1,35 @@
-<div class="container">
-    <div class="header">
-        <!-- <span class="title">{{dashboardName}}</span><mat-icon>edit-icon</mat-icon> -->
-        <input [(ngModel)]="dashboardName" matInput class="input-dname">
-        <div class="buttons-group">
-            <button class="save-btn">Load</button>
-        <button class="save-btn" (click)="saveDashboard()">{{isExistingDashboard ? 'update' : 'save'}}</button>
+<div class="dashboard-container">
+    <div class="dashboard-header">
+        <input [(ngModel)]="dashboardName" matInput class="dashboard-name-input">
+        <div class="action-buttons">
+            <button class="dashboard-btn">Load</button>
+            <button class="dashboard-btn" (click)="saveDashboard()">
+                {{ isExistingDashboard ? 'Update' : 'Save' }}
+            </button>
         </div>
-        
     </div>
-    <div class="left-panel">
-        <ng-container #gridContainer></ng-container>
-    </div>
-    <div class="right-panel">
-        <mat-tab-group>
-            <mat-tab label="Configure">
-                <ng-container #configContainer></ng-container>
-            </mat-tab>
-            <mat-tab label="Design">
-                <ng-container #designContainer></ng-container>
-            </mat-tab>
-        </mat-tab-group>
-    </div>
+
+    <mat-sidenav-container class="dashboard-main">
+        <!-- Left Panel (Main Content) -->
+        <mat-sidenav-content [ngClass]="{'expanded': !sidenav.opened}">
+            <div class="dashboard-left-panel">
+                <ng-container #gridContainer></ng-container>
+            </div>
+            <button mat-mini-fab class="toggle-sidenav-btn" (click)="sidenav.toggle(); toggleSidenav()">
+                <mat-icon>{{ sidenav.opened ? 'chevron_right' : 'chevron_left' }}</mat-icon>
+            </button>
+        </mat-sidenav-content>
+
+        <!-- Right Panel (Sidenav) -->
+        <mat-sidenav #sidenav mode="side" position="end" class="dashboard-right-panel">
+            <mat-tab-group>
+                <mat-tab label="Configure">
+                    <ng-container #configContainer></ng-container>
+                </mat-tab>
+                <mat-tab label="Design">
+                    <ng-container #designContainer></ng-container>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-sidenav>
+    </mat-sidenav-container>
 </div>

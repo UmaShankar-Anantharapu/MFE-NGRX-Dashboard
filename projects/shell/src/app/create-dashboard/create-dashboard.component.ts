@@ -57,5 +57,10 @@ export class CreateDashboardComponent implements OnInit, OnDestroy {
     // }).then(c => c.CreateChartDesignComponent)
     // this.designContainer.createComponent(remoteComp3)
   }
+  isSidenavOpen = false; // Control the state of the sidenav
+  toggleSidenav() {
+    const customEvent = new CustomEvent('gridster-column-resize');
+    window.dispatchEvent(customEvent);
+  }
   
 }

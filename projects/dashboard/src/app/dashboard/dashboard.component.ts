@@ -73,6 +73,7 @@ export class DashboardComponent implements OnInit {
   }
 
   private eventListenerRef: any;
+  private eventListenerRefGridster: any;
 
   constructor(
     private http: HttpClient,
@@ -147,6 +148,7 @@ export class DashboardComponent implements OnInit {
 
     this.loadDashboardData();
     this.setupEventListener();
+    this.setupEventListenerForGridsterColumnResize()
     this.setupWebSocketListener();
     this.webSocketService.connect()
     // this.dashboard.push({ x: 0, y: 0, rows: 2, cols: 2, id: 20 })
@@ -195,6 +197,20 @@ private setupEventListener() {
   window.addEventListener('save-dashboard', this.eventListenerRef);
 }
 
+private setupEventListenerForGridsterColumnResize(){
+  this.removeExistingListener();
+  this.eventListenerRefGridster = (event:any) => {
+    this.triggerColumnSizeChange();
+  }
+  window.addEventListener('gridster-column-resize',this.eventListenerRefGridster)
+}
+
+triggerColumnSizeChange(){
+  if(this.options.api?.optionsChanged){
+    this.options.api?.optionsChanged();
+  }
+}
+
 // 🟢 Set Up WebSocket Listener
 private setupWebSocketListener() {
   this.ngZone.runOutsideAngular(() => {
@@ -211,6 +227,9 @@ private setupWebSocketListener() {
 private removeExistingListener() {
   if (this.eventListenerRef) {
     window.removeEventListener('save-dashboard', this.eventListenerRef);
+  }
+  if(this.eventListenerRefGridster){
+    window.removeEventListener('gridster-column-resize',this.eventListenerRefGridster);
   }
 }
 

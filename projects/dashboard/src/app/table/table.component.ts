@@ -19,7 +19,9 @@ export class TableComponent implements OnInit, OnChanges {
   @Input() rowData: any[] = [];
   @Input() title!:string;
   columns: ColDef[] = [];
-
+  gridOptions:any = {
+    multiSortKey: 'ctrl', // Enables multi-sort with Ctrl key
+  };
   constructor() {
     this.rowData[0]
   }

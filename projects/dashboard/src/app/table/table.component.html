@@ -6,6 +6,6 @@
         <div class="table-container" [style.flex]="title ? 1 : 0">
                 <ag-grid-angular [rowData]="rowData" [columnDefs]="columns" style="height: 100%;" class="chart"
                         (mouseover)="onColumnDragStarted($event)" (mousedown)="onColumnDragStarted($event)"
-                        *ngIf="columns.length>0" />
+                        *ngIf="columns.length>0" [gridOptions]="gridOptions"/>
         </div>
 </div>
