@@ -19,6 +19,13 @@
       "dataset": "power",
       "schemaType": "Power",
       "subscriptionName": "dataChanged",
+      "usedColumnNames": [
+        "time",
+        "power",
+        "pitch angle",
+        "blade angle",
+        "pitch angle set"
+      ],
       "usedColumns": [
         "time",
         "power_mw",
@@ -306,6 +313,13 @@
         "lossPositive",
         "Expected_Energy"
       ],
+      "usedColumnNames": [
+        "Wind Speed",
+        "gainNegative",
+        "Actual Energy",
+        "lossPositive",
+        "Expected Energy"
+      ],
       "title": "Hydro Data",
       "dataset": "getHydro",
       "type": "table",
@@ -506,6 +520,14 @@
           "cols": 12,
           "id": "7f1ddcc9-fd80-46c9-a3dd-fbbde1f36696",
           "type": "column"
+        },
+        {
+          "x": 0,
+          "y": 18,
+          "rows": 6,
+          "cols": 12,
+          "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
+          "type": "table"
         }
       ]
     }
