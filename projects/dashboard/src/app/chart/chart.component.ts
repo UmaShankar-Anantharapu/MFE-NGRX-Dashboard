@@ -56,7 +56,7 @@ export class ChartComponent implements OnInit,OnDestroy {
   }
   private getAllKeysInChart(chartData: any): string[] {
     let keys: string[] = [];
-    console.log(chartData);
+    // console.log(chartData);
     switch(chartData.type){
       case 'line':
       case 'bar':
@@ -84,7 +84,7 @@ export class ChartComponent implements OnInit,OnDestroy {
     const dataset = this.chartOptionsLocal.dataset || '';
     if (this.chartOptionsLocal.dataset !== undefined) {
       this.graphqlService.fetchDataFromCollectionByKeys(usedKeys, dataset).valueChanges.subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         this.loadChartService.updateData(res.data[dataset], dataset);
         this.chartOptionsForHighCharts = { ...this.loadChartService.loadChart(this.chartOptionsLocal) }
         this.chartOptionsForHighCharts = this.loadChartService.loadChart(this.chartOptionsLocal)});
@@ -235,7 +235,7 @@ fetchTableChartData(){
                 return obj;
               })
               serData = data
-              console.log(data);
+              // console.log(data);
             }
             seriesObj.data = serData
           } else {
@@ -318,7 +318,7 @@ fetchTableChartData(){
         data: this.data.map((item: any) => item[range]),
         type: 'column'
       }));
-      console.log(series)
+      // console.log(series)
       this.chartOptionsForHighCharts.series = series as any
     }
   }
@@ -351,7 +351,7 @@ fetchTableChartData(){
           }
           return obj
         })
-        console.log(seriesObj);
+        // console.log(seriesObj);
         if (this.chartOptionsForHighCharts.drilldown && this.chartOptionsForHighCharts.drilldown.series)
           this.chartOptionsForHighCharts.drilldown?.series.push(seriesObj as SeriesOptionsType)
       }

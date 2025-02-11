@@ -70,7 +70,7 @@ export class CreateChartConfigComponent implements OnDestroy{
     }
     this.http.post('http://localhost:3000/charts',this.chartOptionsLocal).subscribe((res)=>{
       this.toastr.success('Chart saved successfully');
-      console.log('saved chart')
+      // console.log('saved chart')
     })
   }
 
@@ -82,7 +82,7 @@ export class CreateChartConfigComponent implements OnDestroy{
     const clonedOptions = cloneDeep(this.chartOptionsLocal);
     // this.chartOptionsLocal = clonedOptions;
     this.store.dispatch(updateChartOptions({data:clonedOptions}));
-    console.log('inside emit method');
+    // console.log('inside emit method');
   }
 
   fetchDataSets(){
@@ -306,7 +306,7 @@ export class CreateChartConfigComponent implements OnDestroy{
                   return obj;
                 })
                 serData = data
-                console.log(data);
+                // console.log(data);
               }
               seriesObj.data = serData
             } else {
@@ -389,7 +389,7 @@ export class CreateChartConfigComponent implements OnDestroy{
           data: this.data.map((item: any) => item[range]),
           type: 'column'
         }));
-        console.log(series)
+        // console.log(series)
         this.chartOptions.series = series as any
       }
     }
@@ -523,7 +523,7 @@ export class CreateChartConfigComponent implements OnDestroy{
             }
             return obj
           })
-          console.log(seriesObj);
+          // console.log(seriesObj);
           if (this.chartOptions.drilldown && this.chartOptions.drilldown.series)
             this.chartOptions.drilldown?.series.push(seriesObj as SeriesOptionsType)
         }

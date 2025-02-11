@@ -22,7 +22,7 @@ export class EditChartPopupComponent {
   ];
 
   constructor(public dialogRef: MatDialogRef<any>, @Inject(MAT_DIALOG_DATA) public data: any) {
-    console.log(data);
+    // console.log(data);
   }
 
   onSave() {

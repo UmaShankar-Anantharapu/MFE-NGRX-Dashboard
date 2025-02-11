@@ -215,7 +215,7 @@ triggerColumnSizeChange(){
 private setupWebSocketListener() {
   this.ngZone.runOutsideAngular(() => {
     this.webSocketService.updatedData$.subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       if (res.event in Object.keys(this.chartIdsByDataSetNamesMap)) {
         this.updateChartData(res.payload);
       }
@@ -243,7 +243,7 @@ ngOnDestroy() {
   loadDashboard(){
     this.dashboard.forEach((item: any) => {
       this.http.get(`http://localhost:3000/charts/${item.id}`).subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         if(res.type === 'table'){
           this.loadTableData(res)
         }else{
@@ -271,7 +271,7 @@ ngOnDestroy() {
   load(recievedData: any,edit: boolean = false) {
     const usedKeys = this.getAllKeysInChart(recievedData)
     this.graphqlService.fetchDataFromCollectionByKeys(usedKeys, recievedData.dataset).valueChanges.subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       // this.loadChartService.fetchData(recievedData.dataset)
       this.loadChartService.updateData(res.data[recievedData.dataset], recievedData.dataset);
       this.highChartsOptionsMap[recievedData.id] = {...this.loadChartService.loadChart(recievedData), edit: edit}
@@ -280,7 +280,7 @@ ngOnDestroy() {
       this.chartIdsByDataSetNamesMap[recievedData.dataset].push(recievedData)
     });
     this.graphqlService.subscriptionForCollection(usedKeys, recievedData.subscriptionName).subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       let data = res.data[recievedData.subscriptionName].publishObj
       if(data){
         switch(data.operationType){
@@ -356,7 +356,7 @@ ngOnDestroy() {
           chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
             axis.seriesConf.forEach((series: any, seriesInx: number) => {
               if(Object.keys(document).includes(series.axisKey)){
-                console.log(series);
+                // console.log(series);
                 let val = {
                   axisInx: axisInx,
                   seriesInx: seriesInx,
@@ -370,7 +370,7 @@ ngOnDestroy() {
           chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
             axis.seriesConf.forEach((series: any, seriesInx: number) => {
               if(Object.keys(document).includes(series.axisKey)){
-                console.log(series);
+                // console.log(series);
                 let val = {
                   axisInx: axisInx,
                   seriesInx: seriesInx,
@@ -402,7 +402,7 @@ ngOnDestroy() {
 
   private getAllKeysInChart(chartData: any): string[] {
     let keys: string[] = [];
-    console.log(chartData);
+    // console.log(chartData);
     switch(chartData.type){
       case 'line':
       case 'bar':
@@ -428,7 +428,7 @@ ngOnDestroy() {
   editChart(event: boolean, chartId: any){
     if(event){
       this.http.get(`http://localhost:3000/charts/${chartId}`).subscribe((res: any) => {
-        console.log(res);
+        // console.log(res);
         let chart = res
         this.graphqlService.getSchemaForCollection(res.schemaType).valueChanges.subscribe((res: any) => {
           let fields:any = [];
@@ -455,7 +455,7 @@ ngOnDestroy() {
   }
 
   addEditChartOptionsInDashboard(chartId: string, updatedObj: any) {
-    console.log(updatedObj);
+    // console.log(updatedObj);
     this.dashboardObj.chartOptions[chartId] = updatedObj;
   }
 
@@ -469,7 +469,7 @@ ngOnDestroy() {
       }
       this.http.put(`http://localhost:3000/dashboard/${this.dashboardObj.id}`, updateObj).pipe(take(1),debounceTime(1000)).subscribe((res: any) => {
         this.toastr.success('Dashboard Updated successfully');
-        console.log(res);
+        // console.log(res);
       })
     }else{
       const randomNum = Math.floor(Math.random() * 3)+1
@@ -482,7 +482,7 @@ ngOnDestroy() {
         "isFavorite": false,
         dashboard: this.dashboard
       }
-      console.log(saveObj);
+      // console.log(saveObj);
       this.http.post(`http://localhost:3000/dashboard`, saveObj).pipe(take(1),debounceTime(1000)).subscribe((res: any) => {
         if(res){
           this.toastr.success('Dashboard saved successfully');

@@ -28,7 +28,7 @@ export class HeaderComponent implements OnInit{
   }
   ngOnInit() {
     this.http.get('http://localhost:3000/themes').subscribe((res: any) => {
-      console.log(res);
+      // console.log(res);
       this.themes = res[0]
       this.applyTheme(this.themes["Material Light"])
     })
@@ -50,7 +50,7 @@ export class HeaderComponent implements OnInit{
     // localStorage.setItem('darkMode', JSON.stringify(isDarkMode));
   }
   applyTheme(theme: any){
-    console.log(theme);
+    // console.log(theme);
     this.themeService.generatePalette(theme.primary, theme.accent, theme.warn);
   }
   logout(){

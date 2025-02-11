@@ -68,7 +68,7 @@ export class HighchartsComponent implements OnChanges, OnInit {
 
   }
   handleEditChart(event: any){
-    console.log(event);
+    // console.log(event);
     this.editChartEvent.emit(true);
   }
 
@@ -76,7 +76,7 @@ export class HighchartsComponent implements OnChanges, OnInit {
     if (Highcharts && Highcharts.getOptions()?.exporting?.buttons?.contextButton?.menuItems) {
       let buttons: any = {};
       buttons = Highcharts.getOptions().exporting?.buttons?.contextButton?.menuItems?.slice();
-      console.log(buttons);
+      // console.log(buttons);
       
       
       // Remove the "Print Chart" button

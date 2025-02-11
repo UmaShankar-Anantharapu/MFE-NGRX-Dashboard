@@ -37,7 +37,7 @@ export class AppComponent {
   }
 
   onThemeChange(event: string) {
-    console.log(event);
+    // console.log(event);
     this.selectedtheme = event
   }
   @HostBinding('class')

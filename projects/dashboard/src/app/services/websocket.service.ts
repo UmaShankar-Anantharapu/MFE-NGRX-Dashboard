@@ -21,7 +21,7 @@ export class WebSocketService {
       this.ws = new WebSocket(url);
 
       this.ws.onopen = () => {
-        console.log('Connected to WebSocket server');
+        // console.log('Connected to WebSocket server');
       };
 
       this.ws.onmessage = (event) => {
@@ -33,7 +33,7 @@ export class WebSocketService {
       };
 
       this.ws.onclose = () => {
-        console.log('WebSocket connection closed');
+        // console.log('WebSocket connection closed');
         this.ws = null;
         this.dataSetSubscriptions = {};
       };
@@ -52,7 +52,7 @@ export class WebSocketService {
       });
 
       this.ws.send(subscribeMessage);
-      console.log(`Sent subscription for module: ${dataSetId}`);
+      // console.log(`Sent subscription for module: ${dataSetId}`);
       this.dataSetSubscriptions[dataSetId] = true;
     } else {
       console.warn('WebSocket is not open. Cannot subscribe.');
@@ -71,7 +71,7 @@ export class WebSocketService {
       });
 
       this.ws.send(unsubscribeMessage);
-      console.log(`Sent unsubscription for module: ${dataSetId}`);
+      // console.log(`Sent unsubscription for module: ${dataSetId}`);
       delete this.dataSetSubscriptions[dataSetId];
     } else {
       console.warn(`Cannot unsubscribe. Module "${dataSetId}" is not subscribed or WebSocket is not open.`);
@@ -102,7 +102,7 @@ export class WebSocketService {
     if (this.ws) {
       this.ws.close();
       this.ws = null;
-      console.log('WebSocket connection closed manually.');
+      // console.log('WebSocket connection closed manually.');
     }
   }
 }

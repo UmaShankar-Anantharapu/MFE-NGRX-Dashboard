@@ -160,7 +160,7 @@ export class LoadChartService {
                 return obj;
               })
               serData = data
-              console.log(data);
+              // console.log(data);
             }
             seriesObj.data = serData
           } else {
@@ -239,7 +239,7 @@ export class LoadChartService {
           }
           return obj
         })
-        console.log(seriesObj);
+        // console.log(seriesObj);
         if (chartOptionsForHighCharts.drilldown && chartOptionsForHighCharts.drilldown.series)
           chartOptionsForHighCharts.drilldown?.series.push(seriesObj as SeriesOptionsType)
       }
@@ -341,7 +341,7 @@ export class LoadChartService {
         data: this.dataSetData[chartOptionsConfig.dataset].map((item: any) => item[range]),
         type: 'column'
       }));
-      console.log(series)
+      // console.log(series)
       chartOptionsForHighCharts.series = series as any
     }
   }
