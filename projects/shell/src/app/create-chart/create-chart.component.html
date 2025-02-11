@@ -7,13 +7,15 @@
             <button mat-flat-button class="custom-button" (click)="onLoadChart()">load</button>
             <button mat-flat-button class="custom-button" (click)="onSaveChart()">save</button>
         </div>
-        <mat-tab-group>
-            <mat-tab label="Configure">
-                <ng-container #configContainer></ng-container>
-            </mat-tab>
-            <mat-tab label="Design">
-                <ng-container #designContainer></ng-container>
-            </mat-tab>
-        </mat-tab-group>
+        <div class="tabs">
+            <mat-tab-group>
+                <mat-tab label="Configure">
+                    <ng-container #configContainer></ng-container>
+                </mat-tab>
+                <mat-tab label="Design">
+                    <ng-container #designContainer></ng-container>
+                </mat-tab>
+            </mat-tab-group>
+        </div>
     </div>
 </div>

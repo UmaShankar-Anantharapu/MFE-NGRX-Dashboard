@@ -13,10 +13,12 @@
 
 .right-panel {
     background-color: ghostwhite;
+    height: 100%;
+    overflow: auto;
 }
 @media (min-width: 1440px) {
     .container{
-        grid-template-columns: 5fr 1fr;
+        grid-template-columns: 4fr 1fr;
     }  
   }
 mat-tab-group{
@@ -36,7 +38,11 @@ mat-tab-group{
     display: flex;
     justify-content: space-around;
     column-gap: 20px;
+    height: 3%;
 }
 .custom-button{
     width: 50%;
+}
+.tabs{
+    height: calc(97% - 40px);
 }
