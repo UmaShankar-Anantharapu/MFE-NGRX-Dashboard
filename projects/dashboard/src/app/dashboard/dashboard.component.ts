@@ -361,11 +361,12 @@ ngOnDestroy() {
     let commonKeys = Object.keys(document).some(item => usedKeys.includes(item))
     if(commonKeys){
       this.chartIdsByDataSetNamesMap[dataSetName].forEach((chartOptLocal: any) =>{
+        const type = chartOptLocal.type;
         let updatedVal: any = [];
         let updatedObj: any = {};
-        if(chartOptLocal.type === 'table'){
+        if(type === 'table'){
             // table update data goes here
-        }else{
+        }else if(type === 'line' || type === 'bar' || type === 'area' || type === 'column'){
           chartOptLocal.yAxis.forEach((axis: any, axisInx: number) => {
             axis.seriesConf.forEach((series: any, seriesInx: number) => {
               if(Object.keys(document).includes(series.axisKey)){
