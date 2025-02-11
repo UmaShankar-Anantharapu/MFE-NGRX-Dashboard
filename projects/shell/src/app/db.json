@@ -434,14 +434,14 @@
         {
           "x": 0,
           "y": 0,
-          "rows": 6,
+          "rows": 9,
           "cols": 12,
           "id": "5efc",
           "type": "table"
         },
         {
           "x": 0,
-          "y": 6,
+          "y": 9,
           "rows": 8,
           "cols": 12,
           "id": "a6b8",

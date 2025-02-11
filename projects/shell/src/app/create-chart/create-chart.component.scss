@@ -16,9 +16,9 @@
     height: 100%;
     overflow: auto;
 }
-@media (min-width: 1440px) {
+@media (min-width: 1920px) {
     .container{
-        grid-template-columns: 4fr 1fr;
+        grid-template-columns: 5fr 1fr;
     }  
   }
 mat-tab-group{
@@ -39,6 +39,7 @@ mat-tab-group{
     justify-content: space-around;
     column-gap: 20px;
     height: 3%;
+    padding-right: 1rem;
 }
 .custom-button{
     width: 50%;

@@ -74,6 +74,7 @@ export class DashboardComponent implements OnInit {
 
   private eventListenerRef: any;
   private eventListenerRefGridster: any;
+  private eventListenerForDragEnd: any;
 
   constructor(
     private http: HttpClient,
@@ -148,15 +149,14 @@ export class DashboardComponent implements OnInit {
 
     this.loadDashboardData();
     this.removeAllEventListeners();
-    this.setupEventListener();
-    this.setupEventListenerForGridsterColumnResize()
+    this.setupEventListenerForSaveDashboard();
+    this.setupEventListenerForGridsterColumnResize();
+    this.setupEventListenerForOnDrgEnd();
     this.setupWebSocketListener();
-    this.webSocketService.connect()
-    // this.dashboard.push({ x: 0, y: 0, rows: 2, cols: 2, id: 20 })
-    window.addEventListener('mfe-drag-end', (event: any) => {
-      this.onDrop(event);
-    });
+    this.webSocketService.connect();
   }
+
+  
   async onDrop(event: any) {
     this.http.get(`http://localhost:3000/charts/${event.detail.data.id}`).subscribe((res: any) => {
       let recievedData = res;
@@ -184,7 +184,7 @@ export class DashboardComponent implements OnInit {
   }
 
   // 🟢 Set Up Custom Event Listener for "save-dashboard"
-private setupEventListener() {
+private setupEventListenerForSaveDashboard() {
   // this.removeExistingListener('save-dashboard'); // Ensure no duplicate listeners
   this.removeExistingListener('save-dashboard');
   this.eventListenerRef = (event: any) => {
@@ -196,6 +196,14 @@ private setupEventListener() {
   };
 
   window.addEventListener('save-dashboard', this.eventListenerRef);
+}
+
+private setupEventListenerForOnDrgEnd() {
+  this.removeExistingListener('mfe-drag-end')
+  this.eventListenerForDragEnd = (event: any) => {
+    this.onDrop(event);
+  }
+  window.addEventListener('mfe-drag-end',this.eventListenerForDragEnd);
 }
 
 private setupEventListenerForGridsterColumnResize(){
@@ -234,6 +242,11 @@ removeExistingListener(eventType:string){
       window.removeEventListener('gridster-column-resize',this.eventListenerRefGridster);
     }
   }
+  else if(eventType === 'mfe-drag-end'){
+    if(this.eventListenerForDragEnd){
+      window.removeEventListener('mfe-drag-end',this.eventListenerForDragEnd);
+    }
+  }
 }
 
 // 🟢 Remove Event Listener
@@ -243,6 +256,9 @@ private removeAllEventListeners() {
   }
   if(this.eventListenerRefGridster){
     window.removeEventListener('gridster-column-resize',this.eventListenerRefGridster);
+  }
+  if(this.eventListenerForDragEnd){
+    window.removeEventListener('mfe-drag-end',this.eventListenerForDragEnd);
   }
 }
 
