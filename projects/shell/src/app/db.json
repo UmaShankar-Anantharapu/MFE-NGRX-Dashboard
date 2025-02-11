@@ -346,6 +346,30 @@
       "type": "column",
       "schemaType": "Power",
       "subscriptionName": "dataChanged"
+    },
+    {
+      "id": "e0dd",
+      "seriesConfigurations": {
+        "label": "Turbine_Name",
+        "value": "Active_Power"
+      },
+      "title": "Active Power Contribution by Each Turbine",
+      "dataset": "getHydro",
+      "type": "pie",
+      "schemaType": "Hydro",
+      "subscriptionName": "hydroChanged"
+    },
+    {
+      "id": "5194",
+      "seriesConfigurations": {
+        "label": "Turbine_Name",
+        "value": "Wind_Speed"
+      },
+      "dataset": "getHydro",
+      "type": "donut",
+      "schemaType": "Hydro",
+      "subscriptionName": "hydroChanged",
+      "title": "Turbine Name v Wind Speed Donut"
     }
   ],
   "dashboard": [
@@ -528,6 +552,22 @@
           "cols": 12,
           "id": "4d749b4e-08eb-45f3-a687-2a1ecb4147436",
           "type": "table"
+        },
+        {
+          "x": 0,
+          "y": 24,
+          "rows": 6,
+          "cols": 6,
+          "id": "e0dd",
+          "type": "pie"
+        },
+        {
+          "x": 6,
+          "y": 24,
+          "rows": 6,
+          "cols": 6,
+          "id": "5194",
+          "type": "donut"
         }
       ]
     }

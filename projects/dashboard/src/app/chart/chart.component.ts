@@ -69,6 +69,11 @@ export class ChartComponent implements OnInit,OnDestroy {
           })
         })
         break;
+      case 'pie':
+      case 'donut':
+        keys.push(chartData.seriesConfigurations.label);
+        keys.push(chartData.seriesConfigurations.value);
+        break;
       case 'windrose':
         keys.push(chartData.xAxis.axisKey);
         keys = [...keys, ...chartData.windRoseFrequencies]

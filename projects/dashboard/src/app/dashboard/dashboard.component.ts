@@ -147,6 +147,7 @@ export class DashboardComponent implements OnInit {
   ngOnInit() {
 
     this.loadDashboardData();
+    this.removeAllEventListeners();
     this.setupEventListener();
     this.setupEventListenerForGridsterColumnResize()
     this.setupWebSocketListener();
@@ -184,8 +185,8 @@ export class DashboardComponent implements OnInit {
 
   // 🟢 Set Up Custom Event Listener for "save-dashboard"
 private setupEventListener() {
-  this.removeExistingListener(); // Ensure no duplicate listeners
-
+  // this.removeExistingListener('save-dashboard'); // Ensure no duplicate listeners
+  this.removeExistingListener('save-dashboard');
   this.eventListenerRef = (event: any) => {
     if (this.dashboardObj?.id) {
       this.saveDashboard(event.detail);
@@ -198,7 +199,7 @@ private setupEventListener() {
 }
 
 private setupEventListenerForGridsterColumnResize(){
-  this.removeExistingListener();
+  this.removeExistingListener('gridster-column-resize');
   this.eventListenerRefGridster = (event:any) => {
     this.triggerColumnSizeChange();
   }
@@ -223,8 +224,20 @@ private setupWebSocketListener() {
   });
 }
 
+removeExistingListener(eventType:string){
+  if(eventType === 'save-dashboard'){
+    if (this.eventListenerRef) {
+      window.removeEventListener('save-dashboard', this.eventListenerRef);
+    }
+  }else if(eventType === 'gridster-column-resize'){
+    if(this.eventListenerRefGridster){
+      window.removeEventListener('gridster-column-resize',this.eventListenerRefGridster);
+    }
+  }
+}
+
 // 🟢 Remove Event Listener
-private removeExistingListener() {
+private removeAllEventListeners() {
   if (this.eventListenerRef) {
     window.removeEventListener('save-dashboard', this.eventListenerRef);
   }
@@ -235,7 +248,7 @@ private removeExistingListener() {
 
 // 🔴 Cleanup in Component Destruction
 ngOnDestroy() {
-  this.removeExistingListener();
+  this.removeAllEventListeners();
 }
 
 
@@ -414,6 +427,11 @@ ngOnDestroy() {
             keys.push(series.axisKey)
           })
         })
+        break;
+      case 'pie':
+      case 'donut':
+        keys.push(chartData.seriesConfigurations.label);
+        keys.push(chartData.seriesConfigurations.value);
         break;
       case 'windrose':
         keys.push(chartData.xAxis.axisKey);
